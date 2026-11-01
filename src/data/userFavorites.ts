@@ -178,48 +178,6 @@ export const USER_FAVORITE_RECIPES: Meal[] = [
     ]
   },
   {
-    id: 'fav-dumplings-knoedel',
-    title: 'Savory Dumplings (Knödel) with Rich Mushroom Gravy',
-    mealType: 'dinner',
-    prepTime: 15,
-    cookTime: 20,
-    servings: 2,
-    tags: ['User Favorite', 'Alpine Comfort', 'Hearty'],
-    calorieEstimate: 590,
-    gordoPortionNotes: '3 large dumplings drenched in savory mushroom ragout',
-    flacoPortionNotes: '2 sliced dumplings pan-crisped with parsley & lingonberry jam',
-    notes: 'Fluffy bread dumplings (Semmelknödel) simmered until floating then coated in deep mushroom gravy.',
-    leftoverSuitability: 'excellent',
-    reheatInstructions: 'Slice leftover Knödel and brown in butter (Geröstete Knödel mit Ei). Pure heaven!',
-    ingredients: [
-      { id: 'fav-i-38', name: 'Bread Dumplings (Semmelknödel)', amount: '4-6 dumplings', category: 'Bakery' },
-      { id: 'fav-i-39', name: 'Mixed Mushrooms', amount: '250g', category: 'Produce' },
-      { id: 'fav-i-40', name: 'Shallots & Garlic', amount: '2 shallots', category: 'Produce' },
-      { id: 'fav-i-41', name: 'Vegetable Broth & Cream', amount: '250ml', category: 'Pantry' }
-    ]
-  },
-  {
-    id: 'fav-lentils-linens',
-    title: 'Hearty Simmered Lentils with Spätzle',
-    mealType: 'dinner',
-    prepTime: 15,
-    cookTime: 35,
-    servings: 2,
-    tags: ['User Favorite', 'Comfort Stew', 'Batch Hero'],
-    calorieEstimate: 610,
-    gordoPortionNotes: 'Deep bowl of brown lentils with sausages & vinegar splash',
-    flacoPortionNotes: 'Plate of handmade spätzle with light vinegar brown lentils',
-    notes: 'Traditional Swabian national dish! Cook with bay leaf and finish with red wine vinegar.',
-    leftoverSuitability: 'excellent',
-    reheatInstructions: 'Even tastier on day 2 and 3! Simmer 3 mins in saucepan or microwave covered.',
-    ingredients: [
-      { id: 'fav-i-42', name: 'Brown Lentils', amount: '1.5 cups', category: 'Pantry' },
-      { id: 'fav-i-43', name: 'Spätzle Pasta', amount: '250g', category: 'Pantry' },
-      { id: 'fav-i-44', name: 'Soup Veggies (Carrot, Celery, Leek)', amount: '1 bunch', category: 'Produce' },
-      { id: 'fav-i-45', name: 'Red Wine Vinegar & Bay Leaf', amount: '2 tbsp', category: 'Pantry' }
-    ]
-  },
-  {
     id: 'fav-hirseauflauf',
     title: 'Hirseauflauf (Baked Millet & Vegetable Casserole)',
     mealType: 'dinner',
@@ -282,27 +240,6 @@ export const USER_FAVORITE_RECIPES: Meal[] = [
       { id: 'fav-i-55', name: 'Rich Tomato Meat or Veg Sauce', amount: '2.5 cups', category: 'Pantry' },
       { id: 'fav-i-56', name: 'Béchamel Sauce (Butter, Flour, Milk)', amount: '1.5 cups', category: 'Dairy & Eggs' },
       { id: 'fav-i-57', name: 'Mozzarella & Parmesan', amount: '150g shredded', category: 'Dairy & Eggs', isExpiring: true }
-    ]
-  },
-  {
-    id: 'fav-cannelloni',
-    title: 'Spinach & Ricotta Cannelloni al Forno',
-    mealType: 'dinner',
-    prepTime: 20,
-    cookTime: 30,
-    servings: 2,
-    tags: ['User Favorite', 'Italian Baked', 'Batch Hero'],
-    calorieEstimate: 620,
-    gordoPortionNotes: '4 stuffed cannelloni rolls smothered in tomato pomodoro and parmesan',
-    flacoPortionNotes: '3 stuffed rolls with fresh basil and garden side salad',
-    notes: 'Tubes filled with seasoned spinach, garlic, and ricotta, baked until bubbly.',
-    leftoverSuitability: 'excellent',
-    reheatInstructions: 'Reheats like a dream! Cover with foil and warm in oven 10 mins or microwave 2.5 mins.',
-    ingredients: [
-      { id: 'fav-i-58', name: 'Cannelloni Tubes', amount: '8-10 tubes', category: 'Pantry' },
-      { id: 'fav-i-59', name: 'Baby Spinach', amount: '200g wilted', category: 'Produce', isExpiring: true },
-      { id: 'fav-i-60', name: 'Ricotta Cheese', amount: '250g', category: 'Dairy & Eggs', isExpiring: true },
-      { id: 'fav-i-61', name: 'Crushed Tomato Sauce', amount: '2 cups', category: 'Pantry' }
     ]
   },
   {
@@ -650,27 +587,6 @@ export const USER_FAVORITE_RECIPES: Meal[] = [
     ]
   },
   {
-    id: 'fav-grilled-cheese',
-    title: 'Classic 80s Diner Grilled Cheese & Creamy Tomato Soup',
-    mealType: 'lunch',
-    prepTime: 8,
-    cookTime: 8,
-    servings: 2,
-    tags: ['User Favorite', '80s Diner', 'Comfort Food'],
-    calorieEstimate: 510,
-    gordoPortionNotes: 'Triple cheddar & mozzarella melt on thick sourdough with bowl of soup',
-    flacoPortionNotes: 'Golden griddled sourdough with sharp cheddar, tomato slice & basil soup',
-    notes: 'Smear outside of bread with light mayo for the crispiest, deepest golden diner crust!',
-    leftoverSuitability: 'cook_fresh_only',
-    reheatInstructions: 'Eat straight from the skillet while the cheese pull is at maximum stretch.',
-    ingredients: [
-      { id: 'fav-i-130', name: 'Sourdough or Brioche Bread', amount: '4 thick slices', category: 'Bakery' },
-      { id: 'fav-i-131', name: 'Cheddar & Monterey Jack Cheese', amount: '120g sliced', category: 'Dairy & Eggs', isExpiring: true },
-      { id: 'fav-i-132', name: 'Butter', amount: '2 tbsp', category: 'Dairy & Eggs' },
-      { id: 'fav-i-133', name: 'Tomato Soup', amount: '2 bowls', category: 'Pantry' }
-    ]
-  },
-  {
     id: 'fav-egg-sandwich',
     title: 'Diner Egg Salad & Crispy Bacon Sandwich',
     mealType: 'lunch',
@@ -752,48 +668,6 @@ export const USER_FAVORITE_RECIPES: Meal[] = [
       { id: 'fav-i-147', name: 'Fresh Parsley & Mint', amount: '1 large bunch', category: 'Produce', isExpiring: true },
       { id: 'fav-i-148', name: 'Cucumber & Tomatoes', amount: '1 cup diced', category: 'Produce' },
       { id: 'fav-i-149', name: 'Lemon Juice & Olive Oil', amount: '3 tbsp', category: 'Pantry' }
-    ]
-  },
-  {
-    id: 'fav-veggies-oven',
-    title: 'Sheet Pan Roasted Veggies & Whipped Herb Feta Dip',
-    mealType: 'dinner',
-    prepTime: 12,
-    cookTime: 25,
-    servings: 2,
-    tags: ['User Favorite', 'Vegetarian', 'Oven Magic'],
-    calorieEstimate: 480,
-    gordoPortionNotes: 'Heaping platter with crusty beer bread slices & warm potatoes',
-    flacoPortionNotes: 'Caramelized cauliflower, carrots, bell peppers with lemony herb feta',
-    notes: 'High heat (425°F / 220°C) roast produces crispy charred edges and sweet tender insides.',
-    leftoverSuitability: 'good',
-    reheatInstructions: 'Reheat in hot skillet or oven for 4 minutes to restore roasted aroma.',
-    ingredients: [
-      { id: 'fav-i-150', name: 'Cauliflower, Carrots & Zucchini', amount: '500g mixed', category: 'Produce', isExpiring: true },
-      { id: 'fav-i-151', name: 'Bell Peppers & Red Onions', amount: '1 pepper + 1 onion', category: 'Produce', isExpiring: true },
-      { id: 'fav-i-152', name: 'Feta Cheese & Greek Yogurt', amount: '150g feta + 3 tbsp yogurt', category: 'Dairy & Eggs', isExpiring: true },
-      { id: 'fav-i-153', name: 'Oregano, Garlic & Olive Oil', amount: '2 tbsp', category: 'Pantry' }
-    ]
-  },
-  {
-    id: 'fav-zimtschnecken',
-    title: '80s Diner Warm Cinnamon Rolls (Zimtschnecken)',
-    mealType: 'lunch',
-    prepTime: 15,
-    cookTime: 20,
-    servings: 2,
-    tags: ['User Favorite', 'Diner Bakery', 'Sweet Treat'],
-    calorieEstimate: 420,
-    gordoPortionNotes: 'Two warm cinnamon spirals with vanilla cream glaze',
-    flacoPortionNotes: 'One fresh cinnamon spiral with warm spiced coffee or tea',
-    notes: 'Brown sugar and cinnamon swirled through buttery dough baked until aromatic and golden.',
-    leftoverSuitability: 'excellent',
-    reheatInstructions: 'Microwave for 15 seconds to make the dough melt-in-your-mouth soft again!',
-    ingredients: [
-      { id: 'fav-i-154', name: 'Yeast Dough or Puff Pastry', amount: '1 sheet', category: 'Bakery' },
-      { id: 'fav-i-155', name: 'Butter (softened)', amount: '3 tbsp', category: 'Dairy & Eggs' },
-      { id: 'fav-i-156', name: 'Cinnamon & Brown Sugar', amount: '3 tbsp sugar + 1 tbsp cinnamon', category: 'Pantry' },
-      { id: 'fav-i-157', name: 'Vanilla Icing Glaze', amount: '2 tbsp', category: 'Pantry' }
     ]
   }
 ];
