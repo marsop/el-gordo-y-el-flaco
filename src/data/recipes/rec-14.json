@@ -1,0 +1,57 @@
+{
+  "id": "rec-14",
+  "title": "Big Batch 80s Chuck Wagon Chili & Smoked Cheddar",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 25,
+  "servings": 2,
+  "tags": [
+    "Batch Hero",
+    "Comfort Food",
+    "High Protein"
+  ],
+  "calorieEstimate": 640,
+  "gordoPortionNotes": "Large bowl with crushed tortilla chips, extra cheese & diced raw onions",
+  "flacoPortionNotes": "Medium bowl with dollop of greek crema, fresh cilantro and lime wedge",
+  "notes": "Classic thick diner chili! Simmered with ground beef, kidney beans, cumin, and rich cocoa chili paste.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Tastes even better on days 2 and 3! Simmer 3 mins in small saucepan or microwave 2 mins covered.",
+  "usesExpiringItemIds": [
+    "p4",
+    "p9"
+  ],
+  "ingredients": [
+    {
+      "id": "i75",
+      "name": "Lean Ground Beef or Turkey",
+      "amount": "500g",
+      "category": "Meat & Seafood",
+      "isExpiring": true
+    },
+    {
+      "id": "i76",
+      "name": "Kidney Beans & Black Beans",
+      "amount": "2 cans drained",
+      "category": "Pantry"
+    },
+    {
+      "id": "i77",
+      "name": "Crushed Canned Tomatoes",
+      "amount": "1 large can (800g)",
+      "category": "Pantry"
+    },
+    {
+      "id": "i78",
+      "name": "Chili Powder & Cumin",
+      "amount": "2.5 tbsp",
+      "category": "Pantry"
+    },
+    {
+      "id": "i79",
+      "name": "Smoked Cheddar",
+      "amount": "60g shredded",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    }
+  ]
+}

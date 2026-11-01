@@ -1,0 +1,47 @@
+{
+  "id": "fav-hirseauflauf",
+  "title": "Hirseauflauf (Baked Millet & Vegetable Casserole)",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 30,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Wholesome",
+    "Batch Friendly"
+  ],
+  "calorieEstimate": 520,
+  "gordoPortionNotes": "Baked with extra cheddar crust and steamed broccoli side",
+  "flacoPortionNotes": "Golden slice with herb yogurt dip & grated carrot salad",
+  "notes": "Fluffy golden millet cooked in broth and baked with zucchini, peppers, and cheese.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Keeps 3 days. Reheat in oven or microwave covered for 2 minutes.",
+  "ingredients": [
+    {
+      "id": "fav-i-46",
+      "name": "Millet (Hirse)",
+      "amount": "1 cup",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-47",
+      "name": "Zucchini & Bell Pepper",
+      "amount": "1 of each diced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-48",
+      "name": "Eggs & Grated Cheese",
+      "amount": "2 eggs + 100g cheese",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-49",
+      "name": "Vegetable Broth",
+      "amount": "2 cups",
+      "category": "Pantry"
+    }
+  ]
+}

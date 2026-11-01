@@ -1,0 +1,59 @@
+{
+  "id": "rec-9",
+  "title": "Diner Huevos Rancheros Deluxe",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "Brunch Classic",
+    "Quick 10m",
+    "Eat Fresh"
+  ],
+  "calorieEstimate": 490,
+  "gordoPortionNotes": "Three sunny side up eggs on double fried corn tortillas with chorizo",
+  "flacoPortionNotes": "Two poached eggs on toasted tortilla with black bean puree and fresh pico",
+  "notes": "Warm tortillas on the open burner for charred aroma. Top with warm salsa ranchera.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Must eat fresh! Runny eggs and crispy warmed tortillas cannot be stored as leftovers.",
+  "usesExpiringItemIds": [
+    "p3",
+    "p4",
+    "p7"
+  ],
+  "ingredients": [
+    {
+      "id": "i45",
+      "name": "Fresh Eggs",
+      "amount": "4-5 eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "i46",
+      "name": "Corn or Flour Tortillas",
+      "amount": "4 tortillas",
+      "category": "Bakery"
+    },
+    {
+      "id": "i47",
+      "name": "Warm Refried or Black Beans",
+      "amount": "1 cup",
+      "category": "Pantry"
+    },
+    {
+      "id": "i48",
+      "name": "Shredded Cheddar",
+      "amount": "40g",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "i49",
+      "name": "Avocado & Ranchero Salsa",
+      "amount": "1 avocado",
+      "category": "Produce",
+      "isExpiring": true
+    }
+  ]
+}

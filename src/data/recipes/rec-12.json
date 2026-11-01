@@ -1,0 +1,57 @@
+{
+  "id": "rec-12",
+  "title": "Retro Turkey BLT Wrap with Chipotle Mayo",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 5,
+  "servings": 2,
+  "tags": [
+    "Quick 10m",
+    "Diner Lunch",
+    "Eat Fresh"
+  ],
+  "calorieEstimate": 480,
+  "gordoPortionNotes": "Loaded with double turkey, 4 bacon slices & spicy chipotle ranch",
+  "flacoPortionNotes": "Wheat wrap packed with leafy spinach, ripe tomato and light crema",
+  "notes": "Wrap tightly in parchment paper and slice at 45 degree angle just like an 80s diner order.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Eat fresh! Sliced fresh tomatoes make wrap tortillas soggy if saved overnight.",
+  "usesExpiringItemIds": [
+    "p1",
+    "p10"
+  ],
+  "ingredients": [
+    {
+      "id": "i60",
+      "name": "Roasted Turkey Breast",
+      "amount": "200g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i61",
+      "name": "Bacon Rashers",
+      "amount": "4 cooked crispy",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i62",
+      "name": "Large Soft Tortillas",
+      "amount": "2 wraps",
+      "category": "Bakery",
+      "isExpiring": true
+    },
+    {
+      "id": "i63",
+      "name": "Baby Spinach & Tomato",
+      "amount": "1.5 cups",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i64",
+      "name": "Chipotle Mayo",
+      "amount": "2 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

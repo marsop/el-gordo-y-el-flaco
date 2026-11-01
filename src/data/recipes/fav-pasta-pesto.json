@@ -1,0 +1,46 @@
+{
+  "id": "fav-pasta-pesto",
+  "title": "Gnocchi or Penne with Basil Pesto & Cherry Tomatoes",
+  "mealType": "lunch",
+  "prepTime": 8,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Quick 10m",
+    "Italian Classic"
+  ],
+  "calorieEstimate": 540,
+  "gordoPortionNotes": "Generous bowl of pan-crisped gnocchi with green pesto & grated parmesan",
+  "flacoPortionNotes": "Penne tossed in basil pesto with toasted pine nuts & sweet burst cherry tomatoes",
+  "notes": "Sear gnocchi in olive oil until golden on outside, then stir through vibrant basil pesto.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheats nicely. Add a teaspoon of olive oil or water before warming.",
+  "ingredients": [
+    {
+      "id": "fav-i-114",
+      "name": "Fresh Gnocchi or Penne Pasta",
+      "amount": "400g gnocchi or 220g penne",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-115",
+      "name": "Basil Genovese Pesto",
+      "amount": "1 jar (150g)",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "fav-i-116",
+      "name": "Cherry Tomatoes",
+      "amount": "1 cup halved",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-117",
+      "name": "Parmesan Cheese",
+      "amount": "3 tbsp grated",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    }
+  ]
+}

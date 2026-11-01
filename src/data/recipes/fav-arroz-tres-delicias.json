@@ -1,0 +1,52 @@
+{
+  "id": "fav-arroz-tres-delicias",
+  "title": "Arroz Tres Delicias (Three-Flavor Fried Rice)",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 12,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Takeout Style",
+    "Batch Friendly"
+  ],
+  "calorieEstimate": 490,
+  "gordoPortionNotes": "Extra heap of fried rice with diced ham & drizzle of toasted sesame oil",
+  "flacoPortionNotes": "Heavy on sweet green peas, fluffy egg ribbons & side of pickled cucumber",
+  "notes": "Use cold day-old jasmine rice for separate grains! High skillet heat with wok-style tossing.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Reheats wonderfully. Toss in hot pan with 1 tsp water or microwave 90 seconds covered.",
+  "ingredients": [
+    {
+      "id": "fav-i-6",
+      "name": "Cooked Long Grain Rice",
+      "amount": "3 cups cold",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-7",
+      "name": "Sweet Green Peas",
+      "amount": "1 cup",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-8",
+      "name": "Eggs (scrambled ribbons)",
+      "amount": "2 eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-9",
+      "name": "Diced Ham or Cooked Shrimp",
+      "amount": "120g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-10",
+      "name": "Soy Sauce & Sesame Oil",
+      "amount": "2 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

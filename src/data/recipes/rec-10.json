@@ -1,0 +1,57 @@
+{
+  "id": "rec-10",
+  "title": "Slow-Cooked Barbacoa Beef Quesadillas & Rice",
+  "mealType": "dinner",
+  "prepTime": 10,
+  "cookTime": 20,
+  "servings": 2,
+  "tags": [
+    "Mexican-American",
+    "Batch Friendly",
+    "Comfort Food"
+  ],
+  "calorieEstimate": 660,
+  "gordoPortionNotes": "Double filled quesadilla with extra melted cheese and chipotle mayo dip",
+  "flacoPortionNotes": "Crisp griddled quesadilla loaded with caramelized onions & fresh salsa",
+  "notes": "Griddle in light butter until golden brown and flaky. The shredded barbacoa beef keeps for 4 days!",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Batch star! Keep shredded beef in airtight tub; reheat in skillet for 2 mins or make fresh warm wraps.",
+  "usesExpiringItemIds": [
+    "p4",
+    "p5"
+  ],
+  "ingredients": [
+    {
+      "id": "i50",
+      "name": "Shredded Seasoned Beef or Pork",
+      "amount": "350g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i51",
+      "name": "Large Flour Tortillas",
+      "amount": "4 large",
+      "category": "Bakery"
+    },
+    {
+      "id": "i52",
+      "name": "Cheddar & Monterey Jack",
+      "amount": "120g shredded",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "i53",
+      "name": "Pickled Jalapeños",
+      "amount": "2 tbsp",
+      "category": "Pantry"
+    },
+    {
+      "id": "i54",
+      "name": "Crema & Guacamole",
+      "amount": "4 tbsp",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    }
+  ]
+}

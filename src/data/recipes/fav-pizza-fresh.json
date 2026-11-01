@@ -1,0 +1,47 @@
+{
+  "id": "fav-pizza-fresh",
+  "title": "Homemade 80s Diner Pizza / Pizza Muffins",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Friday Night",
+    "Diner Comfort"
+  ],
+  "calorieEstimate": 650,
+  "gordoPortionNotes": "Crispy thick crust with double mozzarella, mushrooms & spicy salami",
+  "flacoPortionNotes": "Thin crust with marinara, roasted peppers, spinach & fresh basil",
+  "notes": "Bake at maximum oven temperature (450°F / 230°C) on a preheated tray for bubbly crust blister.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Cold pizza breakfast or re-crisp in dry skillet on medium heat for 3 mins covered with lid.",
+  "ingredients": [
+    {
+      "id": "fav-i-86",
+      "name": "Pizza Dough or Muffin Halves",
+      "amount": "1 dough ball or 4 muffins",
+      "category": "Bakery"
+    },
+    {
+      "id": "fav-i-87",
+      "name": "Tomato Pizza Sauce",
+      "amount": "1/2 cup",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "fav-i-88",
+      "name": "Mozzarella Cheese",
+      "amount": "180g shredded",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-89",
+      "name": "Favorite Toppings (Mushrooms, Peppers, Herbs)",
+      "amount": "1 cup",
+      "category": "Produce",
+      "isExpiring": true
+    }
+  ]
+}

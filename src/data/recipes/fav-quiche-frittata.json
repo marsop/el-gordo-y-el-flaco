@@ -1,0 +1,48 @@
+{
+  "id": "fav-quiche-frittata",
+  "title": "Vegetable Quiche / Frittata with Mixed Salad",
+  "mealType": "lunch",
+  "prepTime": 15,
+  "cookTime": 25,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Make Ahead",
+    "Batch Friendly"
+  ],
+  "calorieEstimate": 510,
+  "gordoPortionNotes": "Two thick slices of quiche with warm crust & garlic dip",
+  "flacoPortionNotes": "One slice of crustless vegetable frittata with oversized mixed herb salad",
+  "notes": "Baked egg custard loaded with spinach, leeks, and gruyère cheese. Terrific hot or cold.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Keeps 3 days! Slice cold for easy lunch or warm in toaster oven for 4 minutes.",
+  "ingredients": [
+    {
+      "id": "fav-i-118",
+      "name": "Eggs & Milk / Cream",
+      "amount": "4 eggs + 120ml milk",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-119",
+      "name": "Spinach, Leeks or Zucchini",
+      "amount": "1.5 cups",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-120",
+      "name": "Grated Cheese",
+      "amount": "80g",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-121",
+      "name": "Mixed Salad",
+      "amount": "2 cups",
+      "category": "Produce"
+    }
+  ]
+}

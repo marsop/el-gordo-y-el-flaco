@@ -1,0 +1,64 @@
+{
+  "id": "rec-4",
+  "title": "Sizzling Steak & Pepper Fajita Skillet",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "Cast Iron",
+    "High Protein",
+    "Diner Sizzle"
+  ],
+  "calorieEstimate": 620,
+  "gordoPortionNotes": "4 warm flour tortillas, steak strips with charred onions and salsa verde",
+  "flacoPortionNotes": "2 tortillas, double seared peppers, avocado slices and dollop of crema",
+  "notes": "Super hot skillet gives that iconic sizzle! Squeeze fresh lime right before serving.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheats nicely! Toss steak strips & peppers in a hot skillet for 2 minutes to revive the sear.",
+  "usesExpiringItemIds": [
+    "p2",
+    "p3",
+    "p8"
+  ],
+  "ingredients": [
+    {
+      "id": "i18",
+      "name": "Flank or Skirt Steak",
+      "amount": "400g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i19",
+      "name": "Bell Peppers (Red & Green)",
+      "amount": "2 sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i20",
+      "name": "Yellow Onion",
+      "amount": "1 sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "i21",
+      "name": "Flour Tortillas",
+      "amount": "6 small",
+      "category": "Bakery"
+    },
+    {
+      "id": "i22",
+      "name": "Avocado & Lime",
+      "amount": "1 avocado",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i23",
+      "name": "Fajita Seasoning (Cumin, Paprika, Garlic)",
+      "amount": "2 tbsp",
+      "category": "Pantry"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "fav-shepherds-pie",
+  "title": "Hearty Shepherd’s Pie with Golden Potato Mash Crust",
+  "mealType": "dinner",
+  "prepTime": 20,
+  "cookTime": 30,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Comfort Classic",
+    "Batch Hero"
+  ],
+  "calorieEstimate": 640,
+  "gordoPortionNotes": "Deep scoop with browned butter mash ridges and extra savory gravy",
+  "flacoPortionNotes": "Scoop with tender peas, sweet carrots & steamed green beans",
+  "notes": "Savory simmered minced beef, lentils or lamb topped with fluffy piping-hot mashed potatoes.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Keeps up to 4 days. Warm in toaster oven at 375°F to re-crisp the potato peaks.",
+  "ingredients": [
+    {
+      "id": "fav-i-62",
+      "name": "Lean Minced Meat or Brown Lentils",
+      "amount": "400g",
+      "category": "Meat & Seafood",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-63",
+      "name": "Mashed Potatoes (Butter & Milk)",
+      "amount": "3 cups prepared",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-64",
+      "name": "Peas, Carrots & Onions",
+      "amount": "1.5 cups diced",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-65",
+      "name": "Tomato Paste & Worcestershire",
+      "amount": "2 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

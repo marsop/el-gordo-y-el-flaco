@@ -1,0 +1,57 @@
+{
+  "id": "rec-8",
+  "title": "Flaco’s Zesty Lemon Herb Orzo & Seared Salmon",
+  "mealType": "dinner",
+  "prepTime": 10,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "Mediterranean",
+    "Heart Healthy",
+    "Omega-3"
+  ],
+  "calorieEstimate": 570,
+  "gordoPortionNotes": "Generous salmon fillet with extra garlic butter parmesan orzo",
+  "flacoPortionNotes": "Pan-seared salmon with lemon herb zest, baby spinach wilted in pan",
+  "notes": "Cook orzo in vegetable broth for maximum savory flavor. 20-minute dinner elegance.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Orzo reheats wonderfully with a splash of broth. Reheat salmon gently on low power to prevent overcooking.",
+  "usesExpiringItemIds": [
+    "p1",
+    "p2"
+  ],
+  "ingredients": [
+    {
+      "id": "i40",
+      "name": "Salmon Fillets",
+      "amount": "350g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i41",
+      "name": "Orzo Pasta",
+      "amount": "1 cup",
+      "category": "Pantry"
+    },
+    {
+      "id": "i42",
+      "name": "Baby Spinach",
+      "amount": "100g (wilted in)",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i43",
+      "name": "Lemon & Fresh Herbs",
+      "amount": "1 lemon + herbs",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i44",
+      "name": "Feta or Parmesan Crumbles",
+      "amount": "2 tbsp",
+      "category": "Dairy & Eggs"
+    }
+  ]
+}

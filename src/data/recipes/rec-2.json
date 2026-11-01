@@ -1,0 +1,66 @@
+{
+  "id": "rec-2",
+  "title": "El Gordito Fiesta Taco Salad Bowl",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "Quick Prep",
+    "Gluten Free",
+    "Expiring Hero"
+  ],
+  "calorieEstimate": 510,
+  "gordoPortionNotes": "Generous scoop of seasoned black beans, crushed tortilla chips & extra cheese",
+  "flacoPortionNotes": "Heavy on baby spinach bed, fresh cilantro lime dressing & sliced avocado",
+  "notes": "Uses up the expiring spinach and cilantro. Toss everything in warm skillet pan-crisped spices.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Best fresh! Tender baby spinach and creamy avocado oxidize and wilt quickly after tossing.",
+  "usesExpiringItemIds": [
+    "p1",
+    "p2",
+    "p3"
+  ],
+  "ingredients": [
+    {
+      "id": "i7",
+      "name": "Baby Spinach",
+      "amount": "150g",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i8",
+      "name": "Ground Turkey or Beef",
+      "amount": "250g",
+      "category": "Meat & Seafood",
+      "isExpiring": true
+    },
+    {
+      "id": "i9",
+      "name": "Hass Avocado",
+      "amount": "1 sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i10",
+      "name": "Black Beans & Sweet Corn",
+      "amount": "1 cup",
+      "category": "Pantry"
+    },
+    {
+      "id": "i11",
+      "name": "Fresh Cilantro & Lime",
+      "amount": "To taste",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i12",
+      "name": "Greek Crema Dressing",
+      "amount": "3 tbsp",
+      "category": "Dairy & Eggs"
+    }
+  ]
+}

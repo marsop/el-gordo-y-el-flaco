@@ -1,0 +1,53 @@
+{
+  "id": "fav-shakshuka",
+  "title": "Shakshuka (Eggs Poached in Spiced Tomato Pepper Sauce)",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Quick 15m",
+    "Skillet Classic"
+  ],
+  "calorieEstimate": 480,
+  "gordoPortionNotes": "3 eggs in sauce with crumbled feta & half a crusty baguette",
+  "flacoPortionNotes": "2 eggs with fresh cilantro, avocado slices & warm pita bread",
+  "notes": "Simmer peppers and tomatoes with cumin and paprika, then crack eggs into sauce wells until just set.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Cook fresh! Poached runny yolks are best eaten immediately with crusty bread.",
+  "ingredients": [
+    {
+      "id": "fav-i-76",
+      "name": "Fresh Eggs",
+      "amount": "4-5 eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-77",
+      "name": "Crushed Tomatoes",
+      "amount": "1 can (400g)",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-78",
+      "name": "Red Bell Pepper & Onion",
+      "amount": "1 of each sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-79",
+      "name": "Feta Cheese & Cilantro",
+      "amount": "50g feta",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "fav-i-80",
+      "name": "Crusty Bread or Pita",
+      "amount": "4 slices",
+      "category": "Bakery"
+    }
+  ]
+}

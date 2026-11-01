@@ -1,0 +1,39 @@
+{
+  "id": "fav-fish-sticks",
+  "title": "Golden Fish Sticks with Potato Salad or Steamed Veggies",
+  "mealType": "lunch",
+  "prepTime": 8,
+  "cookTime": 12,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Quick 15m",
+    "Diner Nostalgia"
+  ],
+  "calorieEstimate": 510,
+  "gordoPortionNotes": "8 golden crispy fish sticks with tartar dip & homemade potato salad",
+  "flacoPortionNotes": "5 fish sticks with steamed broccoli, carrots & fresh lemon wedges",
+  "notes": "Pan fry or bake until golden crunchy. A nostalgic 80s fast-food comfort classic.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Cook fresh only! Reheating breaded fish sticks causes loss of crunch.",
+  "ingredients": [
+    {
+      "id": "fav-i-107",
+      "name": "Crispy Breaded Fish Sticks",
+      "amount": "12-14 sticks",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-108",
+      "name": "Potato Salad or Steamed Veggies",
+      "amount": "2 generous servings",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-109",
+      "name": "Tartar Sauce & Lemon",
+      "amount": "3 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

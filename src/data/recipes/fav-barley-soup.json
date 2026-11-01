@@ -1,0 +1,45 @@
+{
+  "id": "fav-barley-soup",
+  "title": "Alpine Barley Soup (Gerstensuppe) with Crusty Bread",
+  "mealType": "lunch",
+  "prepTime": 12,
+  "cookTime": 25,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Cozy Warm",
+    "Batch Hero"
+  ],
+  "calorieEstimate": 460,
+  "gordoPortionNotes": "Large bowl with diced smoked ham & double buttered sourdough",
+  "flacoPortionNotes": "Steaming bowl with root vegetables & fresh chives",
+  "notes": "Rich alpine soup made with pearl barley, carrots, leeks, and cream. Pure comfort in a bowl.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Soup thickens nicely overnight. Add splash of water or broth and simmer 3 mins.",
+  "ingredients": [
+    {
+      "id": "fav-i-50",
+      "name": "Pearl Barley",
+      "amount": "3/4 cup",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-51",
+      "name": "Carrots, Celery, Leek",
+      "amount": "1 cup diced",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-52",
+      "name": "Vegetable or Beef Broth",
+      "amount": "4 cups",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-53",
+      "name": "Fresh Crusty Bread",
+      "amount": "4 slices",
+      "category": "Bakery"
+    }
+  ]
+}

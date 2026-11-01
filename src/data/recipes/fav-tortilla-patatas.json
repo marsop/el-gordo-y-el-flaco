@@ -1,0 +1,52 @@
+{
+  "id": "fav-tortilla-patatas",
+  "title": "Tortilla de Patatas & Mixed Salad",
+  "mealType": "lunch",
+  "prepTime": 12,
+  "cookTime": 18,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Spanish Classic",
+    "Vegetarian"
+  ],
+  "calorieEstimate": 510,
+  "gordoPortionNotes": "Thick wedge with crusty baguette slices & alioli",
+  "flacoPortionNotes": "Generous tortilla slice with crisp mixed garden greens & vinaigrette",
+  "notes": "Slow-poach diced potatoes and onions in olive oil until fork-tender. Flip with diner plate confidence!",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Delicious at room temperature or warm in dry skillet for 2 minutes.",
+  "ingredients": [
+    {
+      "id": "fav-i-1",
+      "name": "Potatoes (Waxy)",
+      "amount": "4 medium diced",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-2",
+      "name": "Eggs",
+      "amount": "5 large",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-3",
+      "name": "Yellow Onion",
+      "amount": "1 medium",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-4",
+      "name": "Extra Virgin Olive Oil",
+      "amount": "3 tbsp",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-5",
+      "name": "Mixed Salad Greens",
+      "amount": "2 cups",
+      "category": "Produce"
+    }
+  ]
+}

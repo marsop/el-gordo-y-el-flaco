@@ -1,0 +1,46 @@
+{
+  "id": "fav-poke-bowl",
+  "title": "Fresh Poke Bowl with Salmon, Edamame & Avocado",
+  "mealType": "lunch",
+  "prepTime": 15,
+  "cookTime": 0,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Fresh & Light",
+    "Omega-3"
+  ],
+  "calorieEstimate": 520,
+  "gordoPortionNotes": "Large bowl over seasoned sushi rice with extra salmon, spicy mayo & crispy onions",
+  "flacoPortionNotes": "Half brown rice half cabbage base with diced avocado, cucumber & ponzu sesame",
+  "notes": "Assemble vibrant bowls with marinated sashimi salmon or cooked tofu, edamame, and pickled ginger.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Eat fresh immediately! Raw fish and crisp vegetables must not be heated.",
+  "ingredients": [
+    {
+      "id": "fav-i-122",
+      "name": "Sashimi Salmon or Marinated Tofu",
+      "amount": "300g diced",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-123",
+      "name": "Sushi Rice (Seasoned)",
+      "amount": "2 cups cooked",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-124",
+      "name": "Ripe Avocado & Edamame",
+      "amount": "1 avocado + 1/2 cup edamame",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-125",
+      "name": "Soy Sauce, Sesame Oil & Spicy Mayo",
+      "amount": "3 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

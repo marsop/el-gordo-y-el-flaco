@@ -1,0 +1,54 @@
+{
+  "id": "rec-3",
+  "title": "Crispy Fish Fillet & Tartar Slaw Sandwiches",
+  "mealType": "lunch",
+  "prepTime": 15,
+  "cookTime": 12,
+  "servings": 2,
+  "tags": [
+    "Drive-Thru Style",
+    "Seafood",
+    "Eat Fresh"
+  ],
+  "calorieEstimate": 540,
+  "gordoPortionNotes": "Two thick fillets on sesame bun with lemon pepper dusted potato chips",
+  "flacoPortionNotes": "Light tartar yogurt smear with oversized crunchy red cabbage slaw",
+  "notes": "80s Friday fast-food fish sandwich homage! Golden panko crust pan fried to crunchy perfection.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Cook fresh only. Fried panko fish becomes soft and loses its crunch once refrigerated.",
+  "usesExpiringItemIds": [
+    "p5"
+  ],
+  "ingredients": [
+    {
+      "id": "i13",
+      "name": "White Fish Fillets (Cod/Haddock)",
+      "amount": "350g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i14",
+      "name": "Brioche or Sesame Buns",
+      "amount": "2 buns",
+      "category": "Bakery"
+    },
+    {
+      "id": "i15",
+      "name": "Shredded Cabbage",
+      "amount": "2 cups",
+      "category": "Produce"
+    },
+    {
+      "id": "i16",
+      "name": "Homemade Tartar Sauce",
+      "amount": "3 tbsp",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "i17",
+      "name": "Lemon Wedges",
+      "amount": "1 lemon",
+      "category": "Produce"
+    }
+  ]
+}

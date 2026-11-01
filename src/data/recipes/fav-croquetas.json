@@ -1,0 +1,39 @@
+{
+  "id": "fav-croquetas",
+  "title": "Crispy Jamón Croquetas & Tomato Salad",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Tapas Classic",
+    "Crispy Golden"
+  ],
+  "calorieEstimate": 580,
+  "gordoPortionNotes": "8 golden croquetas with toasted bread & bravas sauce",
+  "flacoPortionNotes": "4 croquetas with oversized sliced tomato salad & oregano",
+  "notes": "Silky béchamel interior with golden panko crust fried to crunchy perfection.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Crisp back up in air fryer or toaster oven at 380°F for 4 mins.",
+  "ingredients": [
+    {
+      "id": "fav-i-11",
+      "name": "Prepared Croquetas (Jamón or Mushroom)",
+      "amount": "10-12 pieces",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-12",
+      "name": "Ripe Vine Tomatoes",
+      "amount": "2 large",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-13",
+      "name": "Olive Oil & Sea Salt",
+      "amount": "To taste",
+      "category": "Pantry"
+    }
+  ]
+}

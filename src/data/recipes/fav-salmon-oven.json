@@ -1,0 +1,46 @@
+{
+  "id": "fav-salmon-oven",
+  "title": "Salmon in the Oven with Roasted Potatoes & Herb Dill Sauce",
+  "mealType": "dinner",
+  "prepTime": 10,
+  "cookTime": 18,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Heart Healthy",
+    "Sunday Special"
+  ],
+  "calorieEstimate": 590,
+  "gordoPortionNotes": "Thick center-cut salmon fillet with double garlic butter roasted potatoes",
+  "flacoPortionNotes": "Herb-crusted salmon with lemon slices & steamed green beans",
+  "notes": "Bake salmon on parchment with lemon slices, dill, and a dash of olive oil at 380°F for 14-16 minutes.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat gently at low microwave power (50%) for 90 seconds so salmon stays tender.",
+  "ingredients": [
+    {
+      "id": "fav-i-103",
+      "name": "Fresh Salmon Fillets",
+      "amount": "380g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-104",
+      "name": "Baby Potatoes",
+      "amount": "400g halved",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-105",
+      "name": "Fresh Dill & Lemon",
+      "amount": "1 lemon + dill",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-106",
+      "name": "Olive Oil & Sea Salt",
+      "amount": "2 tbsp",
+      "category": "Pantry"
+    }
+  ]
+}

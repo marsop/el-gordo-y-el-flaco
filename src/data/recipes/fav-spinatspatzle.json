@@ -1,0 +1,52 @@
+{
+  "id": "fav-spinatspatzle",
+  "title": "Spinatspätzle in Creamy Mushroom Sauce",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 18,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Comfort Food",
+    "Vegetarian"
+  ],
+  "calorieEstimate": 590,
+  "gordoPortionNotes": "Generous bowl with rich parmesan cream & pan-seared mushrooms",
+  "flacoPortionNotes": "Tossed in light garlic herb broth with fresh cherry tomatoes",
+  "notes": "Vibrant green spinach spätzle sauteed with cremini mushrooms and fresh parsley.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Reheat in skillet with splash of milk or water for 2-3 minutes.",
+  "ingredients": [
+    {
+      "id": "fav-i-24",
+      "name": "Spinach Spätzle",
+      "amount": "350g",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-25",
+      "name": "Baby Spinach",
+      "amount": "100g",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-26",
+      "name": "Cremini Mushrooms",
+      "amount": "200g sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-27",
+      "name": "Cream or Oat Cream",
+      "amount": "150ml",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "fav-i-28",
+      "name": "Parmesan Cheese",
+      "amount": "3 tbsp grated",
+      "category": "Dairy & Eggs"
+    }
+  ]
+}

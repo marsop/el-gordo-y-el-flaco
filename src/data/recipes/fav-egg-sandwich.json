@@ -1,0 +1,46 @@
+{
+  "id": "fav-egg-sandwich",
+  "title": "Diner Egg Salad & Crispy Bacon Sandwich",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 5,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Quick 10m",
+    "Diner Lunch"
+  ],
+  "calorieEstimate": 470,
+  "gordoPortionNotes": "Loaded with 3 hard-boiled eggs, 4 bacon slices & toasted brioche",
+  "flacoPortionNotes": "Egg salad with greek yogurt, chives & crunchy watercress on whole grain",
+  "notes": "Mash warm eggs with dijon mustard, chives, and black pepper. Cut diagonally!",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Assemble right before eating so bread stays crisp.",
+  "ingredients": [
+    {
+      "id": "fav-i-134",
+      "name": "Boiled Eggs",
+      "amount": "4 eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-135",
+      "name": "Crispy Bacon",
+      "amount": "4 strips",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-136",
+      "name": "Toasted Sandwich Bread",
+      "amount": "4 slices",
+      "category": "Bakery"
+    },
+    {
+      "id": "fav-i-137",
+      "name": "Dijon Mayo & Chives",
+      "amount": "2 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

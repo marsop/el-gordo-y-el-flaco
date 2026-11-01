@@ -1,0 +1,55 @@
+{
+  "id": "rec-11",
+  "title": "Sesame Ginger Chicken Noodle Bowl",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "Takeout Favorite",
+    "Batch Friendly",
+    "Vibrant"
+  ],
+  "calorieEstimate": 530,
+  "gordoPortionNotes": "Hearty noodles tossed in rich toasted sesame oil and roasted peanuts",
+  "flacoPortionNotes": "Half noodle half crisp cabbage slaw with chili garlic lime crunch",
+  "notes": "Whisk dressing in advance: soy sauce, honey, grated ginger, rice vinegar and sesame oil.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Incredible cold or warm! Noodles soak up the sesame ginger dressing overnight. Eat chilled or microwave 90 seconds.",
+  "usesExpiringItemIds": [
+    "p8"
+  ],
+  "ingredients": [
+    {
+      "id": "i55",
+      "name": "Chicken Breast Strips",
+      "amount": "350g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i56",
+      "name": "Ramen or Rice Noodles",
+      "amount": "180g dry",
+      "category": "Pantry"
+    },
+    {
+      "id": "i57",
+      "name": "Bell Pepper & Scallions",
+      "amount": "1 pepper + 3 scallions",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i58",
+      "name": "Toasted Sesame Dressing",
+      "amount": "4 tbsp",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "i59",
+      "name": "Crushed Peanuts",
+      "amount": "2 tbsp",
+      "category": "Pantry"
+    }
+  ]
+}

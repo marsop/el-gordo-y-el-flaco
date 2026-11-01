@@ -1,0 +1,63 @@
+{
+  "id": "rec-1",
+  "title": "Retro Smash Burger & Crispy Wedge Fries",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "80s Diner Classic",
+    "High Protein",
+    "Eat Fresh"
+  ],
+  "calorieEstimate": 680,
+  "gordoPortionNotes": "Double patty with extra melted cheddar & caramelized onion smash",
+  "flacoPortionNotes": "Single patty on toasted brioche bun with lettuce wrap style option",
+  "notes": "Hot griddle smash! Press paper-thin for maximum crispy lace edges. Serve with homemade secret sauce.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Not recommended for leftovers. Assembled buns and crispy smashed patties get soggy if stored.",
+  "usesExpiringItemIds": [
+    "p4",
+    "p6"
+  ],
+  "ingredients": [
+    {
+      "id": "i1",
+      "name": "Lean Ground Beef",
+      "amount": "450g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i2",
+      "name": "Brioche Buns",
+      "amount": "2-4 buns",
+      "category": "Bakery",
+      "isExpiring": true
+    },
+    {
+      "id": "i3",
+      "name": "Smoked Cheddar",
+      "amount": "4 slices",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "i4",
+      "name": "Yellow Onion",
+      "amount": "1 large (shaved)",
+      "category": "Produce"
+    },
+    {
+      "id": "i5",
+      "name": "Russet Potatoes",
+      "amount": "2 medium",
+      "category": "Produce"
+    },
+    {
+      "id": "i6",
+      "name": "Pickles & Special Sauce",
+      "amount": "3 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

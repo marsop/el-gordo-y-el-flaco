@@ -1,0 +1,47 @@
+{
+  "id": "fav-kasefladen",
+  "title": "Käsefladen (Warm Alpine Cheese Tart)",
+  "mealType": "dinner",
+  "prepTime": 12,
+  "cookTime": 25,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Alpine Classic",
+    "Comfort Food"
+  ],
+  "calorieEstimate": 630,
+  "gordoPortionNotes": "Two large golden baked squares with spicy mustard dip",
+  "flacoPortionNotes": "One square paired with warm barley soup or green herb salad",
+  "notes": "Crisp pastry base topped with rich savory onion and alpine cheese custard baked golden brown.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat in oven or air fryer at 350°F for 5 minutes to crisp the crust.",
+  "ingredients": [
+    {
+      "id": "fav-i-29",
+      "name": "Fladen Pastry / Shortcrust",
+      "amount": "1 rolled sheet",
+      "category": "Bakery"
+    },
+    {
+      "id": "fav-i-30",
+      "name": "Grated Swiss or Alpine Cheese",
+      "amount": "200g",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-31",
+      "name": "Eggs & Milk / Cream",
+      "amount": "2 eggs + 100ml milk",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-32",
+      "name": "Finely chopped Onions",
+      "amount": "1 onion",
+      "category": "Produce"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "rec-6",
+  "title": "Classic Club Sandwich & Warm Tomato Bisque",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "Diner Comfort",
+    "Quick 15m",
+    "Eat Fresh"
+  ],
+  "calorieEstimate": 520,
+  "gordoPortionNotes": "Triple-decker stacked with roasted turkey, crisp bacon & dijon mayo",
+  "flacoPortionNotes": "Open-faced toasted wheat bread with smoked turkey and herb salad",
+  "notes": "Cut on the diagonal with diner toothpick frills! Serve with warm basil tomato soup.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Soup reheats great, but assemble sandwiches fresh right before eating so bread stays crisp.",
+  "usesExpiringItemIds": [
+    "p1",
+    "p4"
+  ],
+  "ingredients": [
+    {
+      "id": "i30",
+      "name": "Smoked Turkey Breast",
+      "amount": "200g sliced",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i31",
+      "name": "Crispy Bacon Strips",
+      "amount": "4 strips",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i32",
+      "name": "Toasted Sandwich Bread",
+      "amount": "4-6 slices",
+      "category": "Bakery"
+    },
+    {
+      "id": "i33",
+      "name": "Spinach & Sliced Tomato",
+      "amount": "1 cup",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i34",
+      "name": "Prepared Tomato Bisque",
+      "amount": "2 bowls",
+      "category": "Pantry"
+    }
+  ]
+}

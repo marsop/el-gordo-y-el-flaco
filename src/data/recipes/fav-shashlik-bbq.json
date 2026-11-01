@@ -1,0 +1,46 @@
+{
+  "id": "fav-shashlik-bbq",
+  "title": "80s Diner BBQ Skewers & Grilled Corn",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Grill Classic",
+    "High Protein"
+  ],
+  "calorieEstimate": 620,
+  "gordoPortionNotes": "4 skewers with glazed barbecue sauce, roasted potatoes & garlic bread",
+  "flacoPortionNotes": "2 lean chicken/veggie skewers with charred sweet corn & coleslaw",
+  "notes": "Sear on ribbed grill pan for smoky char lines. Brush with sweet & smoky barbecue sauce.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat skewers in hot skillet for 2 mins to revive the barbecue glaze.",
+  "ingredients": [
+    {
+      "id": "fav-i-138",
+      "name": "Chicken Breast or Pork Cuts",
+      "amount": "400g diced",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-139",
+      "name": "Sweet Corn on the Cob",
+      "amount": "2 cobs",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-140",
+      "name": "Bell Peppers & Red Onion",
+      "amount": "1 of each chunked",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-141",
+      "name": "Barbecue Sauce",
+      "amount": "4 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

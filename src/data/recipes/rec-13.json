@@ -1,0 +1,52 @@
+{
+  "id": "rec-13",
+  "title": "Sunday Roast Herb Chicken with Crispy Garlic Potatoes",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 35,
+  "servings": 2,
+  "tags": [
+    "Weekend Feast",
+    "Batch Friendly",
+    "Roast Magic"
+  ],
+  "calorieEstimate": 690,
+  "gordoPortionNotes": "Drumsticks and thighs with extra roasted butter potatoes & pan gravy",
+  "flacoPortionNotes": "Herb roasted chicken breast with rosemary carrots & steamed greens",
+  "notes": "The golden centerpiece of Sunday! Roast chicken skin seasoned with rosemary, thyme and smoked paprika.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Legendary leftovers! Shred meat into wraps, salads, or warm with roasted potatoes in oven at 350°F.",
+  "usesExpiringItemIds": [],
+  "ingredients": [
+    {
+      "id": "i65",
+      "name": "Bone-in Herb Chicken Cuts",
+      "amount": "600g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i66",
+      "name": "Baby Yellow Potatoes",
+      "amount": "400g quartered",
+      "category": "Produce"
+    },
+    {
+      "id": "i67",
+      "name": "Fresh Rosemary & Garlic",
+      "amount": "4 cloves + herbs",
+      "category": "Produce"
+    },
+    {
+      "id": "i68",
+      "name": "Olive Oil & Butter",
+      "amount": "2 tbsp",
+      "category": "Pantry"
+    },
+    {
+      "id": "i69",
+      "name": "Carrots or Green Beans",
+      "amount": "200g",
+      "category": "Produce"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "fav-schnitzel",
+  "title": "Golden Crispy Schnitzel & Warm Potato Salad",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Diner Classic",
+    "Crispy"
+  ],
+  "calorieEstimate": 660,
+  "gordoPortionNotes": "Large cutlet with extra vinegar potato salad & lemon wedges",
+  "flacoPortionNotes": "Lightly pan fried cutlet with cucumber salad & squeeze of fresh lemon",
+  "notes": "Pound cutlets thin for that authentic soufflé crust ripple when frying!",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Warm in dry skillet or 375°F oven for 5 minutes so breading crisps back up.",
+  "ingredients": [
+    {
+      "id": "fav-i-33",
+      "name": "Pork, Veal or Chicken Cutlets",
+      "amount": "350g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-34",
+      "name": "Flour, Egg, Breadcrumbs",
+      "amount": "Standard breading kit",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-35",
+      "name": "Potatoes (for Swabian warm salad)",
+      "amount": "4 potatoes",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-36",
+      "name": "Beef or Veg Broth & Vinegar",
+      "amount": "100ml",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-37",
+      "name": "Lemon",
+      "amount": "1 sliced",
+      "category": "Produce",
+      "isExpiring": true
+    }
+  ]
+}

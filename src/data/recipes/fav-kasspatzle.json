@@ -1,0 +1,52 @@
+{
+  "id": "fav-kasspatzle",
+  "title": "Kässpätzle with Caramelized Onions & Side Salad",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 20,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Alpine Classic",
+    "Batch Hero"
+  ],
+  "calorieEstimate": 690,
+  "gordoPortionNotes": "Extra cheese pull (Bergkäse & Emmentaler) with crispy roasted onions",
+  "flacoPortionNotes": "Balanced portion with crisp garden salad tossed in apple cider vinaigrette",
+  "notes": "Layer hot boiled Spätzle with grated alpine cheese. Let rest 2 minutes under lid to melt into gooey glory.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Phenomenal leftovers! Fry in butter in skillet until bottom gets golden and crispy.",
+  "ingredients": [
+    {
+      "id": "fav-i-19",
+      "name": "Egg Spätzle",
+      "amount": "350g fresh or dry",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-20",
+      "name": "Aged Mountain Cheese (Bergkäse/Emmentaler)",
+      "amount": "180g grated",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-21",
+      "name": "Yellow Onions (for browning)",
+      "amount": "2 large sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-22",
+      "name": "Butter",
+      "amount": "2 tbsp",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "fav-i-23",
+      "name": "Green Side Salad",
+      "amount": "2 cups",
+      "category": "Produce"
+    }
+  ]
+}

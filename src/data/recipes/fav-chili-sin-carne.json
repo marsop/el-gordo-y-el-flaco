@@ -1,0 +1,53 @@
+{
+  "id": "fav-chili-sin-carne",
+  "title": "Chili Sin Carne with Sweet Corn & Smoked Cheddar",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 25,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Plant Protein",
+    "Batch Hero"
+  ],
+  "calorieEstimate": 540,
+  "gordoPortionNotes": "Heaping bowl with crushed tortilla chips, diced onions & sour cream",
+  "flacoPortionNotes": "Medium bowl with sliced avocado, fresh lime juice & cilantro leaves",
+  "notes": "Simmered with black beans, kidney beans, sweet corn, cocoa powder, and smoked paprika.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Supreme leftover! The spices deepen beautifully. Microwave 2 mins or simmer in small pot.",
+  "ingredients": [
+    {
+      "id": "fav-i-66",
+      "name": "Black Beans & Kidney Beans",
+      "amount": "2 cans rinsed",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-67",
+      "name": "Sweet Corn",
+      "amount": "1 cup",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-68",
+      "name": "Crushed Fire-Roasted Tomatoes",
+      "amount": "1 large can",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-69",
+      "name": "Bell Pepper & Onion",
+      "amount": "1 of each",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-70",
+      "name": "Smoked Cheddar or Crema",
+      "amount": "3 tbsp",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    }
+  ]
+}

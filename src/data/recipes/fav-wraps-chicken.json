@@ -1,0 +1,46 @@
+{
+  "id": "fav-wraps-chicken",
+  "title": "Crispy Chicken & Veggie Crunch Wraps",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 8,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Quick 10m",
+    "Handheld"
+  ],
+  "calorieEstimate": 510,
+  "gordoPortionNotes": "Two thick wraps loaded with chicken tenders, cheese & ranch dip",
+  "flacoPortionNotes": "Wheat wrap packed with shredded carrots, cucumber, tender chicken & yogurt dressing",
+  "notes": "Toast the wrapped burrito-fold seam-down in a dry pan for 2 minutes to seal it shut and make it crunchy!",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Assemble fresh so veggies stay crisp and tortilla does not get soggy.",
+  "ingredients": [
+    {
+      "id": "fav-i-95",
+      "name": "Cooked Chicken Strips or Tenders",
+      "amount": "300g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-96",
+      "name": "Large Flour Wraps",
+      "amount": "2-4 wraps",
+      "category": "Bakery"
+    },
+    {
+      "id": "fav-i-97",
+      "name": "Shredded Lettuce & Carrots",
+      "amount": "2 cups",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-98",
+      "name": "Cheddar & Dressing",
+      "amount": "3 tbsp",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    }
+  ]
+}

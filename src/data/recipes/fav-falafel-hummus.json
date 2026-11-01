@@ -1,0 +1,45 @@
+{
+  "id": "fav-falafel-hummus",
+  "title": "Falafel & Warm Hummus Mezze Plate with Pita",
+  "mealType": "lunch",
+  "prepTime": 12,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Mediterranean",
+    "Plant Based"
+  ],
+  "calorieEstimate": 520,
+  "gordoPortionNotes": "8 crispy falafels with generous hummus swirl & 2 toasted warm pitas",
+  "flacoPortionNotes": "4 falafels with tabouleh salad, cucumber ribbons & tahini drizzle",
+  "notes": "Warm pita bread on burner; spread velvety hummus with a swirl of olive oil and paprika.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Crisp falafels in toaster oven or air fryer 3 mins. Hummus keeps in fridge 4 days.",
+  "ingredients": [
+    {
+      "id": "fav-i-99",
+      "name": "Crispy Falafels",
+      "amount": "10-12 pieces",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-100",
+      "name": "Creamy Hummus",
+      "amount": "1 tub (250g)",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-101",
+      "name": "Pita Bread",
+      "amount": "2-4 pitas",
+      "category": "Bakery"
+    },
+    {
+      "id": "fav-i-102",
+      "name": "Cucumber & Cherry Tomatoes",
+      "amount": "1 cup diced",
+      "category": "Produce"
+    }
+  ]
+}

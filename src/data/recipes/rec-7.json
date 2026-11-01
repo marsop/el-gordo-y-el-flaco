@@ -1,0 +1,55 @@
+{
+  "id": "rec-7",
+  "title": "80s Crispy Golden Chicken Tenders & Honey Mustard",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "Fan Favorite",
+    "Crispy",
+    "Fast Food Nostalgia"
+  ],
+  "calorieEstimate": 610,
+  "gordoPortionNotes": "Basket of 5 large tenders with double waffle potato dippers",
+  "flacoPortionNotes": "Air-fried crunchy tenders served over mixed garden greens & honey mustard",
+  "notes": "Cornflake crumb crust seasoned with garlic powder and smoked paprika. Incredibly crunchy!",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat in toaster oven or air fryer at 375°F (190°C) for 4 minutes to restore maximum crispiness.",
+  "usesExpiringItemIds": [
+    "p7"
+  ],
+  "ingredients": [
+    {
+      "id": "i35",
+      "name": "Chicken Breast Tenderloins",
+      "amount": "450g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i36",
+      "name": "Eggs (for wash)",
+      "amount": "2 eggs beaten",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "i37",
+      "name": "Crushed Cornflakes or Panko",
+      "amount": "1.5 cups",
+      "category": "Pantry"
+    },
+    {
+      "id": "i38",
+      "name": "Dijon Mustard & Honey",
+      "amount": "2 tbsp each",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "i39",
+      "name": "Baby Carrots or Celery",
+      "amount": "1 cup sticks",
+      "category": "Produce"
+    }
+  ]
+}

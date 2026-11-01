@@ -1,0 +1,52 @@
+{
+  "id": "fav-curry-garam-masala",
+  "title": "Aromatic Garam Masala Chickpea & Veggie Curry",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 20,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Curry Lover",
+    "Batch Hero"
+  ],
+  "calorieEstimate": 560,
+  "gordoPortionNotes": "Double scoop over basmati rice with warm toasted naan bread",
+  "flacoPortionNotes": "Coconut curry bowl with baby spinach wilted in & squeeze of lime",
+  "notes": "Toasted garam masala, turmeric, ginger, and coconut milk simmered until fragrant and creamy.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Curry is always better the next day! Warm 3 mins in saucepan or microwave covered.",
+  "ingredients": [
+    {
+      "id": "fav-i-71",
+      "name": "Chickpeas or Chicken Strips",
+      "amount": "1 can or 350g chicken",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-72",
+      "name": "Coconut Milk",
+      "amount": "1 can (400ml)",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-73",
+      "name": "Garam Masala & Turmeric",
+      "amount": "2 tbsp",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-74",
+      "name": "Baby Spinach & Bell Pepper",
+      "amount": "100g spinach + 1 pepper",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-75",
+      "name": "Basmati Rice",
+      "amount": "1 cup dry",
+      "category": "Pantry"
+    }
+  ]
+}

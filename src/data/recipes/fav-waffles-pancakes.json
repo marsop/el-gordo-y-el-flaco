@@ -1,0 +1,46 @@
+{
+  "id": "fav-waffles-pancakes",
+  "title": "Savory Herb Waffles with Sunny Eggs or Sweet Pancakes",
+  "mealType": "lunch",
+  "prepTime": 12,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Weekend Brunch",
+    "Diner Star"
+  ],
+  "calorieEstimate": 510,
+  "gordoPortionNotes": "Stack of 3 waffles with melted cheddar, bacon & maple drizzle",
+  "flacoPortionNotes": "Herb waffle topped with smoked salmon, poached egg & baby spinach",
+  "notes": "Hot waffle iron gives that iconic crisp grid! Fold chives and cheddar into batter.",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat in toaster for 2 minutes to make exterior shatteringly crisp again.",
+  "ingredients": [
+    {
+      "id": "fav-i-142",
+      "name": "Waffle / Pancake Flour Mix",
+      "amount": "2 cups",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-143",
+      "name": "Eggs & Milk",
+      "amount": "2 eggs + 1 cup milk",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-144",
+      "name": "Butter",
+      "amount": "2 tbsp",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "fav-i-145",
+      "name": "Bacon or Smoked Salmon",
+      "amount": "100g",
+      "category": "Meat & Seafood"
+    }
+  ]
+}

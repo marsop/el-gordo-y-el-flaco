@@ -1,0 +1,46 @@
+{
+  "id": "fav-couscous-tabouleh",
+  "title": "Herbed Tabouleh & Warm Spiced Couscous Bowl",
+  "mealType": "lunch",
+  "prepTime": 12,
+  "cookTime": 5,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Mediterranean",
+    "Quick Prep"
+  ],
+  "calorieEstimate": 460,
+  "gordoPortionNotes": "Large bowl with spiced chickpeas, crumbled feta & pita bread",
+  "flacoPortionNotes": "Loaded with flat-leaf parsley, fresh mint, cucumber, tomato & lemon juice",
+  "notes": "Steam couscous with boiling broth in covered bowl for 5 minutes. Fluff with fork.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Enjoy cold as a fresh grain salad or warm up for 1 minute.",
+  "ingredients": [
+    {
+      "id": "fav-i-146",
+      "name": "Couscous (Semolina)",
+      "amount": "1 cup",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-147",
+      "name": "Fresh Parsley & Mint",
+      "amount": "1 large bunch",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-148",
+      "name": "Cucumber & Tomatoes",
+      "amount": "1 cup diced",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-149",
+      "name": "Lemon Juice & Olive Oil",
+      "amount": "3 tbsp",
+      "category": "Pantry"
+    }
+  ]
+}

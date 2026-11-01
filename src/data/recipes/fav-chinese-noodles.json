@@ -1,0 +1,46 @@
+{
+  "id": "fav-chinese-noodles",
+  "title": "Chinese Wok Noodles with Teriyaki Glaze & Vegetables",
+  "mealType": "dinner",
+  "prepTime": 12,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Asian Noodle",
+    "Batch Hero"
+  ],
+  "calorieEstimate": 520,
+  "gordoPortionNotes": "Big wok bowl with chicken or beef strips, extra teriyaki drizzle & peanuts",
+  "flacoPortionNotes": "Egg noodles loaded with crisp snap peas, bell peppers, carrots & toasted sesame",
+  "notes": "Toss boiled noodles into high-heat skillet with teriyaki, garlic, ginger, and vegetables.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Noodles absorb the teriyaki glaze and taste incredible next day! Warm 2 mins in pan.",
+  "ingredients": [
+    {
+      "id": "fav-i-110",
+      "name": "Chinese Egg Noodles or Ramen",
+      "amount": "200g dry",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-111",
+      "name": "Bell Pepper, Carrots & Scallions",
+      "amount": "2 cups sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-112",
+      "name": "Teriyaki Sauce & Soy Sauce",
+      "amount": "4 tbsp",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "fav-i-113",
+      "name": "Chicken, Tofu or Beef Strips",
+      "amount": "250g",
+      "category": "Meat & Seafood"
+    }
+  ]
+}

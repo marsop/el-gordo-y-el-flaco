@@ -1,0 +1,52 @@
+{
+  "id": "fav-russian-salad",
+  "title": "Ensaladilla Rusa (Russian Potato Salad with Tuna)",
+  "mealType": "lunch",
+  "prepTime": 15,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Make Ahead",
+    "Cold Classic"
+  ],
+  "calorieEstimate": 470,
+  "gordoPortionNotes": "Heaping scoop served with crispy breadsticks (picos) & olives",
+  "flacoPortionNotes": "Light olive oil mayonnaise dressing with hard-boiled egg quarters & red pepper strips",
+  "notes": "Tastes even better chilled! Gently fold cooked potatoes, carrots, peas, tuna and light mayo.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Eaten chilled straight from the fridge. Keeps in airtight container for up to 3 days.",
+  "ingredients": [
+    {
+      "id": "fav-i-14",
+      "name": "Potatoes & Carrots",
+      "amount": "3 potatoes + 2 carrots diced",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-15",
+      "name": "Quality Canned Tuna",
+      "amount": "2 cans drained",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-16",
+      "name": "Green Peas",
+      "amount": "1/2 cup",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-17",
+      "name": "Hard Boiled Eggs",
+      "amount": "2 eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-18",
+      "name": "Mayonnaise & Piquillo Peppers",
+      "amount": "3 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "fav-crepes-savory",
+  "title": "Savory Buckwheat Galettes / Crepes (Ham, Cheese & Egg)",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 10,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "French Bistro",
+    "Diner Special"
+  ],
+  "calorieEstimate": 490,
+  "gordoPortionNotes": "Two folded galettes with smoked ham, melted gruyere & sunny egg center",
+  "flacoPortionNotes": "One galette with sautéed spinach, mushrooms, goat cheese & salad",
+  "notes": "Classic Brittany galette complète. Fold the 4 sides into an open square frame with egg in middle.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Best made fresh on a hot skillet in under 10 minutes.",
+  "ingredients": [
+    {
+      "id": "fav-i-126",
+      "name": "Crepe or Galette Batter",
+      "amount": "4 crepes worth",
+      "category": "Bakery"
+    },
+    {
+      "id": "fav-i-127",
+      "name": "Smoked Ham & Gruyère Cheese",
+      "amount": "100g each",
+      "category": "Meat & Seafood",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-128",
+      "name": "Eggs",
+      "amount": "2-4 eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-129",
+      "name": "Butter",
+      "amount": "1 tbsp",
+      "category": "Dairy & Eggs"
+    }
+  ]
+}

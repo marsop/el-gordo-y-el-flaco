@@ -1,0 +1,64 @@
+{
+  "id": "rec-5",
+  "title": "Chipotle Chicken Burrito Bowls for Two",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 20,
+  "servings": 2,
+  "tags": [
+    "Meal Prep Star",
+    "Batch Friendly",
+    "Mexican-American"
+  ],
+  "calorieEstimate": 590,
+  "gordoPortionNotes": "Extra cilantro-lime rice with double chicken & shredded cheese",
+  "flacoPortionNotes": "Cauliflower/brown rice base with extra pico de gallo and grilled peppers",
+  "notes": "Marinate chicken thighs in adobo sauce and garlic. Easy cleanup one-pan skillet grill.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Superb leftover! Flavors meld overnight. Microwave 2 mins covered with a damp paper towel or warm in skillet.",
+  "usesExpiringItemIds": [
+    "p2",
+    "p5",
+    "p8"
+  ],
+  "ingredients": [
+    {
+      "id": "i24",
+      "name": "Boneless Chicken Thighs",
+      "amount": "450g",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "i25",
+      "name": "Long Grain Rice or Brown Rice",
+      "amount": "1 cup uncooked",
+      "category": "Pantry"
+    },
+    {
+      "id": "i26",
+      "name": "Bell Pepper & Onion",
+      "amount": "1 of each",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "i27",
+      "name": "Black Beans",
+      "amount": "1 can rinsed",
+      "category": "Pantry"
+    },
+    {
+      "id": "i28",
+      "name": "Chipotle in Adobo",
+      "amount": "1 tbsp minced",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "i29",
+      "name": "Greek Yogurt Crema",
+      "amount": "3 tbsp",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    }
+  ]
+}

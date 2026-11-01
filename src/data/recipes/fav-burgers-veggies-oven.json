@@ -1,0 +1,55 @@
+{
+  "id": "fav-burgers-veggies-oven",
+  "title": "Burgers + Roasted Veggies in the Oven",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 20,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "80s Diner",
+    "Eat Fresh"
+  ],
+  "calorieEstimate": 690,
+  "gordoPortionNotes": "Double patty burger with melted cheddar, toasted brioche & herb roasted potato wedges",
+  "flacoPortionNotes": "Single patty burger on toasted bun with tray of roasted zucchini, peppers & garlic dip",
+  "notes": "Roast potatoes and bell peppers on sheet pan at 400°F while searing juicy smash burgers on skillet.",
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Burgers must be enjoyed fresh! Oven veggies reheat well in skillet.",
+  "ingredients": [
+    {
+      "id": "fav-i-81",
+      "name": "Ground Beef or Veggie Patties",
+      "amount": "400g",
+      "category": "Meat & Seafood",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-82",
+      "name": "Brioche Buns",
+      "amount": "2-4 buns",
+      "category": "Bakery",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-83",
+      "name": "Tray Veggies (Potatoes, Bell Peppers, Zucchini)",
+      "amount": "400g mixed",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-84",
+      "name": "Smoked Cheddar Cheese",
+      "amount": "4 slices",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-85",
+      "name": "Diner Burger Sauce & Pickles",
+      "amount": "3 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

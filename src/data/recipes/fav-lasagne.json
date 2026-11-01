@@ -1,0 +1,46 @@
+{
+  "id": "fav-lasagne",
+  "title": "Classic Lasagne al Forno with Golden Cheese Crust",
+  "mealType": "dinner",
+  "prepTime": 20,
+  "cookTime": 35,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "Batch Legend",
+    "Comfort Food"
+  ],
+  "calorieEstimate": 680,
+  "gordoPortionNotes": "Center square slice with bubbling golden cheese & garlic bread",
+  "flacoPortionNotes": "Moderate square slice with arugula & balsamic side salad",
+  "notes": "Layers of rich slow-simmered bolognese or lentil marinara, creamy béchamel, and melted mozzarella.",
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "The undisputed leftover king! Flavors consolidate. Reheat in oven at 350°F for 10m or microwave 2m.",
+  "ingredients": [
+    {
+      "id": "fav-i-54",
+      "name": "Lasagne Pasta Sheets",
+      "amount": "8 sheets",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-55",
+      "name": "Rich Tomato Meat or Veg Sauce",
+      "amount": "2.5 cups",
+      "category": "Pantry"
+    },
+    {
+      "id": "fav-i-56",
+      "name": "Béchamel Sauce (Butter, Flour, Milk)",
+      "amount": "1.5 cups",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "fav-i-57",
+      "name": "Mozzarella & Parmesan",
+      "amount": "150g shredded",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    }
+  ]
+}

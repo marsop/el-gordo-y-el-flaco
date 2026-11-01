@@ -1,0 +1,53 @@
+{
+  "id": "fav-fajitas-chicken",
+  "title": "Sizzling Fajitas (Chicken, Quinoa, Beans & Guacamole)",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "tags": [
+    "User Favorite",
+    "High Protein",
+    "Diner Sizzle"
+  ],
+  "calorieEstimate": 610,
+  "gordoPortionNotes": "4 warm flour tortillas, double chicken strips with charred peppers and salsa",
+  "flacoPortionNotes": "Quinoa base bowl with grilled chicken, black beans, pico de gallo & guacamole",
+  "notes": "Get the skillet screaming hot with a tablespoon of oil for authentic restaurant sizzle!",
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat chicken and peppers in hot skillet for 2 mins; assemble in fresh warm tortillas.",
+  "ingredients": [
+    {
+      "id": "fav-i-90",
+      "name": "Chicken Breast or Quinoa & Black Beans",
+      "amount": "400g chicken or 1.5 cups quinoa/beans",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "fav-i-91",
+      "name": "Bell Peppers (Red, Green, Yellow)",
+      "amount": "2 sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-92",
+      "name": "Yellow Onion",
+      "amount": "1 sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "fav-i-93",
+      "name": "Avocado (for fresh guacamole)",
+      "amount": "2 avocados",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "fav-i-94",
+      "name": "Flour Tortillas",
+      "amount": "6 small",
+      "category": "Bakery"
+    }
+  ]
+}

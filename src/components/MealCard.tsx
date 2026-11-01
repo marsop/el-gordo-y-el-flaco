@@ -13,6 +13,7 @@ import {
   Info
 } from 'lucide-react';
 import { Meal, PantryItem } from '../types';
+import { getExpiringIngredientsForMeal, isIngredientExpiring } from '../utils/pantryMatcher';
 
 interface MealCardProps {
   meal: Meal;
@@ -35,8 +36,8 @@ export const MealCard: React.FC<MealCardProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Check which pantry items this meal uses that are expiring soon
-  const expiringIngredients = meal.ingredients.filter((i) => i.isExpiring);
+  // Dynamically recalculate which pantry items this meal uses that are expiring soon based on current pantry list
+  const expiringIngredients = getExpiringIngredientsForMeal(meal, pantryItems);
   const totalTime = meal.prepTime + meal.cookTime;
   const isLunch = meal.mealType === 'lunch';
   const isLeftover = !!meal.isLeftover;
