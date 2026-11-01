@@ -28,8 +28,8 @@ export const Header: React.FC<HeaderProps> = ({
           className="group flex items-center gap-3 text-xl font-black tracking-wider uppercase font-['Oswald'] text-amber-400 hover:text-amber-300 transition-colors whitespace-nowrap shrink-0"
         >
           <img 
-            src="/favicon-32x32.png" 
-            srcSet="/logo.png 2x" 
+            src={`${import.meta.env.BASE_URL}favicon-32x32.png`} 
+            srcSet={`${import.meta.env.BASE_URL}logo.png 2x`} 
             alt="El Gordo Y El Flaco" 
             className="w-9 h-9 object-contain drop-shadow group-hover:scale-105 transition-transform" 
           />

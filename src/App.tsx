@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { MarqueeBanner } from './components/MarqueeBanner';
 import { WeekView } from './components/WeekView';
@@ -20,10 +20,53 @@ import { DayOfWeek, Meal, PantryItem, WeeklyPlan, NotionSyncConfig, DAYS_OF_WEEK
 import { Check, Info, Sparkles, ChefHat } from 'lucide-react';
 
 export default function App() {
-  const [plan, setPlan] = useState<WeeklyPlan>(INITIAL_WEEKLY_PLAN);
-  const [pantryItems, setPantryItems] = useState<PantryItem[]>(INITIAL_PANTRY_ITEMS);
-  const [recipes, setRecipes] = useState<Meal[]>(RECIPE_CATALOG);
-  const [notionConfig, setNotionConfig] = useState<NotionSyncConfig>(INITIAL_NOTION_CONFIG);
+  const [plan, setPlan] = useState<WeeklyPlan>(() => {
+    try {
+      const saved = localStorage.getItem('el_gordo_weekly_plan');
+      if (saved) return JSON.parse(saved);
+    } catch {}
+    return INITIAL_WEEKLY_PLAN;
+  });
+
+  const [pantryItems, setPantryItems] = useState<PantryItem[]>(() => {
+    try {
+      const saved = localStorage.getItem('el_gordo_pantry');
+      if (saved) return JSON.parse(saved);
+    } catch {}
+    return INITIAL_PANTRY_ITEMS;
+  });
+
+  const [recipes, setRecipes] = useState<Meal[]>(() => {
+    try {
+      const saved = localStorage.getItem('el_gordo_recipes');
+      if (saved) return JSON.parse(saved);
+    } catch {}
+    return RECIPE_CATALOG;
+  });
+
+  const [notionConfig, setNotionConfig] = useState<NotionSyncConfig>(() => {
+    try {
+      const saved = localStorage.getItem('el_gordo_notion_config');
+      if (saved) return JSON.parse(saved);
+    } catch {}
+    return INITIAL_NOTION_CONFIG;
+  });
+
+  useEffect(() => {
+    try { localStorage.setItem('el_gordo_weekly_plan', JSON.stringify(plan)); } catch {}
+  }, [plan]);
+
+  useEffect(() => {
+    try { localStorage.setItem('el_gordo_pantry', JSON.stringify(pantryItems)); } catch {}
+  }, [pantryItems]);
+
+  useEffect(() => {
+    try { localStorage.setItem('el_gordo_recipes', JSON.stringify(recipes)); } catch {}
+  }, [recipes]);
+
+  useEffect(() => {
+    try { localStorage.setItem('el_gordo_notion_config', JSON.stringify(notionConfig)); } catch {}
+  }, [notionConfig]);
 
   // Modal visibility states
   const [isExportOpen, setIsExportOpen] = useState(false);
