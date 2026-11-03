@@ -1,11 +1,12 @@
-import React from 'react';
-import { Shuffle, Sparkles, AlertTriangle, Users, Utensils, RotateCcw, Layers, Coffee } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shuffle, Sparkles, AlertTriangle, Users, Utensils, RotateCcw, Layers, Coffee, Star, Clock, Flame } from 'lucide-react';
 import { WeeklyPlan, PantryItem } from '../types';
 
 interface MarqueeBannerProps {
   plan: WeeklyPlan;
   pantryItems: PantryItem[];
   totalRecipesCount: number;
+  activePreset?: 'favorites' | 'batch_leftovers' | 'quick' | 'comfort' | null;
   onShuffleAll: () => void;
   onPrioritizeExpiring: () => void;
   onApplyPreset: (preset: 'favorites' | 'batch_leftovers' | 'balanced' | 'quick' | 'comfort') => void;
@@ -17,12 +18,51 @@ export const MarqueeBanner: React.FC<MarqueeBannerProps> = ({
   plan,
   pantryItems,
   totalRecipesCount,
+  activePreset,
   onShuffleAll,
   onPrioritizeExpiring,
   onApplyPreset,
   onAutoBatchLeftovers,
   onOpenAllMeals
 }) => {
+  const [internalPreset, setInternalPreset] = useState<'favorites' | 'batch_leftovers' | 'quick' | 'comfort' | null>('favorites');
+  const currentPreset = activePreset !== undefined ? activePreset : internalPreset;
+
+  const handleSelectPreset = (presetId: 'favorites' | 'batch_leftovers' | 'quick' | 'comfort') => {
+    setInternalPreset(presetId);
+    onApplyPreset(presetId);
+  };
+
+  const PRESET_OPTIONS = [
+    {
+      id: 'favorites' as const,
+      label: 'Favorites',
+      title: 'Plan curated from your favorite meals',
+      Icon: Star,
+      isFilled: true
+    },
+    {
+      id: 'batch_leftovers' as const,
+      label: 'Leftovers',
+      title: 'Cook Once, Eat Twice (Max Leftovers)',
+      Icon: RotateCcw,
+      isFilled: false
+    },
+    {
+      id: 'quick' as const,
+      label: 'Quick 20m',
+      title: 'Under 25 Mins',
+      Icon: Clock,
+      isFilled: false
+    },
+    {
+      id: 'comfort' as const,
+      label: 'Comfort',
+      title: 'Griddle & Comfort',
+      Icon: Flame,
+      isFilled: true
+    }
+  ];
   // Calculate stats
   const criticalItems = pantryItems.filter((i) => i.daysUntilExpiry <= 2);
   let totalPrepTime = 0;
@@ -87,35 +127,28 @@ export const MarqueeBanner: React.FC<MarqueeBannerProps> = ({
             {/* Quick Presets Segmented Bar */}
             <div className="space-y-1.5">
               <span className="text-xs text-zinc-400 block font-['Plus_Jakarta_Sans']">Select Menu Rotation:</span>
-              <div className="grid grid-cols-4 gap-1 p-1 bg-zinc-900 rounded border border-zinc-800">
-                <button
-                  onClick={() => onApplyPreset('favorites')}
-                  className="px-1.5 py-1.5 text-[11px] font-black rounded bg-amber-500 text-zinc-950 hover:bg-amber-400 transition-colors cursor-pointer text-center truncate"
-                  title="Plan curated from your favorite meals"
-                >
-                  ★ Favorites
-                </button>
-                <button
-                  onClick={() => onApplyPreset('batch_leftovers')}
-                  className="px-1.5 py-1.5 text-[11px] font-bold rounded bg-teal-950 text-teal-300 border border-teal-700/60 hover:bg-teal-900 transition-colors cursor-pointer text-center truncate"
-                  title="Cook Once, Eat Twice (Max Leftovers)"
-                >
-                  Leftovers
-                </button>
-                <button
-                  onClick={() => onApplyPreset('quick')}
-                  className="px-1.5 py-1.5 text-[11px] font-medium rounded hover:bg-zinc-800 text-zinc-200 transition-colors cursor-pointer text-center truncate"
-                  title="Under 25 Mins"
-                >
-                  Quick 20m
-                </button>
-                <button
-                  onClick={() => onApplyPreset('comfort')}
-                  className="px-1.5 py-1.5 text-[11px] font-medium rounded hover:bg-zinc-800 text-zinc-200 transition-colors cursor-pointer text-center truncate"
-                  title="Griddle & Comfort"
-                >
-                  Comfort
-                </button>
+              <div className="grid grid-cols-4 gap-1 p-1 bg-zinc-900 rounded border border-zinc-800" role="tablist">
+                {PRESET_OPTIONS.map((opt) => {
+                  const isSelected = currentPreset === opt.id;
+                  const Icon = opt.Icon;
+                  return (
+                    <button
+                      key={opt.id}
+                      onClick={() => handleSelectPreset(opt.id)}
+                      role="tab"
+                      aria-selected={isSelected}
+                      className={`flex items-center justify-center gap-1 px-1 sm:px-1.5 py-1.5 text-[10.5px] sm:text-[11px] rounded transition-colors cursor-pointer truncate ${
+                        isSelected
+                          ? 'bg-amber-400 text-zinc-950 font-black shadow-xs border border-amber-300'
+                          : 'text-zinc-300 hover:text-white hover:bg-zinc-800/80 font-medium border border-transparent'
+                      }`}
+                      title={opt.title}
+                    >
+                      <Icon className={`w-3 h-3 shrink-0 ${opt.isFilled ? 'fill-current' : ''}`} />
+                      <span className="truncate">{opt.label}</span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 

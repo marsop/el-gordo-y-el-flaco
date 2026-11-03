@@ -55,6 +55,27 @@ export default function App() {
     try { localStorage.setItem('el_gordo_recipes', JSON.stringify(recipes)); } catch {}
   }, [recipes]);
 
+  // Active Menu Rotation preset
+  const [activePreset, setActivePreset] = useState<'favorites' | 'batch_leftovers' | 'quick' | 'comfort' | null>(() => {
+    try {
+      const saved = localStorage.getItem('el_gordo_active_preset');
+      if (saved && ['favorites', 'batch_leftovers', 'quick', 'comfort'].includes(saved)) {
+        return saved as 'favorites' | 'batch_leftovers' | 'quick' | 'comfort';
+      }
+    } catch {}
+    return 'favorites';
+  });
+
+  useEffect(() => {
+    try {
+      if (activePreset) {
+        localStorage.setItem('el_gordo_active_preset', activePreset);
+      } else {
+        localStorage.removeItem('el_gordo_active_preset');
+      }
+    } catch {}
+  }, [activePreset]);
+
   // Modal visibility states
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [isPantryOpen, setIsPantryOpen] = useState(false);
@@ -199,6 +220,7 @@ export default function App() {
 
   // 5. Intelligent "Cook Once, Eat Twice" Batch Planner
   const handleAutoBatchLeftovers = () => {
+    setActivePreset('batch_leftovers');
     // Select batch-friendly recipes
     const batchFriendly = recipes.filter((r) => r.leftoverSuitability === 'excellent' || r.leftoverSuitability === 'good');
     const freshOnly = recipes.filter((r) => r.leftoverSuitability === 'cook_fresh_only');
@@ -270,6 +292,7 @@ export default function App() {
 
   // 7. Shuffle entire 7-day week
   const handleShuffleAll = () => {
+    setActivePreset(null);
     const lunches = recipes.filter((r) => r.mealType === 'lunch');
     const dinners = recipes.filter((r) => r.mealType === 'dinner');
 
@@ -322,6 +345,12 @@ export default function App() {
 
   // 9. Apply curated presets
   const handleApplyPreset = (preset: 'favorites' | 'batch_leftovers' | 'balanced' | 'quick' | 'comfort') => {
+    if (preset === 'favorites' || preset === 'batch_leftovers' || preset === 'quick' || preset === 'comfort') {
+      setActivePreset(preset);
+    } else {
+      setActivePreset(null);
+    }
+
     if (preset === 'favorites') {
       const getFav = (id: string) => recipes.find((r) => r.id === id) || recipes[0];
       const monDinner = getFav('fav-chili-sin-carne');
@@ -461,6 +490,7 @@ export default function App() {
           plan={plan}
           pantryItems={pantryItems}
           totalRecipesCount={recipes.length}
+          activePreset={activePreset}
           onShuffleAll={handleShuffleAll}
           onPrioritizeExpiring={handlePrioritizeExpiring}
           onApplyPreset={handleApplyPreset}
