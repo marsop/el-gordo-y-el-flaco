@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Clock, Flame, Check, AlertCircle, Search } from 'lucide-react';
-import { Meal, DayOfWeek } from '../types';
+import { Meal, DayOfWeek, PantryItem } from '../types';
+import { getExpiringIngredientsForMeal } from '../utils/pantryMatcher';
 
 interface RecipeCatalogModalProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface RecipeCatalogModalProps {
   recipes: Meal[];
   day: DayOfWeek;
   mealType: 'lunch' | 'dinner';
+  pantryItems?: PantryItem[];
   onSelectRecipe: (recipe: Meal) => void;
 }
 
@@ -17,6 +19,7 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
   recipes,
   day,
   mealType,
+  pantryItems,
   onSelectRecipe
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -113,7 +116,9 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
         {/* Recipe Grid */}
         <div className="p-6 max-h-[65vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4">
           {filtered.map((recipe) => {
-            const expiringCount = recipe.ingredients.filter((i) => i.isExpiring).length;
+            const expiringCount = pantryItems
+              ? getExpiringIngredientsForMeal(recipe, pantryItems).length
+              : recipe.ingredients.filter((i) => i.isExpiring).length;
             const totalTime = recipe.prepTime + recipe.cookTime;
 
             return (

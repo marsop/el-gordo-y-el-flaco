@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Plus, AlertTriangle, CheckCircle2, Trash2, Sparkles, Clock, Calendar } from 'lucide-react';
 import { PantryItem, WeeklyPlan } from '../types';
+import { isPantryItemPlanned } from '../utils/pantryMatcher';
 
 interface PantryDrawerProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface PantryDrawerProps {
   pantryItems: PantryItem[];
   onAddPantryItem: (item: Omit<PantryItem, 'id'>) => void;
   onDeletePantryItem: (id: string) => void;
+  onUpdatePantryItem?: (id: string, updates: Partial<PantryItem>) => void;
   onPrioritizeExpiring: () => void;
   plan: WeeklyPlan;
 }
@@ -18,6 +20,7 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
   pantryItems,
   onAddPantryItem,
   onDeletePantryItem,
+  onUpdatePantryItem,
   onPrioritizeExpiring,
   plan
 }) => {
@@ -41,14 +44,6 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
     setQuantity('');
     setDaysUntilExpiry(2);
   };
-
-  // Check how many items are consumed by the weekly plan
-  const planIngredientsLower = new Set<string>();
-  Object.values(plan.days).forEach((d) => {
-    [...d.lunch.ingredients, ...d.dinner.ingredients].forEach((ing) => {
-      planIngredientsLower.add(ing.name.toLowerCase());
-    });
-  });
 
   const sortedItems = [...pantryItems].sort((a, b) => a.daysUntilExpiry - b.daysUntilExpiry);
 
@@ -102,10 +97,7 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
               const isWarning = item.daysUntilExpiry > 2 && item.daysUntilExpiry <= 4;
               
               // check if current plan incorporates this item
-              const isMatched = Array.from(planIngredientsLower).some((planIng) => 
-                planIng.includes(item.name.toLowerCase().split(' ')[0]) ||
-                item.name.toLowerCase().includes(planIng.split(' ')[0])
-              );
+              const isMatched = isPantryItemPlanned(item, plan);
 
               return (
                 <div
@@ -136,8 +128,36 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <div className="text-right">
+                  <div className="flex items-center gap-2.5">
+                    {onUpdatePantryItem && (
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            onUpdatePantryItem(item.id, {
+                              daysUntilExpiry: Math.max(0, item.daysUntilExpiry - 1)
+                            })
+                          }
+                          title="Decrease days until expiry (-1d)"
+                          className="w-5 h-5 flex items-center justify-center text-[10px] font-bold font-mono bg-zinc-200/70 hover:bg-zinc-300 text-zinc-700 rounded cursor-pointer transition-colors"
+                        >
+                          -1d
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            onUpdatePantryItem(item.id, {
+                              daysUntilExpiry: item.daysUntilExpiry + 1
+                            })
+                          }
+                          title="Increase days until expiry (+1d)"
+                          className="w-5 h-5 flex items-center justify-center text-[10px] font-bold font-mono bg-zinc-200/70 hover:bg-zinc-300 text-zinc-700 rounded cursor-pointer transition-colors"
+                        >
+                          +1d
+                        </button>
+                      </div>
+                    )}
+                    <div className="text-right min-w-[70px]">
                       <span
                         className={`text-xs font-bold font-mono block ${
                           isCritical

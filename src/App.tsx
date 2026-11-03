@@ -17,6 +17,7 @@ import {
   createLeftoverFromMeal
 } from './data/defaultData';
 import { DayOfWeek, Meal, PantryItem, WeeklyPlan, NotionSyncConfig, DAYS_OF_WEEK } from './types';
+import { getExpiringIngredientsForMeal } from './utils/pantryMatcher';
 import { Check, Info, Sparkles, ChefHat } from 'lucide-react';
 
 export default function App() {
@@ -305,7 +306,7 @@ export default function App() {
   // 8. Prioritize soon-to-expire ingredients
   const handlePrioritizeExpiring = () => {
     const expiringRecipes = recipes.filter((r) => 
-      r.ingredients.some((i) => i.isExpiring) || (r.usesExpiringItemIds && r.usesExpiringItemIds.length > 0)
+      getExpiringIngredientsForMeal(r, pantryItems).length > 0
     );
 
     if (expiringRecipes.length === 0) {
@@ -442,6 +443,12 @@ export default function App() {
     showToast('Removed item from pantry.');
   };
 
+  const handleUpdatePantryItem = (id: string, updates: Partial<PantryItem>) => {
+    setPantryItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, ...updates } : item))
+    );
+  };
+
   // 11. Notion sync simulation
   const handleSimulateNotionSync = () => {
     setNotionConfig((prev) => ({
@@ -533,6 +540,7 @@ export default function App() {
         isOpen={isExportOpen}
         onClose={() => setIsExportOpen(false)}
         plan={plan}
+        pantryItems={pantryItems}
       />
 
       <PantryDrawer
@@ -541,6 +549,7 @@ export default function App() {
         pantryItems={pantryItems}
         onAddPantryItem={handleAddPantryItem}
         onDeletePantryItem={handleDeletePantryItem}
+        onUpdatePantryItem={handleUpdatePantryItem}
         onPrioritizeExpiring={handlePrioritizeExpiring}
         plan={plan}
       />
@@ -576,6 +585,7 @@ export default function App() {
           recipes={recipes}
           day={swappingTarget.day}
           mealType={swappingTarget.mealType}
+          pantryItems={pantryItems}
           onSelectRecipe={handleSelectSwapRecipe}
         />
       )}

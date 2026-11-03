@@ -1,4 +1,5 @@
-import { DAYS_OF_WEEK, WeeklyPlan } from '../types';
+import { DAYS_OF_WEEK, WeeklyPlan, PantryItem } from '../types';
+import { isIngredientExpiring } from './pantryMatcher';
 
 /**
  * Escapes values for safe CSV format
@@ -108,7 +109,7 @@ export function exportToCSV(plan: WeeklyPlan): void {
 /**
  * Generate rich Markdown content for copying or downloading
  */
-export function generateMarkdown(plan: WeeklyPlan): string {
+export function generateMarkdown(plan: WeeklyPlan, pantryItems?: PantryItem[]): string {
   const lines: string[] = [];
 
   // Count metrics
@@ -160,7 +161,8 @@ export function generateMarkdown(plan: WeeklyPlan): string {
     lines.push(`- **Tags:** ${dp.lunch.tags.join(' · ')}`);
     lines.push(`- **Ingredients (Serves 2):**`);
     dp.lunch.ingredients.forEach((ing) => {
-      lines.push(`  - [ ] ${ing.amount} ${ing.name} ${ing.isExpiring ? '*(Expiring soon)*' : ''}`);
+      const isExp = pantryItems ? isIngredientExpiring(ing, dp.lunch, pantryItems) : ing.isExpiring;
+      lines.push(`  - [ ] ${ing.amount} ${ing.name} ${isExp ? '*(Expiring soon)*' : ''}`);
     });
     if (dp.lunch.notes) {
       lines.push(`- **Diner Tip:** ${dp.lunch.notes}`);
@@ -186,7 +188,8 @@ export function generateMarkdown(plan: WeeklyPlan): string {
     lines.push(`- **Tags:** ${dp.dinner.tags.join(' · ')}`);
     lines.push(`- **Ingredients (${dp.dinner.isBatchCook ? 'Double Batch for 4 Servings' : 'Serves 2'}):**`);
     dp.dinner.ingredients.forEach((ing) => {
-      lines.push(`  - [ ] ${dp.dinner.isBatchCook ? `${ing.amount} (×2)` : ing.amount} ${ing.name} ${ing.isExpiring ? '*(Expiring soon)*' : ''}`);
+      const isExp = pantryItems ? isIngredientExpiring(ing, dp.dinner, pantryItems) : ing.isExpiring;
+      lines.push(`  - [ ] ${dp.dinner.isBatchCook ? `${ing.amount} (×2)` : ing.amount} ${ing.name} ${isExp ? '*(Expiring soon)*' : ''}`);
     });
     if (dp.dinner.notes) {
       lines.push(`- **Diner Tip:** ${dp.dinner.notes}`);
@@ -242,8 +245,8 @@ export function generateMarkdown(plan: WeeklyPlan): string {
 /**
  * Trigger download of Markdown file
  */
-export function exportToMarkdown(plan: WeeklyPlan): void {
-  const content = generateMarkdown(plan);
+export function exportToMarkdown(plan: WeeklyPlan, pantryItems?: PantryItem[]): void {
+  const content = generateMarkdown(plan, pantryItems);
   const blob = new Blob([content], { type: 'text/markdown;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');

@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { X, FileText, Download, Printer, Copy, Check, Table, FileSpreadsheet, Sparkles } from 'lucide-react';
-import { WeeklyPlan, DAYS_OF_WEEK } from '../types';
+import { WeeklyPlan, DAYS_OF_WEEK, PantryItem } from '../types';
 import { exportToCSV, exportToMarkdown, generateMarkdown, triggerPrintPlan } from '../utils/exportUtils';
 
 interface ExportModalProps {
   isOpen: boolean;
   onClose: () => void;
   plan: WeeklyPlan;
+  pantryItems?: PantryItem[];
 }
 
-export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, plan }) => {
+export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, plan, pantryItems }) => {
   const [activeTab, setActiveTab] = useState<'pdf' | 'markdown' | 'csv'>('pdf');
   const [copiedMd, setCopiedMd] = useState(false);
 
   if (!isOpen) return null;
 
-  const markdownContent = generateMarkdown(plan);
+  const markdownContent = generateMarkdown(plan, pantryItems);
 
   const handleCopyMarkdown = () => {
     navigator.clipboard.writeText(markdownContent);
@@ -221,7 +222,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, plan 
                   </button>
 
                   <button
-                    onClick={() => exportToMarkdown(plan)}
+                    onClick={() => exportToMarkdown(plan, pantryItems)}
                     className="flex items-center gap-1.5 px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded font-['Oswald'] text-xs font-bold uppercase tracking-wider cursor-pointer transition-colors"
                   >
                     <Download className="w-3.5 h-3.5" />

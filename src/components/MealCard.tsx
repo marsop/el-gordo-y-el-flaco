@@ -178,26 +178,6 @@ export const MealCard: React.FC<MealCardProps> = ({
           )}
         </div>
 
-        {/* Gordo & Flaco Dual Portion Breakdown */}
-        <div className="bg-zinc-50 border border-zinc-200 rounded p-2.5 space-y-1.5 text-xs">
-          <div className="flex items-start gap-1.5">
-            <span className="font-bold text-amber-700 font-['Oswald'] tracking-wide shrink-0">
-              EL GORDO:
-            </span>
-            <span className="text-zinc-700 font-['Plus_Jakarta_Sans'] leading-tight">
-              {meal.gordoPortionNotes || 'Generous portion with extra carbs & protein.'}
-            </span>
-          </div>
-          <div className="flex items-start gap-1.5 pt-1 border-t border-zinc-200/70">
-            <span className="font-bold text-teal-700 font-['Oswald'] tracking-wide shrink-0">
-              EL FLACO:
-            </span>
-            <span className="text-zinc-700 font-['Plus_Jakarta_Sans'] leading-tight">
-              {meal.flacoPortionNotes || 'Balanced lean portion with fresh greens & light dressing.'}
-            </span>
-          </div>
-        </div>
-
         {/* Expandable Ingredients & Notes */}
         {isExpanded && (
           <div className="pt-2 border-t border-zinc-200 space-y-2 text-xs">
@@ -206,17 +186,25 @@ export const MealCard: React.FC<MealCardProps> = ({
                 {isBatch ? 'Ingredients (Double Batch - 4 Servings):' : 'Ingredients (Portioned for 2):'}
               </span>
               <ul className="space-y-1 text-zinc-600">
-                {meal.ingredients.map((ing) => (
-                  <li key={ing.id} className="flex items-center justify-between">
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
-                      <span>{ing.name}</span>
-                    </span>
-                    <span className="font-mono text-zinc-500">
-                      {isBatch ? `${ing.amount} (×2)` : ing.amount}
-                    </span>
-                  </li>
-                ))}
+                {meal.ingredients.map((ing) => {
+                  const isExpiring = isIngredientExpiring(ing, meal, pantryItems);
+                  return (
+                    <li key={ing.id} className="flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        <span className={`w-1.5 h-1.5 rounded-full ${isExpiring ? 'bg-amber-500' : 'bg-zinc-400'}`}></span>
+                        <span className={isExpiring ? 'font-semibold text-amber-950' : ''}>{ing.name}</span>
+                        {isExpiring && (
+                          <span className="text-[10px] font-semibold text-amber-800 bg-amber-100 border border-amber-300 px-1.5 py-0.2 rounded font-mono">
+                            Expiring stock
+                          </span>
+                        )}
+                      </span>
+                      <span className="font-mono text-zinc-500">
+                        {isBatch ? `${ing.amount} (×2)` : ing.amount}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
