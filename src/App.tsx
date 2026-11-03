@@ -498,13 +498,6 @@ export default function App() {
             <span>— 80s Fast Food Kitchen Dispatch · Cook Once, Eat Twice</span>
           </div>
 
-          <div className="flex items-center gap-4 text-zinc-400">
-            <span>2 Meals/Day (Lunch & Dinner)</span>
-            <span aria-hidden="true">·</span>
-            <span>2 Diners</span>
-            <span aria-hidden="true">·</span>
-            <span>Week Starts Monday</span>
-          </div>
         </div>
       </footer>
 
