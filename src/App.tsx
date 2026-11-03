@@ -528,6 +528,17 @@ export default function App() {
             <span>— 80s Fast Food Kitchen Dispatch · Cook Once, Eat Twice</span>
           </div>
 
+          <div className="text-zinc-400">
+            <span>Made with ♥️ by </span>
+            <a
+              href="https://albertogregorio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors font-medium"
+            >
+              Alberto Gregorio
+            </a>
+          </div>
         </div>
       </footer>
 
