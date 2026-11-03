@@ -3,7 +3,6 @@ import { Header } from './components/Header';
 import { MarqueeBanner } from './components/MarqueeBanner';
 import { WeekView } from './components/WeekView';
 import { PantryDrawer } from './components/PantryDrawer';
-import { NotionModal } from './components/NotionModal';
 import { GroceryModal } from './components/GroceryModal';
 import { MealModal } from './components/MealModal';
 import { ExportModal } from './components/ExportModal';
@@ -13,10 +12,9 @@ import {
   INITIAL_PANTRY_ITEMS, 
   INITIAL_WEEKLY_PLAN, 
   RECIPE_CATALOG, 
-  INITIAL_NOTION_CONFIG,
   createLeftoverFromMeal
 } from './data/defaultData';
-import { DayOfWeek, Meal, PantryItem, WeeklyPlan, NotionSyncConfig, DAYS_OF_WEEK } from './types';
+import { DayOfWeek, Meal, PantryItem, WeeklyPlan, DAYS_OF_WEEK } from './types';
 import { getExpiringIngredientsForMeal } from './utils/pantryMatcher';
 import { Check, Info, Sparkles, ChefHat } from 'lucide-react';
 
@@ -45,14 +43,6 @@ export default function App() {
     return RECIPE_CATALOG;
   });
 
-  const [notionConfig, setNotionConfig] = useState<NotionSyncConfig>(() => {
-    try {
-      const saved = localStorage.getItem('el_gordo_notion_config');
-      if (saved) return JSON.parse(saved);
-    } catch {}
-    return INITIAL_NOTION_CONFIG;
-  });
-
   useEffect(() => {
     try { localStorage.setItem('el_gordo_weekly_plan', JSON.stringify(plan)); } catch {}
   }, [plan]);
@@ -65,14 +55,9 @@ export default function App() {
     try { localStorage.setItem('el_gordo_recipes', JSON.stringify(recipes)); } catch {}
   }, [recipes]);
 
-  useEffect(() => {
-    try { localStorage.setItem('el_gordo_notion_config', JSON.stringify(notionConfig)); } catch {}
-  }, [notionConfig]);
-
   // Modal visibility states
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [isPantryOpen, setIsPantryOpen] = useState(false);
-  const [isNotionOpen, setIsNotionOpen] = useState(false);
   const [isGroceryOpen, setIsGroceryOpen] = useState(false);
   const [isAllMealsOpen, setIsAllMealsOpen] = useState(false);
 
@@ -449,17 +434,6 @@ export default function App() {
     );
   };
 
-  // 11. Notion sync simulation
-  const handleSimulateNotionSync = () => {
-    setNotionConfig((prev) => ({
-      ...prev,
-      isConnected: true,
-      status: 'synced_mock',
-      lastSyncTimestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    }));
-    showToast('Notion database simulation synced 14 recipes successfully!');
-  };
-
   const urgentPantryCount = pantryItems.filter((i) => i.daysUntilExpiry <= 2).length;
 
   return (
@@ -476,7 +450,6 @@ export default function App() {
       <Header
         onOpenExport={() => setIsExportOpen(true)}
         onOpenPantry={() => setIsPantryOpen(true)}
-        onOpenNotion={() => setIsNotionOpen(true)}
         onOpenGrocery={() => setIsGroceryOpen(true)}
         onOpenAllMeals={() => setIsAllMealsOpen(true)}
         expiringCount={urgentPantryCount}
@@ -552,14 +525,6 @@ export default function App() {
         onUpdatePantryItem={handleUpdatePantryItem}
         onPrioritizeExpiring={handlePrioritizeExpiring}
         plan={plan}
-      />
-
-      <NotionModal
-        isOpen={isNotionOpen}
-        onClose={() => setIsNotionOpen(false)}
-        config={notionConfig}
-        onSaveConfig={setNotionConfig}
-        onSimulateSync={handleSimulateNotionSync}
       />
 
       <GroceryModal

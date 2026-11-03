@@ -1,10 +1,9 @@
 import React from 'react';
-import { Download, ShoppingBag, Utensils, BookOpen, Clock } from 'lucide-react';
+import { Download, ShoppingBag, Utensils, Clock } from 'lucide-react';
 
 interface HeaderProps {
   onOpenExport: () => void;
   onOpenPantry: () => void;
-  onOpenNotion: () => void;
   onOpenGrocery: () => void;
   onOpenAllMeals: () => void;
   expiringCount: number;
@@ -13,7 +12,6 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   onOpenExport,
   onOpenPantry,
-  onOpenNotion,
   onOpenGrocery,
   onOpenAllMeals,
   expiringCount
@@ -36,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
           <span>EL GORDO Y EL FLACO</span>
         </a>
 
-        {/* Zone 2: 4 concise single-line nav links */}
+        {/* Zone 2: Nav links */}
         <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold tracking-wide uppercase font-['Oswald'] text-zinc-300">
           <button 
             onClick={onOpenAllMeals}
@@ -60,14 +58,6 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Clock className="w-4 h-4 text-red-500" />
             <span>Expiring Pantry ({expiringCount})</span>
-          </button>
-
-          <button 
-            onClick={onOpenNotion}
-            className="flex items-center gap-1.5 hover:text-amber-400 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-          >
-            <BookOpen className="w-4 h-4 text-emerald-400" />
-            <span>Notion Sync Prep</span>
           </button>
         </nav>
 
@@ -107,14 +97,6 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <Clock className="w-3.5 h-3.5 text-red-500" />
           <span>Pantry ({expiringCount})</span>
-        </button>
-
-        <button
-          onClick={onOpenNotion}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-800 text-zinc-200 hover:text-white hover:bg-zinc-700 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-        >
-          <BookOpen className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Notion</span>
         </button>
       </div>
     </header>

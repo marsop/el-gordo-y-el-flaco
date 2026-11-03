@@ -1,4 +1,4 @@
-import { DayOfWeek, DAYS_OF_WEEK, Meal, PantryItem, WeeklyPlan, NotionSyncConfig } from '../types';
+import { DayOfWeek, DAYS_OF_WEEK, Meal, PantryItem, WeeklyPlan } from '../types';
 import {
   ALL_RECIPES,
   RECIPE_CATALOG,
@@ -121,13 +121,5 @@ export const INITIAL_WEEKLY_PLAN: WeeklyPlan = {
       dinner: { ...getFav('fav-salmon-oven') } // Salmon in the oven with roasted potatoes
     }
   }
-};
-
-export const INITIAL_NOTION_CONFIG: NotionSyncConfig = {
-  databaseId: 'notion_db_84e12c9b4f7a2139',
-  apiKeyDraft: 'secret_notion_client_preview_key',
-  isConnected: false,
-  status: 'ready_to_connect',
-  targetDatabaseName: 'El Gordo & El Flaco Recipes'
 };
 

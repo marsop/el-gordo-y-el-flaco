@@ -15,9 +15,8 @@ Welcome to the **El Gordo Y El Flaco** repository. This document provides techni
 - **"Cook Once, Eat Twice" Batch Cooking**: Smart leftover planning with suitability ratings (`excellent`, `good`, `cook_fresh_only`), automatically chaining batch dinners into zero-effort next-day lunches.
 - **Expiring Pantry Tracker**: Inventory management tracking days until expiration and automatically prioritizing expiring ingredients in meal planning.
 - **Aggregated Grocery List**: Dynamically synthesized shopping list grouped by category (Produce, Dairy, Meat, Pantry, etc.) accounting for current pantry stock.
-- **Notion Integration Ready**: Prepared database schema and sync status for Notion meal planners.
 - **Multi-Format Exporter**: One-click exports to CSV, structured Markdown, and print-optimized PDF with custom media print stylesheets.
-- **Browser Persistence**: Automatic synchronization of plans, recipes, pantry items, and Notion configs to `localStorage`.
+- **Browser Persistence**: Automatic synchronization of plans, recipes, and pantry items to `localStorage`.
 
 ---
 
@@ -53,7 +52,6 @@ Welcome to the **El Gordo Y El Flaco** repository. This document provides techni
 │   │   ├── MarqueeBanner.tsx     # Animated ticker with meal stats & pantry alerts
 │   │   ├── MealCard.tsx          # Card for lunch/dinner slots with leftover badges
 │   │   ├── MealModal.tsx         # Detailed meal editor (ingredients, portions)
-│   │   ├── NotionModal.tsx       # Notion workspace integration settings
 │   │   ├── PantryDrawer.tsx      # Slide-out pantry inventory with expiry tracker
 │   │   ├── RecipeCatalogModal.tsx# Recipe book with filters, search, and swap selection
 │   │   └── WeekView.tsx          # Monday-to-Sunday 7-day responsive layout

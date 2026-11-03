@@ -78,15 +78,6 @@ export interface PantryItem {
   addedDate?: string;
 }
 
-export interface NotionSyncConfig {
-  databaseId: string;
-  apiKeyDraft: string;
-  isConnected: boolean;
-  lastSyncTimestamp?: string;
-  status: 'disconnected' | 'ready_to_connect' | 'synced_mock';
-  targetDatabaseName: string;
-}
-
 export interface PersonProfile {
   id: 'gordo' | 'flaco';
   name: string;

@@ -1,6 +1,6 @@
 {
   "name": "El Gordo Y El Flaco",
-  "description": "80s fast food styled weekly meal planner for two, featuring Monday-to-Sunday lunch and dinner scheduling, expiring pantry tracker, Notion sync prep, and CSV/Markdown/PDF exports.",
+  "description": "80s fast food styled weekly meal planner for two, featuring Monday-to-Sunday lunch and dinner scheduling, expiring pantry tracker, and CSV/Markdown/PDF exports.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
