@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
         <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold tracking-wide uppercase font-['Oswald'] text-zinc-300">
           <button 
             onClick={onOpenAllMeals}
-            className="flex items-center gap-1.5 hover:text-amber-400 text-amber-300 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            className="flex items-center gap-1.5 hover:text-amber-400 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             <Utensils className="w-4 h-4 text-amber-400" />
             <span>All Included Meals</span>
@@ -87,9 +87,9 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="flex lg:hidden items-center gap-2 px-4 py-2 bg-zinc-900 border-t border-zinc-800 overflow-x-auto scrollbar-none text-xs font-bold font-['Oswald'] uppercase tracking-wider">
         <button
           onClick={onOpenAllMeals}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-amber-400 text-zinc-950 hover:bg-amber-300 transition-colors whitespace-nowrap shrink-0 cursor-pointer shadow-xs"
+          className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-800 text-zinc-200 hover:text-white hover:bg-zinc-700 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
         >
-          <Utensils className="w-3.5 h-3.5 text-zinc-950" />
+          <Utensils className="w-3.5 h-3.5 text-amber-400" />
           <span>All Included Meals</span>
         </button>
 
