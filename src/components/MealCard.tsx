@@ -45,7 +45,7 @@ export const MealCard: React.FC<MealCardProps> = ({
 
   return (
     <article 
-      className={`relative flex flex-col justify-between rounded-lg border-2 transition-all duration-200 bg-white ${
+      className={`relative flex flex-col justify-between rounded-lg border-2 transition-all duration-200 bg-white overflow-hidden ${
         isLeftover
           ? 'border-teal-500 shadow-sm bg-teal-50/20'
           : isBatch
@@ -226,36 +226,44 @@ export const MealCard: React.FC<MealCardProps> = ({
       </div>
 
       {/* Card Action Footer */}
-      <div className="px-3 py-2 bg-zinc-50 border-t border-zinc-200 flex items-center justify-between text-xs font-['Oswald']">
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="flex items-center gap-1 text-zinc-600 hover:text-zinc-900 transition-colors uppercase tracking-wide cursor-pointer"
-        >
-          {isExpanded ? (
-            <>
-              <span>Hide Details</span>
-              <ChevronUp className="w-3.5 h-3.5" />
-            </>
-          ) : (
-            <>
-              <span>{isLeftover ? 'Reheat Tip' : `Ingredients (${meal.ingredients.length})`}</span>
-              <ChevronDown className="w-3.5 h-3.5" />
-            </>
-          )}
-        </button>
+      <div className="border-t border-zinc-200 text-xs font-['Oswald']">
+        {/* Top Tier: Ingredients / Details Disclosure */}
+        <div className="px-3.5 py-1.5 bg-zinc-50/90 flex items-center justify-between border-b border-zinc-200/70">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="flex items-center gap-1.5 text-zinc-600 hover:text-zinc-950 transition-colors uppercase tracking-wider cursor-pointer font-medium"
+          >
+            {isExpanded ? (
+              <>
+                <span>Hide Details</span>
+                <ChevronUp className="w-3.5 h-3.5 text-zinc-500" />
+              </>
+            ) : (
+              <>
+                <span>{isLeftover ? 'Reheat Tip' : `Ingredients (${meal.ingredients?.length ?? 0})`}</span>
+                <ChevronDown className="w-3.5 h-3.5 text-zinc-500" />
+              </>
+            )}
+          </button>
 
-        <div className="flex items-center gap-1">
+          <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-tight">
+            {isLeftover ? 'Reheat' : isBatch ? '4 Servings' : '2 Servings'}
+          </span>
+        </div>
+
+        {/* Bottom Tier: Action Buttons Toolbar */}
+        <div className="px-3 py-2 bg-zinc-100/70 flex items-center justify-end gap-1.5 sm:gap-2 flex-wrap">
           {onToggleBatch && !isLeftover && (
             <button
               onClick={onToggleBatch}
               title={isBatch ? "Change back to standard 2 servings" : "Batch cook double portion for leftovers"}
-              className={`flex items-center gap-1 px-2 py-1 rounded transition-colors uppercase cursor-pointer ${
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded border transition-colors uppercase cursor-pointer font-medium ${
                 isBatch 
-                  ? 'bg-amber-200 text-amber-900 font-bold' 
-                  : 'text-zinc-600 hover:bg-zinc-200'
+                  ? 'bg-amber-200 border-amber-400 text-amber-950 font-bold shadow-xs' 
+                  : 'bg-white border-zinc-300 text-zinc-700 hover:bg-zinc-50 hover:border-zinc-400 hover:text-zinc-900'
               }`}
             >
-              <Layers className="w-3 h-3 text-amber-700" />
+              <Layers className="w-3.5 h-3.5 text-amber-700 shrink-0" />
               <span>{isBatch ? 'Batch: 4x' : 'Batch 2x'}</span>
             </button>
           )}
@@ -264,9 +272,9 @@ export const MealCard: React.FC<MealCardProps> = ({
             <button
               onClick={onMakeLeftover}
               title="Set this lunch as leftovers from yesterday's dinner"
-              className="flex items-center gap-1 px-2 py-1 text-teal-700 hover:bg-teal-100 rounded transition-colors uppercase cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1 bg-white border border-teal-300 text-teal-800 hover:bg-teal-50 hover:border-teal-400 hover:text-teal-950 rounded transition-colors uppercase cursor-pointer font-medium"
             >
-              <RotateCcw className="w-3 h-3 text-teal-600" />
+              <RotateCcw className="w-3.5 h-3.5 text-teal-600 shrink-0" />
               <span>Leftover</span>
             </button>
           )}
@@ -274,18 +282,18 @@ export const MealCard: React.FC<MealCardProps> = ({
           <button
             onClick={onSwap}
             title="Swap dish with another recipe from diner catalog"
-            className="flex items-center gap-1 px-2 py-1 text-zinc-700 hover:bg-zinc-200 rounded transition-colors uppercase cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 bg-white border border-zinc-300 text-zinc-700 hover:bg-amber-50 hover:border-amber-300 hover:text-zinc-900 rounded transition-colors uppercase cursor-pointer font-medium"
           >
-            <Shuffle className="w-3 h-3 text-amber-600" />
+            <Shuffle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
             <span>Swap</span>
           </button>
 
           <button
             onClick={onEdit}
             title="Edit recipe title, cook times or ingredients"
-            className="flex items-center gap-1 px-2 py-1 text-zinc-700 hover:bg-zinc-200 rounded transition-colors uppercase cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 bg-white border border-zinc-300 text-zinc-700 hover:bg-red-50 hover:border-red-300 hover:text-zinc-900 rounded transition-colors uppercase cursor-pointer font-medium"
           >
-            <Edit3 className="w-3 h-3 text-red-600" />
+            <Edit3 className="w-3.5 h-3.5 text-red-600 shrink-0" />
             <span>Edit</span>
           </button>
         </div>

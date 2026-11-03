@@ -62,12 +62,6 @@ export const MarqueeBanner: React.FC<MarqueeBannerProps> = ({
               EL GORDO <span className="text-amber-400">&</span> EL FLACO
             </h1>
 
-            <p className="text-sm md:text-base text-zinc-300 font-['Plus_Jakarta_Sans'] leading-relaxed">
-              Custom dual-portion weekly meal board tailored for two hearty appetites. 
-              Cook once, eat twice: batch cook dinners so lunches become effortless 3-minute reheats, 
-              featuring your personalized favorites like Tortilla, Kässpätzle, Lasagne, Curry, and Fajitas.
-            </p>
-
             {/* Profile Tagline & Low-Cooking Metrics */}
             <div className="pt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-400 font-mono">
               <span className="text-amber-400 font-bold">● El Gordo: Hearty + Extra Protein</span>
