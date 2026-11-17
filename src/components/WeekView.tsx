@@ -143,6 +143,35 @@ export const WeekView: React.FC<WeekViewProps> = ({
         </div>
       </div>
 
+      {/* Diner Color Legend Bar */}
+      <div className="flex items-center justify-between gap-3 flex-wrap p-2.5 sm:px-4 sm:py-2.5 bg-white rounded-lg border-2 border-zinc-200/90 shadow-2xs text-xs font-['Oswald'] uppercase tracking-wider">
+        <div className="flex items-center gap-2">
+          <span className="text-zinc-500 font-bold font-mono text-[11px] uppercase tracking-normal">Color Guide:</span>
+        </div>
+        <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
+          <div className="flex items-center gap-1.5" title="Standard lunch (2 servings)">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 border border-amber-500 shadow-2xs"></span>
+            <span className="text-amber-900 font-medium">Lunch (Yellow)</span>
+          </div>
+          <div className="flex items-center gap-1.5" title="Double batch lunch (4 servings)">
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-600 border border-amber-700 shadow-2xs"></span>
+            <span className="text-amber-950 font-bold">Lunch 2x Batch (Dark Yellow)</span>
+          </div>
+          <div className="flex items-center gap-1.5" title="Standard dinner (2 servings)">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-600 border border-red-700 shadow-2xs"></span>
+            <span className="text-red-900 font-medium">Dinner (Red)</span>
+          </div>
+          <div className="flex items-center gap-1.5" title="Double batch dinner (4 servings)">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-800 border border-red-900 shadow-2xs"></span>
+            <span className="text-red-950 font-bold">Dinner 2x Batch (Dark Red)</span>
+          </div>
+          <div className="flex items-center gap-1.5" title="Reheated meal with 0m active cooking">
+            <span className="w-2.5 h-2.5 rounded-full bg-teal-500 border border-teal-600 shadow-2xs"></span>
+            <span className="text-teal-900 font-medium">Leftover Reheat (Teal)</span>
+          </div>
+        </div>
+      </div>
+
       {/* Grid of Days: Monday Through Sunday */}
       <div className={`grid ${getGridColsClass()} gap-6`}>
         {activeDays.map((day) => {

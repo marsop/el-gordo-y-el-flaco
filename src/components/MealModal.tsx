@@ -158,14 +158,20 @@ export const MealModal: React.FC<MealModalProps> = ({
                   disabled={isLeftover}
                   checked={isBatchCook}
                   onChange={(e) => setIsBatchCook(e.target.checked)}
-                  className="mt-0.5 rounded border-zinc-300 text-amber-600 focus:ring-amber-500"
+                  className={`mt-0.5 rounded border-zinc-300 ${
+                    meal.mealType === 'lunch'
+                      ? 'text-amber-600 focus:ring-amber-500'
+                      : 'text-red-800 focus:ring-red-700'
+                  }`}
                 />
                 <div>
                   <span className="font-bold text-zinc-900 block font-['Plus_Jakarta_Sans']">
                     Cook Double Batch (4 Servings)
                   </span>
                   <span className="text-[11px] text-zinc-500">
-                    Cook extra tonight to feed 2 people across two days.
+                    {meal.mealType === 'lunch'
+                      ? 'Cook extra lunch portions (Dark Yellow) to feed 2 people across two meals.'
+                      : 'Cook extra dinner portions (Dark Red) tonight to feed tomorrow\'s lunch.'}
                   </span>
                 </div>
               </label>

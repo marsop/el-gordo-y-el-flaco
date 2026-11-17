@@ -115,7 +115,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, plan,
                 <div className="border-b-2 border-zinc-900 pb-3 flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-black uppercase tracking-tight font-['Oswald'] text-zinc-950">
-                      EL GORDO Y EL FLACO
+                      EL GORDO & EL FLACO
                     </h2>
                     <span className="text-[11px] font-mono text-zinc-600 uppercase block">
                       Fast Food Diner Kitchen Dispatch · Weekly Meal Plan (2 Persons)
@@ -161,6 +161,11 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, plan,
                                     Leftover Reheat
                                   </span>
                                 )}
+                                {dp.lunch.isBatchCook && (
+                                  <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.2 bg-amber-200 text-amber-950 border border-amber-400 rounded font-mono">
+                                    Double Batch (4 Servings)
+                                  </span>
+                                )}
                               </div>
                               <span className="text-[10px] text-zinc-500 font-mono">
                                 {dp.lunch.isLeftover 
@@ -175,7 +180,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, plan,
                               <div className="flex items-center gap-1.5 flex-wrap">
                                 <span className="font-bold text-zinc-900">{dp.dinner.title}</span>
                                 {dp.dinner.isBatchCook && (
-                                  <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.2 bg-amber-100 text-amber-800 rounded font-mono">
+                                  <span className="text-[9px] font-black uppercase tracking-wider px-1.5 py-0.2 bg-red-200 text-red-950 border border-red-400 rounded font-mono">
                                     Double Batch (4 Servings)
                                   </span>
                                 )}
@@ -195,7 +200,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, plan,
                 </div>
 
                 <div className="border-t border-zinc-300 pt-3 text-[10px] text-zinc-500 font-mono flex items-center justify-between">
-                  <span>Prepared by El Gordo Y El Flaco Meal Planner</span>
+                  <span>Prepared by El Gordo & El Flaco Meal Planner</span>
                   <span>Week starting Monday</span>
                 </div>
               </div>

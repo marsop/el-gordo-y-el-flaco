@@ -252,7 +252,9 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
                 {/* Header */}
                 <div className="p-4 space-y-2">
                   <div className="flex items-center justify-between text-[11px] font-mono text-zinc-500">
-                    <span className="font-['Oswald'] uppercase font-bold text-red-700">
+                    <span className={`font-['Oswald'] uppercase font-bold ${
+                      meal.mealType === 'lunch' ? 'text-amber-700' : 'text-red-700'
+                    }`}>
                       {meal.mealType}
                     </span>
                     <div className="flex items-center gap-2">

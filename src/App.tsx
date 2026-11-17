@@ -602,8 +602,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div className="flex items-center gap-2 text-zinc-300">
             <span className="w-2 h-2 bg-red-600 rounded-full"></span>
-            <span className="font-['Oswald'] text-sm uppercase tracking-wider font-bold text-amber-400">
-              EL GORDO Y EL FLACO
+            <span className="font-['Oswald'] text-sm uppercase tracking-wider font-bold text-white">
+              EL GORDO <span className="text-amber-400">&</span> EL FLACO
             </span>
             <span>— 80s Fast Food Kitchen Dispatch · Cook Once, Eat Twice</span>
           </div>

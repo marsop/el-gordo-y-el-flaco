@@ -60,7 +60,7 @@ export const GroceryModal: React.FC<GroceryModalProps> = ({ isOpen, onClose, pla
   const checkedCount = Object.values(checkedItems).filter(Boolean).length;
 
   const handleCopy = () => {
-    const lines = [`🛒 EL GORDO Y EL FLACO — 2-PERSON GROCERY LIST (${plan.weekName})\n`];
+    const lines = [`🛒 EL GORDO & EL FLACO — 2-PERSON GROCERY LIST (${plan.weekName})\n`];
     Object.entries(categorized).forEach(([cat, items]) => {
       lines.push(`## ${cat}`);
       items.forEach((item) => {

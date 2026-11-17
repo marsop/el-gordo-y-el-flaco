@@ -49,7 +49,9 @@ export const MealCard: React.FC<MealCardProps> = ({
         isLeftover
           ? 'border-teal-500 shadow-sm bg-teal-50/20'
           : isBatch
-          ? 'border-amber-500 shadow-sm'
+          ? isLunch
+            ? 'border-amber-600 hover:border-amber-700 shadow-sm bg-amber-50/20'
+            : 'border-red-800 hover:border-red-900 shadow-sm bg-red-50/20'
           : isLunch 
           ? 'border-amber-400 hover:border-amber-500 shadow-sm' 
           : 'border-red-600 hover:border-red-700 shadow-sm'
@@ -61,7 +63,9 @@ export const MealCard: React.FC<MealCardProps> = ({
           isLeftover
             ? 'bg-teal-100 border-teal-300 text-teal-950 font-bold'
             : isBatch
-            ? 'bg-amber-100/90 border-amber-300 text-amber-950'
+            ? isLunch
+              ? 'bg-amber-200 border-amber-400 text-amber-950 font-bold'
+              : 'bg-red-200 border-red-300 text-red-950 font-bold'
             : isLunch 
             ? 'bg-amber-100/70 border-amber-300 text-amber-900' 
             : 'bg-red-50 border-red-200 text-red-900'
@@ -74,9 +78,9 @@ export const MealCard: React.FC<MealCardProps> = ({
               <span>Leftover Reheat (2 Diners)</span>
             </span>
           ) : isBatch ? (
-            <span className="flex items-center gap-1 text-amber-900">
-              <Layers className="w-3.5 h-3.5 text-amber-700" />
-              <span>Double Batch (4 Servings)</span>
+            <span className={`flex items-center gap-1.5 ${isLunch ? 'text-amber-950' : 'text-red-950'}`}>
+              <Layers className={`w-3.5 h-3.5 ${isLunch ? 'text-amber-800' : 'text-red-800'}`} />
+              <span>{isLunch ? 'Lunch Double Batch (4 Servings)' : 'Dinner Double Batch (4 Servings)'}</span>
             </span>
           ) : (
             <>
@@ -95,7 +99,13 @@ export const MealCard: React.FC<MealCardProps> = ({
             <>
               <span aria-hidden="true" className="opacity-40">·</span>
               <span className="flex items-center gap-0.5">
-                <Flame className="w-3 h-3 text-amber-600" />
+                <Flame className={`w-3 h-3 ${
+                  isLeftover 
+                    ? 'text-teal-700' 
+                    : isBatch 
+                    ? (isLunch ? 'text-amber-800' : 'text-red-700') 
+                    : (isLunch ? 'text-amber-600' : 'text-red-600')
+                }`} />
                 <span>{meal.calorieEstimate} kcal</span>
               </span>
             </>
@@ -122,17 +132,35 @@ export const MealCard: React.FC<MealCardProps> = ({
 
           {/* Batch Cook Notice Banner */}
           {isBatch && !isLeftover && (
-            <div className="mb-2.5 p-2 rounded bg-amber-50 border border-amber-300 text-amber-950 text-xs flex items-start gap-1.5">
-              <Layers className="w-3.5 h-3.5 text-amber-700 shrink-0 mt-0.5" />
+            <div className={`mb-2.5 p-2 rounded border text-xs flex items-start gap-1.5 ${
+              isLunch
+                ? 'bg-amber-100/90 border-amber-300 text-amber-950'
+                : 'bg-red-100/90 border-red-300 text-red-950'
+            }`}>
+              <Layers className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isLunch ? 'text-amber-800' : 'text-red-700'}`} />
               <div className="leading-tight">
                 <span className="font-bold">Cook once, eat twice: </span>
-                <span>Cook 4 portions tonight so tomorrow's lunch is ready with no extra effort!</span>
+                <span>
+                  {isLunch
+                    ? "Cook 4 portions for lunch so you have extra ready for another meal with zero effort!"
+                    : "Cook 4 portions tonight so tomorrow's lunch is ready with no extra effort!"}
+                </span>
               </div>
             </div>
           )}
 
           {/* Dish Title */}
-          <h4 className="text-base font-bold text-zinc-900 leading-snug font-['Plus_Jakarta_Sans'] group-hover:text-red-700">
+          <h4 className={`text-base font-bold text-zinc-900 leading-snug font-['Plus_Jakarta_Sans'] transition-colors ${
+            isLeftover
+              ? 'hover:text-teal-700'
+              : isBatch
+              ? isLunch
+                ? 'hover:text-amber-800'
+                : 'hover:text-red-900'
+              : isLunch
+              ? 'hover:text-amber-700'
+              : 'hover:text-red-700'
+          }`}>
             {meal.title}
           </h4>
 
@@ -246,8 +274,16 @@ export const MealCard: React.FC<MealCardProps> = ({
             )}
           </button>
 
-          <span className="text-[11px] font-mono text-zinc-400 uppercase tracking-tight">
-            {isLeftover ? 'Reheat' : isBatch ? '4 Servings' : '2 Servings'}
+          <span className={`text-[11px] font-mono uppercase tracking-tight font-semibold ${
+            isLeftover
+              ? 'text-teal-700'
+              : isBatch
+              ? isLunch
+                ? 'text-amber-800'
+                : 'text-red-800'
+              : 'text-zinc-400'
+          }`}>
+            {isLeftover ? 'Reheat' : isBatch ? '4 Servings (2x)' : '2 Servings'}
           </span>
         </div>
 
@@ -259,11 +295,17 @@ export const MealCard: React.FC<MealCardProps> = ({
               title={isBatch ? "Change back to standard 2 servings" : "Batch cook double portion for leftovers"}
               className={`flex items-center gap-1.5 px-2.5 py-1 rounded border transition-colors uppercase cursor-pointer font-medium ${
                 isBatch 
-                  ? 'bg-amber-200 border-amber-400 text-amber-950 font-bold shadow-xs' 
+                  ? isLunch
+                    ? 'bg-amber-300 border-amber-500 text-amber-950 font-bold shadow-xs' 
+                    : 'bg-red-200 border-red-400 text-red-950 font-bold shadow-xs'
                   : 'bg-white border-zinc-300 text-zinc-700 hover:bg-zinc-50 hover:border-zinc-400 hover:text-zinc-900'
               }`}
             >
-              <Layers className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+              <Layers className={`w-3.5 h-3.5 shrink-0 ${
+                isBatch 
+                  ? isLunch ? 'text-amber-900' : 'text-red-900'
+                  : isLunch ? 'text-amber-700' : 'text-red-700'
+              }`} />
               <span>{isBatch ? 'Batch: 4x' : 'Batch 2x'}</span>
             </button>
           )}

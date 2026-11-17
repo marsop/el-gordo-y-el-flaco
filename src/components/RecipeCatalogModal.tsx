@@ -170,7 +170,9 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
               >
                 <div>
                   <div className="flex items-center justify-between text-[11px] font-mono text-zinc-500 mb-1">
-                    <span className="font-['Oswald'] uppercase font-bold text-red-700">
+                    <span className={`font-['Oswald'] uppercase font-bold ${
+                      recipe.mealType === 'lunch' ? 'text-amber-700' : 'text-red-700'
+                    }`}>
                       {recipe.mealType}
                     </span>
                     <div className="flex items-center gap-2">
