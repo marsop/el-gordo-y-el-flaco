@@ -1,0 +1,95 @@
+{
+  "id": "dish-baked-lasagna",
+  "title": "Baked Lasagna",
+  "category": "Great Base",
+  "speed": "Slow Burn",
+  "season": "Winter",
+  "mealType": "dinner",
+  "prepTime": 20,
+  "cookTime": 45,
+  "servings": 2,
+  "calorieEstimate": 660,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Cover with foil and bake at 180°C for 15 mins, or microwave 3 mins covered.",
+  "tags": [
+    "Great Base",
+    "Slow Burn",
+    "Winter",
+    "Batch Hero",
+    "Comfort Food",
+    "Italian Bake",
+    "High Protein"
+  ],
+  "notes": "Layered with whole-wheat sheets, savory canned tuna, iron-rich spinach, broccoli florets, and light Maizena bechamel.",
+  "gordoPortionNotes": "Generous double corner cut with bubbling golden cheese crust, rich tomato tuna filling and extra milk bechamel.",
+  "flacoPortionNotes": "Center cut loaded with steamed broccoli, spinach, shredded pumpkin and carrots with light cheese topping.",
+  "ingredients": [
+    {
+      "id": "ing-las-1",
+      "name": "Whole-wheat lasagna sheets",
+      "amount": "250g (8-10 sheets)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-las-2",
+      "name": "Canned tuna",
+      "amount": "1 big can (250g drained)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-las-3",
+      "name": "Frozen spinach",
+      "amount": "200g thawed & squeezed",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-las-4",
+      "name": "Broccoli",
+      "amount": "150g small florets",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-las-5",
+      "name": "Carrot",
+      "amount": "1 grated",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-las-6",
+      "name": "Onion",
+      "amount": "1 finely diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-las-7",
+      "name": "Pumpkin",
+      "amount": "150g grated or thin diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-las-8",
+      "name": "Cheese (mozzarella or gouda)",
+      "amount": "100g shredded",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-las-9",
+      "name": "Tomato sauce",
+      "amount": "400g passata",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-las-10",
+      "name": "Milk",
+      "amount": "300ml",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "ing-las-11",
+      "name": "Maizena (cornstarch)",
+      "amount": "2 tbsp",
+      "category": "Pantry"
+    }
+  ]
+}

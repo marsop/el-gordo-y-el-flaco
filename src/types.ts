@@ -29,6 +29,15 @@ export interface Ingredient {
 
 export type LeftoverSuitability = 'excellent' | 'good' | 'cook_fresh_only';
 
+export type MasterCategory = 
+  | 'High Protein & High Fiber' 
+  | 'Great Base' 
+  | 'Moderately Balanced' 
+  | 'Remastered Classics';
+
+export type SpeedTag = 'Quick' | 'Standard' | 'Slow Burn';
+export type SeasonTag = 'All Year' | 'Summer' | 'Winter';
+
 export interface Meal {
   id: string;
   title: string;
@@ -44,6 +53,11 @@ export interface Meal {
   flacoPortionNotes?: string;
   usesExpiringItemIds?: string[];
   
+  // Master Recipe Metadata
+  category?: MasterCategory;
+  speed?: SpeedTag;
+  season?: SeasonTag;
+
   // Leftover & Low-Effort Batch Cooking
   leftoverSuitability?: LeftoverSuitability;
   isLeftover?: boolean;

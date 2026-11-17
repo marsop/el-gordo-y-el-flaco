@@ -1,0 +1,77 @@
+{
+  "id": "dish-baked-cream-cheese-orzo",
+  "title": "Baked Cream Cheese Orzo",
+  "category": "High Protein & High Fiber",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 10,
+  "cookTime": 25,
+  "servings": 2,
+  "calorieEstimate": 580,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Add a splash of vegetable broth or water; microwave 2 mins covered or warm in a skillet on medium heat.",
+  "tags": [
+    "High Protein & High Fiber",
+    "Standard",
+    "All Year",
+    "One-Pot Bake",
+    "Batch Hero",
+    "High Fiber",
+    "Vegetarian"
+  ],
+  "notes": "Orzo absorbs the lemon-herb broth and melted cream cheese for a creamy, risotto-like bake with no standing over the stove.",
+  "gordoPortionNotes": "Heaping bowl of creamy baked orzo with double chickpeas, herb cream cheese topping & lemon zest.",
+  "flacoPortionNotes": "Balanced orzo portion folded with generous baby spinach, wilted sweet cherry tomatoes and extra squeeze of lemon.",
+  "ingredients": [
+    {
+      "id": "ing-orzo-1",
+      "name": "Chickpeas",
+      "amount": "1 can (240g drained)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-orzo-2",
+      "name": "Baby spinach",
+      "amount": "150g fresh",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-orzo-3",
+      "name": "Cherry tomatoes",
+      "amount": "250g halved",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-orzo-4",
+      "name": "Orzo pasta",
+      "amount": "250g",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-orzo-5",
+      "name": "Yellow onion",
+      "amount": "1 diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-orzo-6",
+      "name": "Herb cream cheese",
+      "amount": "150g (Boursin or garlic-herb style)",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "ing-orzo-7",
+      "name": "Vegetable broth",
+      "amount": "600ml",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-orzo-8",
+      "name": "Lemon",
+      "amount": "1 fresh lemon (juiced & zested)",
+      "category": "Produce"
+    }
+  ]
+}

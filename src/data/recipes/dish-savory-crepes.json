@@ -1,0 +1,60 @@
+{
+  "id": "dish-savory-crepes",
+  "title": "Savory Crepes",
+  "category": "Moderately Balanced",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 12,
+  "cookTime": 15,
+  "servings": 2,
+  "calorieEstimate": 520,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Folded crepes re-crisp beautifully in a hot skillet with a tiny dab of butter for 1-2 mins per side.",
+  "tags": [
+    "Moderately Balanced",
+    "Standard",
+    "All Year",
+    "French Diner",
+    "Brunch & Dinner",
+    "Vegetarian"
+  ],
+  "notes": "Nutty buckwheat or whole-wheat crepes folded around bubbling melted Gruyère cheese, warm eggs, and sautéed zucchini and peppers.",
+  "gordoPortionNotes": "3 hearty filled buckwheat crepes with extra cheese, a fried egg nestled in the center, and side ham/chickpeas.",
+  "flacoPortionNotes": "2 delicate crepes generously stuffed with sautéed zucchini ribbons and sweet bell peppers with light cheese.",
+  "ingredients": [
+    {
+      "id": "ing-crep-1",
+      "name": "Buckwheat/whole-wheat flour",
+      "amount": "120g flour",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-crep-2",
+      "name": "Eggs",
+      "amount": "3 eggs (batter & filling)",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-crep-3",
+      "name": "Cheese",
+      "amount": "75g grated gruyère or emmental",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-crep-4",
+      "name": "Zucchini",
+      "amount": "1 medium sliced thin",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-crep-5",
+      "name": "Bell peppers",
+      "amount": "1 sliced thin strips",
+      "category": "Produce",
+      "isExpiring": true
+    }
+  ]
+}

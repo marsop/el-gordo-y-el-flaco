@@ -1,0 +1,63 @@
+{
+  "id": "dish-pesto-pasta-bowl",
+  "title": "Pesto Pasta Bowl",
+  "category": "Remastered Classics",
+  "speed": "Quick",
+  "season": "All Year",
+  "mealType": "lunch",
+  "prepTime": 5,
+  "cookTime": 12,
+  "servings": 2,
+  "calorieEstimate": 560,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Warm gently in microwave 1-2 mins covered or toss in skillet with a spoonful of hot water.",
+  "tags": [
+    "Remastered Classics",
+    "Quick",
+    "All Year",
+    "Italian Classic",
+    "Speedy 15m",
+    "High Protein"
+  ],
+  "notes": "Fragrant basil pesto coats whole-wheat pasta, juicy burst cherry tomatoes, and your choice of grilled chicken or tender white beans.",
+  "gordoPortionNotes": "Heaping bowl of whole-wheat pasta with grilled chicken strips, double pesto, toasted pine nuts or seeds, and parmesan.",
+  "flacoPortionNotes": "Whole-wheat pasta with tender white beans, sweet burst cherry tomatoes, fresh basil and parmesan.",
+  "ingredients": [
+    {
+      "id": "ing-pesto-1",
+      "name": "Whole-wheat pasta",
+      "amount": "220g penne or fusilli",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-pesto-2",
+      "name": "Pesto",
+      "amount": "80g basil pesto (3-4 tbsp)",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "ing-pesto-3",
+      "name": "Grilled chicken or white beans",
+      "amount": "250g grilled chicken (or 1 can white beans)",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "ing-pesto-4",
+      "name": "Cherry tomatoes",
+      "amount": "200g halved",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-pesto-5",
+      "name": "Parmesan",
+      "amount": "30g shaved",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "ing-pesto-6",
+      "name": "Olive oil",
+      "amount": "1 tbsp extra virgin",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

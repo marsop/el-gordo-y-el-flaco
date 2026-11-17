@@ -11,8 +11,13 @@ export const getRecipeById = (id: string): Meal | undefined =>
   ALL_RECIPES.find((r) => r.id === id);
 
 // Convenience category collections (derived from the unique recipe catalog)
-export const USER_FAVORITE_RECIPES: Meal[] = ALL_RECIPES.filter((r) => r.id.startsWith('fav-'));
-export const DINER_ORIGINALS: Meal[] = ALL_RECIPES.filter((r) => r.id.startsWith('rec-'));
+export const USER_FAVORITE_RECIPES: Meal[] = ALL_RECIPES;
+export const DINER_ORIGINALS: Meal[] = ALL_RECIPES;
 export const RECIPE_CATALOG: Meal[] = ALL_RECIPES;
+
+export const HIGH_PROTEIN_RECIPES: Meal[] = ALL_RECIPES.filter((r) => r.category === 'High Protein & High Fiber');
+export const GREAT_BASE_RECIPES: Meal[] = ALL_RECIPES.filter((r) => r.category === 'Great Base');
+export const BALANCED_RECIPES: Meal[] = ALL_RECIPES.filter((r) => r.category === 'Moderately Balanced');
+export const REMASTERED_CLASSICS_RECIPES: Meal[] = ALL_RECIPES.filter((r) => r.category === 'Remastered Classics');
 
 export default ALL_RECIPES;

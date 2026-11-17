@@ -1,0 +1,70 @@
+{
+  "id": "dish-protein-tomato-pasta",
+  "title": "Protein Tomato Pasta",
+  "category": "Remastered Classics",
+  "speed": "Quick",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 5,
+  "cookTime": 15,
+  "servings": 2,
+  "calorieEstimate": 540,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Reheat pasta and sauce in saucepan with 2 tbsp water; sprinkle fresh parmesan on top.",
+  "tags": [
+    "Remastered Classics",
+    "Quick",
+    "All Year",
+    "Italian Classic",
+    "Batch Hero",
+    "Plant Protein",
+    "Vegetarian"
+  ],
+  "notes": "Classic tomato pasta sauce naturally boosted with tender simmered white beans, aromatic garlic, onion, and parmesan.",
+  "gordoPortionNotes": "Heaping pasta bowl with extra white beans, double grated parmesan cheese, and olive oil drizzle.",
+  "flacoPortionNotes": "Al dente pasta tossed with rich tomato-bean sauce, wilted spinach/cherry tomatoes, and fresh oregano.",
+  "ingredients": [
+    {
+      "id": "ing-ptom-1",
+      "name": "Pasta",
+      "amount": "220g penne or spaghetti",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-ptom-2",
+      "name": "Tomato sauce",
+      "amount": "400g passata",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-ptom-3",
+      "name": "Garlic",
+      "amount": "3 cloves minced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-ptom-4",
+      "name": "Onion",
+      "amount": "1 small diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-ptom-5",
+      "name": "1 can white beans",
+      "amount": "1 can (240g drained cannellini)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-ptom-6",
+      "name": "Basil/oregano",
+      "amount": "1 handful fresh basil or dried oregano",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-ptom-7",
+      "name": "Parmesan",
+      "amount": "30g grated",
+      "category": "Dairy & Eggs"
+    }
+  ]
+}

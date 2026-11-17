@@ -1,0 +1,64 @@
+{
+  "id": "dish-huevos-rotos",
+  "title": "Huevos Rotos (Broken Eggs with Potatoes)",
+  "category": "Moderately Balanced",
+  "speed": "Standard",
+  "season": "Winter",
+  "mealType": "dinner",
+  "prepTime": 10,
+  "cookTime": 20,
+  "servings": 2,
+  "calorieEstimate": 580,
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Cook fresh! Runny egg yolks broken over hot olive-oil potatoes must be eaten right away.",
+  "tags": [
+    "Moderately Balanced",
+    "Standard",
+    "Winter",
+    "Spanish Diner",
+    "Comfort Skillet",
+    "High Protein"
+  ],
+  "notes": "Golden olive-oil browned skin-on potatoes topped with sunny fried eggs broken at the table so rich yolks coat the potatoes, served with lean ham or chickpeas and a fresh salad.",
+  "gordoPortionNotes": "Heaping plate of crispy potatoes, 2 broken eggs with runny yolks, extra slices of cured lean ham, and crusty bread.",
+  "flacoPortionNotes": "Roasted potatoes with 1 broken egg, spiced roasted chickpeas, fresh herbs, and a large side green salad.",
+  "ingredients": [
+    {
+      "id": "ing-rot-1",
+      "name": "Skin-on potatoes",
+      "amount": "450g sliced disks or fries",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-rot-2",
+      "name": "Olive oil",
+      "amount": "2 tbsp extra virgin",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "ing-rot-3",
+      "name": "3 fried eggs",
+      "amount": "3 large eggs fried sunny-side",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-rot-4",
+      "name": "Lean ham or chickpeas",
+      "amount": "80g lean ham (or 100g roasted chickpeas)",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "ing-rot-5",
+      "name": "Herbs",
+      "amount": "2 tbsp chopped parsley/thyme",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-rot-6",
+      "name": "Side salad",
+      "amount": "100g salad leaves with dressing",
+      "category": "Produce"
+    }
+  ]
+}

@@ -35,7 +35,7 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<
-    'all' | 'favorites' | 'lunch' | 'dinner' | 'leftovers' | 'quick'
+    'all' | 'cat1' | 'cat2' | 'cat3' | 'cat4' | 'quick' | 'leftovers' | 'summer' | 'winter'
   >('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -56,9 +56,12 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
     }
   });
 
-  const favoritesCount = recipes.filter((r) => r.tags.includes('User Favorite')).length;
+  const cat1Count = recipes.filter((r) => r.category === 'High Protein & High Fiber').length;
+  const cat2Count = recipes.filter((r) => r.category === 'Great Base').length;
+  const cat3Count = recipes.filter((r) => r.category === 'Moderately Balanced').length;
+  const cat4Count = recipes.filter((r) => r.category === 'Remastered Classics').length;
   const leftoverFriendlyCount = recipes.filter((r) => r.leftoverSuitability === 'excellent').length;
-  const quickCount = recipes.filter((r) => r.prepTime + r.cookTime <= 20).length;
+  const quickCount = recipes.filter((r) => r.speed === 'Quick' || r.prepTime + r.cookTime <= 20).length;
 
   const filtered = recipes.filter((r) => {
     const matchesSearch =
@@ -67,16 +70,22 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
       r.ingredients.some((i) => i.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     let matchesCat = true;
-    if (activeCategory === 'favorites') {
-      matchesCat = r.tags.includes('User Favorite');
-    } else if (activeCategory === 'lunch') {
-      matchesCat = r.mealType === 'lunch';
-    } else if (activeCategory === 'dinner') {
-      matchesCat = r.mealType === 'dinner';
+    if (activeCategory === 'cat1') {
+      matchesCat = r.category === 'High Protein & High Fiber';
+    } else if (activeCategory === 'cat2') {
+      matchesCat = r.category === 'Great Base';
+    } else if (activeCategory === 'cat3') {
+      matchesCat = r.category === 'Moderately Balanced';
+    } else if (activeCategory === 'cat4') {
+      matchesCat = r.category === 'Remastered Classics';
+    } else if (activeCategory === 'quick') {
+      matchesCat = r.speed === 'Quick' || r.prepTime + r.cookTime <= 20;
     } else if (activeCategory === 'leftovers') {
       matchesCat = r.leftoverSuitability === 'excellent';
-    } else if (activeCategory === 'quick') {
-      matchesCat = r.prepTime + r.cookTime <= 20;
+    } else if (activeCategory === 'summer') {
+      matchesCat = r.season === 'Summer';
+    } else if (activeCategory === 'winter') {
+      matchesCat = r.season === 'Winter';
     }
 
     return matchesSearch && matchesCat;
@@ -125,7 +134,7 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
             <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-2.5" />
             <input
               type="text"
-              placeholder="Search by meal name, tag, or ingredient (e.g. Tortilla, Kässpätzle, Salmon, Chicken)..."
+              placeholder="Search dishes (e.g. Fajitas, Orzo, Lasagna, Poke Bowl, Lentils, Kässpätzle)..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-9 pr-3 py-2 bg-white border border-zinc-300 rounded text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
@@ -145,14 +154,54 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
               All ({recipes.length})
             </button>
             <button
-              onClick={() => setActiveCategory('favorites')}
+              onClick={() => setActiveCategory('cat1')}
               className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'favorites'
-                  ? 'bg-amber-400 text-zinc-950 font-black shadow-xs'
+                activeCategory === 'cat1'
+                  ? 'bg-emerald-600 text-white font-black shadow-xs'
                   : 'text-zinc-700 hover:text-zinc-900'
               }`}
             >
-              ★ Favorites ({favoritesCount})
+              🟢 High Protein ({cat1Count})
+            </button>
+            <button
+              onClick={() => setActiveCategory('cat2')}
+              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'cat2'
+                  ? 'bg-amber-500 text-zinc-950 font-black shadow-xs'
+                  : 'text-zinc-700 hover:text-zinc-900'
+              }`}
+            >
+              🟡 Great Base ({cat2Count})
+            </button>
+            <button
+              onClick={() => setActiveCategory('cat3')}
+              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'cat3'
+                  ? 'bg-orange-500 text-white font-black shadow-xs'
+                  : 'text-zinc-700 hover:text-zinc-900'
+              }`}
+            >
+              🟠 Balanced ({cat3Count})
+            </button>
+            <button
+              onClick={() => setActiveCategory('cat4')}
+              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'cat4'
+                  ? 'bg-red-600 text-white font-black shadow-xs'
+                  : 'text-zinc-700 hover:text-zinc-900'
+              }`}
+            >
+              🔴 Classics ({cat4Count})
+            </button>
+            <button
+              onClick={() => setActiveCategory('quick')}
+              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
+                activeCategory === 'quick'
+                  ? 'bg-purple-600 text-white shadow-xs'
+                  : 'text-zinc-600 hover:text-zinc-900'
+              }`}
+            >
+              ⚡ Quick ≤20m ({quickCount})
             </button>
             <button
               onClick={() => setActiveCategory('leftovers')}
@@ -162,37 +211,27 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              Batch Friendly ({leftoverFriendlyCount})
+              🍲 Batch Heroes ({leftoverFriendlyCount})
             </button>
             <button
-              onClick={() => setActiveCategory('quick')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'quick'
-                  ? 'bg-red-600 text-white shadow-xs'
-                  : 'text-zinc-600 hover:text-zinc-900'
-              }`}
-            >
-              Quick ≤20m ({quickCount})
-            </button>
-            <button
-              onClick={() => setActiveCategory('lunch')}
+              onClick={() => setActiveCategory('summer')}
               className={`px-2 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'lunch'
-                  ? 'bg-white text-zinc-900 shadow-xs'
+                activeCategory === 'summer'
+                  ? 'bg-sky-600 text-white shadow-xs'
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              Lunches
+              ☀️ Summer
             </button>
             <button
-              onClick={() => setActiveCategory('dinner')}
+              onClick={() => setActiveCategory('winter')}
               className={`px-2 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'dinner'
-                  ? 'bg-white text-zinc-900 shadow-xs'
+                activeCategory === 'winter'
+                  ? 'bg-slate-700 text-white shadow-xs'
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
-              Dinners
+              ❄️ Winter
             </button>
           </div>
         </div>
@@ -226,6 +265,37 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
                       )}
                     </div>
                   </div>
+
+                  {/* Category, Speed & Season Badges */}
+                  {meal.category && (
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className={`text-[10px] font-bold font-['Oswald'] uppercase px-2 py-0.5 rounded border ${
+                        meal.category === 'High Protein & High Fiber'
+                          ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                          : meal.category === 'Great Base'
+                          ? 'bg-amber-50 text-amber-900 border-amber-300'
+                          : meal.category === 'Moderately Balanced'
+                          ? 'bg-orange-50 text-orange-900 border-orange-300'
+                          : 'bg-red-50 text-red-900 border-red-300'
+                      }`}>
+                        {meal.category === 'High Protein & High Fiber' && '🟢 '}
+                        {meal.category === 'Great Base' && '🟡 '}
+                        {meal.category === 'Moderately Balanced' && '🟠 '}
+                        {meal.category === 'Remastered Classics' && '🔴 '}
+                        {meal.category}
+                      </span>
+                      {meal.speed && (
+                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-300">
+                          [{meal.speed}]
+                        </span>
+                      )}
+                      {meal.season && (
+                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-300">
+                          [{meal.season}]
+                        </span>
+                      )}
+                    </div>
+                  )}
 
                   <h4 className="font-bold text-zinc-900 text-base leading-snug font-['Plus_Jakarta_Sans']">
                     {meal.title}

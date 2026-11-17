@@ -1,0 +1,70 @@
+{
+  "id": "dish-oven-baked-salmon",
+  "title": "Oven-Baked Salmon, Potatoes & Greens",
+  "category": "Remastered Classics",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 12,
+  "cookTime": 22,
+  "servings": 2,
+  "calorieEstimate": 610,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Warm gently in oven at 160°C for 6 mins to prevent drying out, or flake cold over lunch salad.",
+  "tags": [
+    "Remastered Classics",
+    "Standard",
+    "All Year",
+    "Sheet Pan",
+    "Seafood",
+    "Omega-3",
+    "High Protein"
+  ],
+  "notes": "One-pan sheet dinner. Salmon fillet roasted alongside crispy skin-on baby potatoes, tender asparagus or green beans, lemon, garlic, and dill.",
+  "gordoPortionNotes": "Generous thick-cut salmon fillet (220g) with double roasted crispy potatoes, garlic herb butter, and asparagus.",
+  "flacoPortionNotes": "Salmon fillet (150g) roasted with fresh lemon wedges, lots of crisp green beans or asparagus, and baby potatoes.",
+  "ingredients": [
+    {
+      "id": "ing-salm-1",
+      "name": "Salmon fillet",
+      "amount": "350g (2 fresh fillets)",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "ing-salm-2",
+      "name": "Skin-on potatoes",
+      "amount": "400g baby potatoes halved",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-salm-3",
+      "name": "Asparagus or green beans",
+      "amount": "250g trimmed",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-salm-4",
+      "name": "Olive oil",
+      "amount": "2 tbsp extra virgin",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "ing-salm-5",
+      "name": "Lemon",
+      "amount": "1 lemon sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-salm-6",
+      "name": "Garlic",
+      "amount": "3 cloves minced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-salm-7",
+      "name": "Dill/rosemary",
+      "amount": "2 sprigs fresh dill or rosemary",
+      "category": "Produce"
+    }
+  ]
+}

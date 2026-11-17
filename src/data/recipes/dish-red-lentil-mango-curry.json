@@ -1,0 +1,102 @@
+{
+  "id": "dish-red-lentil-mango-curry",
+  "title": "Red Lentil Mango Curry",
+  "category": "High Protein & High Fiber",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 12,
+  "cookTime": 25,
+  "servings": 2,
+  "calorieEstimate": 570,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Warms up velvety and fragrant in microwave 2 mins or small saucepan. Finish with a fresh squeeze of lime.",
+  "tags": [
+    "High Protein & High Fiber",
+    "Standard",
+    "All Year",
+    "Batch Hero",
+    "Curry",
+    "Plant Protein",
+    "High Fiber"
+  ],
+  "notes": "Peanut butter, creamy coconut milk, and frozen mango melt into a luscious sweet-savory curry with simmered red lentils.",
+  "gordoPortionNotes": "Double portion of red lentil curry served over basmati rice with extra peanut butter swirl and yogurt dollop.",
+  "flacoPortionNotes": "Lentil curry loaded with bell peppers, tender carrots, cherry tomatoes, fresh coriander and light Greek yogurt.",
+  "ingredients": [
+    {
+      "id": "ing-cur-1",
+      "name": "Red lentils",
+      "amount": "250g rinsed",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-cur-2",
+      "name": "Peanut butter",
+      "amount": "2 tbsp (40g) creamy",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-cur-3",
+      "name": "Greek yogurt",
+      "amount": "100g (for swirl topping)",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-cur-4",
+      "name": "Coconut milk",
+      "amount": "1 can (400ml)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-cur-5",
+      "name": "Carrots",
+      "amount": "200g sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-cur-6",
+      "name": "Bell pepper",
+      "amount": "1 red bell pepper chopped",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-cur-7",
+      "name": "Frozen mango",
+      "amount": "200g chunks",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-cur-8",
+      "name": "Cherry tomatoes",
+      "amount": "150g halved",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-cur-9",
+      "name": "Spring onion",
+      "amount": "3 stalks sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-cur-10",
+      "name": "Maple syrup",
+      "amount": "1 tbsp",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-cur-11",
+      "name": "Lime juice",
+      "amount": "1 lime juiced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-cur-12",
+      "name": "Fresh coriander",
+      "amount": "1 bunch chopped cilantro",
+      "category": "Produce"
+    }
+  ]
+}

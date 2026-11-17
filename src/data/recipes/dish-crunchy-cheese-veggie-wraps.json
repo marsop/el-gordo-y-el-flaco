@@ -1,0 +1,72 @@
+{
+  "id": "dish-crunchy-cheese-veggie-wraps",
+  "title": "Crunchy Cheese & Veggie Wraps",
+  "category": "Moderately Balanced",
+  "speed": "Quick",
+  "season": "All Year",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 5,
+  "servings": 2,
+  "calorieEstimate": 510,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Toast in a dry skillet or panini press 2 mins for melted cheese and a crunchy wrap exterior.",
+  "tags": [
+    "Moderately Balanced",
+    "Quick",
+    "All Year",
+    "Speedy Lunch",
+    "Wrap Night",
+    "Vegetarian"
+  ],
+  "notes": "Whole-wheat wraps stuffed with scrambled eggs, melted cheese, black beans, and crisp matchstick carrots, zucchini, and peppers.",
+  "gordoPortionNotes": "2 large toasted wraps stuffed with scrambled eggs, melted cheddar, black beans and spicy crema.",
+  "flacoPortionNotes": "1 crunchy wrap filled with sautéed veggies, black beans, scrambled egg and fresh crisp salsa.",
+  "ingredients": [
+    {
+      "id": "ing-wrap-1",
+      "name": "Whole-wheat wraps",
+      "amount": "3-4 wraps",
+      "category": "Bakery"
+    },
+    {
+      "id": "ing-wrap-2",
+      "name": "Eggs",
+      "amount": "3 eggs scrambled",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-wrap-3",
+      "name": "Cheese",
+      "amount": "60g shredded cheddar or gouda",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-wrap-4",
+      "name": "Black beans",
+      "amount": "1/2 cup (120g drained)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-wrap-5",
+      "name": "Carrots",
+      "amount": "1 grated",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-wrap-6",
+      "name": "Zucchini",
+      "amount": "1 small thinly sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-wrap-7",
+      "name": "Bell peppers",
+      "amount": "1 sliced strips",
+      "category": "Produce",
+      "isExpiring": true
+    }
+  ]
+}

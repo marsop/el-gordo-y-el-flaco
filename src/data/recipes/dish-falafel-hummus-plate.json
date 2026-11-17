@@ -1,0 +1,64 @@
+{
+  "id": "dish-falafel-hummus-plate",
+  "title": "Falafel and Hummus Plate",
+  "category": "Great Base",
+  "speed": "Quick",
+  "season": "Summer",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 10,
+  "servings": 2,
+  "calorieEstimate": 530,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat falafel in toaster oven or air fryer 3 mins to restore crispiness; warm pita on dry skillet.",
+  "tags": [
+    "Great Base",
+    "Quick",
+    "Summer",
+    "Middle Eastern",
+    "Plant Protein",
+    "Vegetarian"
+  ],
+  "notes": "Crispy spiced falafels paired with silky hummus, blistered zucchini & bell peppers in extra virgin olive oil.",
+  "gordoPortionNotes": "6 golden falafels, warm whole-wheat pita bread, generous hummus swirl with smoked paprika and extra olive oil.",
+  "flacoPortionNotes": "4 falafels over charred zucchini and sweet bell peppers with lemon-tahini cucumber salad and dollop of hummus.",
+  "ingredients": [
+    {
+      "id": "ing-fal-1",
+      "name": "Falafel",
+      "amount": "10 prepared falafel balls",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-fal-2",
+      "name": "Hummus",
+      "amount": "200g classic",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-fal-3",
+      "name": "Whole-wheat pita bread",
+      "amount": "3 pita rounds",
+      "category": "Bakery"
+    },
+    {
+      "id": "ing-fal-4",
+      "name": "Zucchini",
+      "amount": "1 sliced ribbons",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-fal-5",
+      "name": "Bell peppers",
+      "amount": "2 sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-fal-6",
+      "name": "Olive oil",
+      "amount": "2 tbsp extra virgin",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

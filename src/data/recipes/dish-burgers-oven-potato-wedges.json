@@ -1,0 +1,72 @@
+{
+  "id": "dish-burgers-oven-potato-wedges",
+  "title": "Burgers with Oven Potato Wedges",
+  "category": "Moderately Balanced",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 25,
+  "servings": 2,
+  "calorieEstimate": 670,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Re-crisp potato wedges in oven/air fryer at 200°C for 4 mins; warm burger patty in skillet.",
+  "tags": [
+    "Moderately Balanced",
+    "Standard",
+    "All Year",
+    "80s Diner",
+    "Burger Night",
+    "High Protein"
+  ],
+  "notes": "Drive-thru diner classic! Seared patties in toasted buns with seasoned skin-on potato wedges, roasted zucchini, and crisp green salad.",
+  "gordoPortionNotes": "Double protein burger with melted cheese, toasted brioche bun, hearty pile of seasoned potato wedges and garlic herb dip.",
+  "flacoPortionNotes": "Bunless or single-bun burger patty with sliced tomatoes, roasted zucchini, bell peppers and large side green salad with light vinaigrette.",
+  "ingredients": [
+    {
+      "id": "ing-burg-1",
+      "name": "Protein patties/fish cutlets",
+      "amount": "2-4 patties (beef, turkey, or fish)",
+      "category": "Meat & Seafood",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-burg-2",
+      "name": "Burger buns",
+      "amount": "2-4 soft buns",
+      "category": "Bakery",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-burg-3",
+      "name": "Unpeeled potato wedges",
+      "amount": "450g skin-on potatoes cut in wedges",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-burg-4",
+      "name": "Bell peppers",
+      "amount": "1 sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-burg-5",
+      "name": "Zucchini",
+      "amount": "1 medium sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-burg-6",
+      "name": "Dip",
+      "amount": "3 tbsp burger sauce / herb dip",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "ing-burg-7",
+      "name": "Side green salad",
+      "amount": "100g fresh mixed greens",
+      "category": "Produce"
+    }
+  ]
+}

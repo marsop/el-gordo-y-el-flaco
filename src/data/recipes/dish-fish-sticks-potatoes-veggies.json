@@ -1,0 +1,51 @@
+{
+  "id": "dish-fish-sticks-potatoes-veggies",
+  "title": "Fish Sticks with Potatoes and Veggies",
+  "category": "Moderately Balanced",
+  "speed": "Quick",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 8,
+  "cookTime": 15,
+  "servings": 2,
+  "calorieEstimate": 560,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Re-crisp fish sticks in air fryer or toaster oven 3 mins; steam or pan-toss potatoes.",
+  "tags": [
+    "Moderately Balanced",
+    "Quick",
+    "All Year",
+    "Retro Classic",
+    "Comfort Food",
+    "Seafood"
+  ],
+  "notes": "An 80s diner nostalgic plate! Golden crispy fish sticks served with unpeeled boiled yellow potatoes and buttery mixed vegetables.",
+  "gordoPortionNotes": "8 crisp fish sticks, generous bowl of buttered yellow potatoes with parsley, and tartar sauce.",
+  "flacoPortionNotes": "4-5 fish sticks, steamed unpeeled potatoes, double portion of mixed frozen vegetables with fresh lemon juice.",
+  "ingredients": [
+    {
+      "id": "ing-fish-1",
+      "name": "Fish sticks",
+      "amount": "12-14 breaded cod sticks",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "ing-fish-2",
+      "name": "Unpeeled yellow potatoes",
+      "amount": "400g small/medium potatoes",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-fish-3",
+      "name": "Mixed frozen veggies",
+      "amount": "250g (peas, corn, carrots)",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-fish-4",
+      "name": "Lemon wedges",
+      "amount": "1 lemon in wedges",
+      "category": "Produce"
+    }
+  ]
+}

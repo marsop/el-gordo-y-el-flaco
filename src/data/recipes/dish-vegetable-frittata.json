@@ -1,0 +1,67 @@
+{
+  "id": "dish-vegetable-frittata",
+  "title": "Vegetable Frittata",
+  "category": "Great Base",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "lunch",
+  "prepTime": 12,
+  "cookTime": 18,
+  "servings": 2,
+  "calorieEstimate": 460,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Frittata wedges are delicious hot or room temp! Warm in toaster oven 3 mins or enjoy cold.",
+  "tags": [
+    "Great Base",
+    "Standard",
+    "All Year",
+    "Batch Hero",
+    "High Protein",
+    "Low Carb",
+    "Vegetarian"
+  ],
+  "notes": "Fluffy egg bake loaded with tender sautéed zucchini, carrots, bell peppers, and melted cheese, paired with a fresh side salad.",
+  "gordoPortionNotes": "Two thick warm frittata wedges with melted cheese crust and crusty side baguette.",
+  "flacoPortionNotes": "Frittata wedge paired with an abundant crisp mixed green salad tossed in Dijon vinaigrette.",
+  "ingredients": [
+    {
+      "id": "ing-frit-1",
+      "name": "Eggs",
+      "amount": "4-5 large eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-frit-2",
+      "name": "Cheese (cheddar or gruyere)",
+      "amount": "60g grated",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-frit-3",
+      "name": "Carrots",
+      "amount": "1 grated",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-frit-4",
+      "name": "Zucchini",
+      "amount": "1 medium diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-frit-5",
+      "name": "Bell peppers",
+      "amount": "1 diced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-frit-6",
+      "name": "Side salad with vinaigrette",
+      "amount": "120g mixed greens + dressing",
+      "category": "Produce"
+    }
+  ]
+}
