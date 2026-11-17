@@ -12,15 +12,17 @@ import {
   INITIAL_PANTRY_ITEMS, 
   INITIAL_WEEKLY_PLAN, 
   RECIPE_CATALOG, 
+  INITIAL_INGREDIENTS,
   createLeftoverFromMeal
 } from './data/defaultData';
-import { DayOfWeek, Meal, PantryItem, WeeklyPlan, DAYS_OF_WEEK } from './types';
+import { DayOfWeek, Meal, PantryItem, WeeklyPlan, DAYS_OF_WEEK, MasterIngredient } from './types';
 import { getExpiringIngredientsForMeal } from './utils/pantryMatcher';
 import { Check, Info, Sparkles, ChefHat } from 'lucide-react';
 
 const PLAN_STORAGE_KEY = 'el_gordo_weekly_plan_v3';
 const PANTRY_STORAGE_KEY = 'el_gordo_pantry_v3';
 const RECIPES_STORAGE_KEY = 'el_gordo_recipes_v3';
+const INGREDIENTS_STORAGE_KEY = 'el_gordo_ingredients_v4';
 
 export default function App() {
   const [plan, setPlan] = useState<WeeklyPlan>(() => {
@@ -45,6 +47,19 @@ export default function App() {
     return INITIAL_PANTRY_ITEMS;
   });
 
+  const [availableIngredients, setAvailableIngredients] = useState<MasterIngredient[]>(() => {
+    try {
+      const saved = localStorage.getItem(INGREDIENTS_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch {}
+    return INITIAL_INGREDIENTS;
+  });
+
   const [recipes, setRecipes] = useState<Meal[]>(() => {
     try {
       const saved = localStorage.getItem(RECIPES_STORAGE_KEY);
@@ -62,6 +77,7 @@ export default function App() {
     try {
       localStorage.removeItem('el_gordo_weekly_plan');
       localStorage.removeItem('el_gordo_recipes');
+      localStorage.removeItem('el_gordo_ingredients_v3');
     } catch {}
   }, []);
 
@@ -76,6 +92,10 @@ export default function App() {
   useEffect(() => {
     try { localStorage.setItem(RECIPES_STORAGE_KEY, JSON.stringify(recipes)); } catch {}
   }, [recipes]);
+
+  useEffect(() => {
+    try { localStorage.setItem(INGREDIENTS_STORAGE_KEY, JSON.stringify(availableIngredients)); } catch {}
+  }, [availableIngredients]);
 
   // Active Menu Rotation preset
   const [activePreset, setActivePreset] = useState<'favorites' | 'batch_leftovers' | 'quick' | 'comfort' | null>(() => {
@@ -509,6 +529,20 @@ export default function App() {
     );
   };
 
+  const handleAddMasterIngredient = (item: Omit<MasterIngredient, 'id'>) => {
+    const newItem: MasterIngredient = {
+      ...item,
+      id: `ing-custom-${Date.now()}`
+    };
+    setAvailableIngredients((prev) => [newItem, ...prev]);
+    showToast(`Added "${newItem.name}" to ingredients list!`);
+  };
+
+  const handleDeleteMasterIngredient = (id: string) => {
+    setAvailableIngredients((prev) => prev.filter((i) => i.id !== id));
+    showToast('Removed ingredient from master list.');
+  };
+
   const urgentPantryCount = pantryItems.filter((i) => i.daysUntilExpiry <= 2).length;
 
   return (
@@ -600,10 +634,13 @@ export default function App() {
         isOpen={isPantryOpen}
         onClose={() => setIsPantryOpen(false)}
         pantryItems={pantryItems}
+        availableIngredients={availableIngredients}
         onAddPantryItem={handleAddPantryItem}
         onDeletePantryItem={handleDeletePantryItem}
         onUpdatePantryItem={handleUpdatePantryItem}
         onPrioritizeExpiring={handlePrioritizeExpiring}
+        onAddMasterIngredient={handleAddMasterIngredient}
+        onDeleteMasterIngredient={handleDeleteMasterIngredient}
         plan={plan}
       />
 

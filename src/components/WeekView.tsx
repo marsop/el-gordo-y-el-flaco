@@ -24,11 +24,51 @@ export const WeekView: React.FC<WeekViewProps> = ({
   onMakeLeftover,
   onOpenAllMeals
 }) => {
-  const [selectedDayFilter, setSelectedDayFilter] = useState<'ALL' | DayOfWeek>('ALL');
+  const [selectedDays, setSelectedDays] = useState<DayOfWeek[]>(DAYS_OF_WEEK);
 
-  const activeDays = selectedDayFilter === 'ALL' 
-    ? DAYS_OF_WEEK 
-    : [selectedDayFilter];
+  const isAllSelected = selectedDays.length === DAYS_OF_WEEK.length;
+  const activeDays = selectedDays;
+  const isSingleDay = activeDays.length === 1;
+
+  const handleSelectAll = () => {
+    setSelectedDays(DAYS_OF_WEEK);
+  };
+
+  const handleToggleDay = (day: DayOfWeek, e: React.MouseEvent) => {
+    if (e.altKey) {
+      setSelectedDays([day]);
+      return;
+    }
+
+    if (isAllSelected) {
+      setSelectedDays([day]);
+    } else if (selectedDays.includes(day)) {
+      if (selectedDays.length === 1) {
+        setSelectedDays(DAYS_OF_WEEK);
+      } else {
+        setSelectedDays(selectedDays.filter((d) => d !== day));
+      }
+    } else {
+      setSelectedDays(DAYS_OF_WEEK.filter((d) => selectedDays.includes(d) || d === day));
+    }
+  };
+
+  const handleDayDoubleClick = (day: DayOfWeek) => {
+    setSelectedDays([day]);
+  };
+
+  const getGridColsClass = () => {
+    switch (activeDays.length) {
+      case 1:
+        return 'grid-cols-1';
+      case 2:
+        return 'grid-cols-1 md:grid-cols-2';
+      case 3:
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+      default:
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+    }
+  };
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-6">
@@ -40,7 +80,11 @@ export const WeekView: React.FC<WeekViewProps> = ({
               Weekly Meal Rotation
             </h2>
             <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 bg-red-600 text-white rounded font-mono">
-              Mon — Sun
+              {isAllSelected 
+                ? 'Mon — Sun' 
+                : activeDays.length === 1 
+                ? `${activeDays[0]} Only` 
+                : `${activeDays.length} Days Selected`}
             </span>
             {onOpenAllMeals && (
               <button
@@ -60,9 +104,9 @@ export const WeekView: React.FC<WeekViewProps> = ({
         {/* Day Filter Segmented Bar (Interactive functional buttons) */}
         <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
           <button
-            onClick={() => setSelectedDayFilter('ALL')}
+            onClick={handleSelectAll}
             className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded font-['Oswald'] transition-colors whitespace-nowrap cursor-pointer ${
-              selectedDayFilter === 'ALL'
+              isAllSelected
                 ? 'bg-zinc-950 text-amber-400 shadow-sm'
                 : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
             }`}
@@ -71,13 +115,23 @@ export const WeekView: React.FC<WeekViewProps> = ({
           </button>
           {DAYS_OF_WEEK.map((day) => {
             const shortName = day.slice(0, 3);
-            const isSelected = selectedDayFilter === day;
+            const isSelected = selectedDays.includes(day);
+            const isHighlighted = isSelected && !isAllSelected;
+
             return (
               <button
                 key={day}
-                onClick={() => setSelectedDayFilter(day)}
+                onClick={(e) => handleToggleDay(day, e)}
+                onDoubleClick={() => handleDayDoubleClick(day)}
+                title={
+                  isAllSelected
+                    ? `View ${day} (Double-click or Alt-click to solo)`
+                    : isSelected
+                    ? `Remove ${day} from view`
+                    : `Add ${day} to view (Double-click or Alt-click to solo)`
+                }
                 className={`px-2.5 py-1.5 text-xs font-bold uppercase tracking-wider rounded font-['Oswald'] transition-colors whitespace-nowrap cursor-pointer ${
-                  isSelected
+                  isHighlighted
                     ? 'bg-red-600 text-white shadow-sm'
                     : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
                 }`}
@@ -90,7 +144,7 @@ export const WeekView: React.FC<WeekViewProps> = ({
       </div>
 
       {/* Grid of Days: Monday Through Sunday */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className={`grid ${getGridColsClass()} gap-6`}>
         {activeDays.map((day) => {
           const dayPlan = plan.days[day];
           if (!dayPlan) return null;
@@ -110,7 +164,7 @@ export const WeekView: React.FC<WeekViewProps> = ({
               <div className="flex items-center justify-between border-b-2 border-zinc-300 pb-2.5">
                 <div>
                   <div className="flex items-baseline gap-2">
-                    <h3 className="text-lg font-black uppercase tracking-tight text-zinc-900 font-['Oswald']">
+                    <h3 className={`font-black uppercase tracking-tight text-zinc-900 font-['Oswald'] ${isSingleDay ? 'text-xl sm:text-2xl' : 'text-lg'}`}>
                       {day}
                     </h3>
                     <span className="text-xs font-mono font-semibold text-zinc-500">
@@ -125,14 +179,25 @@ export const WeekView: React.FC<WeekViewProps> = ({
                 <button
                   onClick={() => onShuffleDay(day)}
                   title={`Shuffle ${day}'s Lunch and Dinner`}
-                  className="p-1.5 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200 rounded transition-colors cursor-pointer"
+                  className={
+                    isSingleDay
+                      ? "flex items-center gap-1.5 px-2.5 py-1 bg-white hover:bg-zinc-100 text-zinc-700 border border-zinc-300 rounded font-['Oswald'] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                      : "p-1.5 text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200 rounded transition-colors cursor-pointer"
+                  }
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
+                  {isSingleDay && <span className="hidden sm:inline">Shuffle Day</span>}
                 </button>
               </div>
 
               {/* Day's Meals: Lunch & Dinner */}
-              <div className="space-y-3 flex-1 flex flex-col justify-between">
+              <div
+                className={
+                  isSingleDay
+                    ? "grid grid-cols-1 md:grid-cols-2 gap-4 items-start"
+                    : "space-y-3 flex-1 flex flex-col justify-between"
+                }
+              >
                 {/* 1. Lunch */}
                 <MealCard
                   meal={dayPlan.lunch}

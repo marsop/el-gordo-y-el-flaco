@@ -87,8 +87,6 @@ export const MarqueeBanner: React.FC<MarqueeBannerProps> = ({
           {/* Brand & Concept Hero */}
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-amber-400 font-['Oswald']">
-              <span>Drive-Thru Special</span>
-              <span aria-hidden="true">·</span>
               <span>2 Meals / Day for 2 People</span>
             </div>
 

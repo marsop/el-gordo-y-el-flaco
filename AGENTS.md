@@ -52,7 +52,7 @@ Welcome to the **El Gordo Y El Flaco** repository. This document provides techni
 │   │   ├── MarqueeBanner.tsx     # Animated ticker with meal stats & pantry alerts
 │   │   ├── MealCard.tsx          # Card for lunch/dinner slots with leftover badges
 │   │   ├── MealModal.tsx         # Detailed meal editor (ingredients, portions)
-│   │   ├── PantryDrawer.tsx      # Slide-out pantry inventory with expiry tracker
+│   │   ├── PantryDrawer.tsx      # Centered expiring pantry inventory modal with expiry tracker
 │   │   ├── RecipeCatalogModal.tsx# Recipe book with filters, search, and swap selection
 │   │   └── WeekView.tsx          # Monday-to-Sunday 7-day responsive layout
 │   ├── data/

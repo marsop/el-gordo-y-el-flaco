@@ -6,8 +6,9 @@ import {
   DINER_ORIGINALS,
   getRecipeById
 } from './recipes';
+import { INITIAL_INGREDIENTS } from './defaultIngredients';
 
-export { ALL_RECIPES, RECIPE_CATALOG, USER_FAVORITE_RECIPES, DINER_ORIGINALS, getRecipeById };
+export { ALL_RECIPES, RECIPE_CATALOG, USER_FAVORITE_RECIPES, DINER_ORIGINALS, getRecipeById, INITIAL_INGREDIENTS };
 
 export const INITIAL_PANTRY_ITEMS: PantryItem[] = [
   { id: 'p1', name: 'Baby Spinach (Organic)', category: 'Produce', quantity: '1 bag (200g)', daysUntilExpiry: 1 },
