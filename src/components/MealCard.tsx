@@ -116,39 +116,6 @@ export const MealCard: React.FC<MealCardProps> = ({
       {/* Main Content Area */}
       <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
         <div>
-          {/* Leftover Notice Banner */}
-          {isLeftover && (
-            <div className="mb-2.5 p-2 rounded bg-teal-50 border border-teal-200 text-teal-900 text-xs flex items-start gap-1.5">
-              <RotateCcw className="w-3.5 h-3.5 text-teal-600 shrink-0 mt-0.5" />
-              <div className="leading-tight">
-                <span className="font-bold">Zero cooking effort! </span>
-                <span>
-                  Portion saved from {meal.sourceDay || 'previous'} {meal.sourceMealType || 'dinner'}. 
-                  {meal.reheatInstructions ? ` ${meal.reheatInstructions}` : ' Microwave 2 mins or warm in pan.'}
-                </span>
-              </div>
-            </div>
-          )}
-
-          {/* Batch Cook Notice Banner */}
-          {isBatch && !isLeftover && (
-            <div className={`mb-2.5 p-2 rounded border text-xs flex items-start gap-1.5 ${
-              isLunch
-                ? 'bg-amber-100/90 border-amber-300 text-amber-950'
-                : 'bg-red-100/90 border-red-300 text-red-950'
-            }`}>
-              <Layers className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${isLunch ? 'text-amber-800' : 'text-red-700'}`} />
-              <div className="leading-tight">
-                <span className="font-bold">Cook once, eat twice: </span>
-                <span>
-                  {isLunch
-                    ? "Cook 4 portions for lunch so you have extra ready for another meal with zero effort!"
-                    : "Cook 4 portions tonight so tomorrow's lunch is ready with no extra effort!"}
-                </span>
-              </div>
-            </div>
-          )}
-
           {/* Dish Title */}
           <h4 className={`text-base font-bold text-zinc-900 leading-snug font-['Plus_Jakarta_Sans'] transition-colors ${
             isLeftover
