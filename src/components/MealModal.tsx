@@ -92,7 +92,8 @@ export const MealModal: React.FC<MealModalProps> = ({
   };
 
   const handleRemoveTag = (tagToRemove: string) => {
-    setTags((prev) => prev.filter((t) => t !== tagToRemove));
+    const targetDef = getTagDefinition(tagToRemove);
+    setTags((prev) => prev.filter((t) => getTagDefinition(t).id !== targetDef.id));
   };
 
   const handleAddCustomTag = (e?: React.FormEvent) => {

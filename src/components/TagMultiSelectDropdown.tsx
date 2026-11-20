@@ -44,21 +44,35 @@ export const TagMultiSelectDropdown: React.FC<TagMultiSelectDropdownProps> = ({
   const [tagSearch, setTagSearch] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Compute all available tags (curated + any tags present in current recipes)
+  // Compute all available tags (curated + any tags present in current recipes, deduplicated canonically)
   const allTags = React.useMemo(() => {
+    const seen = new Set<string>();
+    const tags: string[] = [];
+
+    const addTag = (raw: string) => {
+      const trimmed = (raw || '').trim();
+      if (!trimmed || trimmed.toLowerCase() === 'standard') return;
+      const def = getTagDefinition(trimmed);
+      if (!seen.has(def.id)) {
+        seen.add(def.id);
+        tags.push(def.label);
+      }
+    };
+
     if (availableTags && availableTags.length > 0) {
-      return availableTags;
+      availableTags.forEach(addTag);
+      return tags;
     }
-    const set = new Set<string>();
+
     // Add default curated tags first
-    DEFAULT_FILTER_TAGS.forEach((t) => set.add(t));
+    DEFAULT_FILTER_TAGS.forEach(addTag);
     // Add any tags present on recipes
     recipes.forEach((r) => {
       if (Array.isArray(r.tags)) {
-        r.tags.forEach((t) => set.add(t));
+        r.tags.forEach(addTag);
       }
     });
-    return Array.from(set);
+    return tags;
   }, [availableTags, recipes]);
 
   // Compute recipe counts for each tag

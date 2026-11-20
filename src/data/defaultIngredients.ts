@@ -1,10 +1,13 @@
 import { MasterIngredient } from '../types';
+import { ALL_RECIPES } from './recipes';
+import { isIngredientMatchingPantryItem } from '../utils/pantryMatcher';
 
 /**
- * Master catalog of ingredients maintained as a standalone collection.
- * Curated and deduplicated: no plurals, no composite recipe instructions.
+ * Curated master catalog of ingredients.
+ * Filtered and enriched dynamically so that every single ingredient
+ * is verified to be required for one or more diner dishes.
  */
-export const INITIAL_INGREDIENTS: MasterIngredient[] = [
+const RAW_INGREDIENTS: Omit<MasterIngredient, 'usedInDishes'>[] = [
   {
     "id": "ing-asparagus",
     "name": "Asparagus",
@@ -322,7 +325,7 @@ export const INITIAL_INGREDIENTS: MasterIngredient[] = [
   },
   {
     "id": "ing-ground-beef-turkey",
-    "name": "Ground Beef / Turkey",
+    "name": "Protein Patties / Beef / Turkey",
     "category": "Meat & Seafood",
     "defaultQuantity": "500g lean",
     "defaultDaysUntilExpiry": 2
@@ -699,3 +702,29 @@ export const INITIAL_INGREDIENTS: MasterIngredient[] = [
     "defaultDaysUntilExpiry": 4
   }
 ];
+
+/**
+ * Helper to identify which dishes in the diner catalog require a given ingredient.
+ */
+export function getDishesForIngredient(masterName: string): string[] {
+  const dishes: string[] = [];
+  for (const recipe of ALL_RECIPES) {
+    if (recipe.ingredients.some((ing) => isIngredientMatchingPantryItem(ing.name, masterName))) {
+      dishes.push(recipe.title);
+    }
+  }
+  return dishes;
+}
+
+/**
+ * Dish-anchored ingredients catalog:
+ * Contains strictly ingredients required for one or more recipes in ALL_RECIPES.
+ */
+export const INITIAL_INGREDIENTS: MasterIngredient[] = RAW_INGREDIENTS.map((item) => {
+  const usedInDishes = getDishesForIngredient(item.name);
+  return {
+    ...item,
+    usedInDishes
+  };
+}).filter((item) => item.usedInDishes && item.usedInDishes.length > 0);
+

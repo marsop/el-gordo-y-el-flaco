@@ -1,4 +1,4 @@
-import { TagDefinition, Meal } from '../types';
+import { TagDefinition, Meal, WeeklyPlan } from '../types';
 
 /**
  * Canonical Tag Registry for El Gordo & El Flaco
@@ -402,6 +402,9 @@ export const TAG_ALIASES: Record<string, string> = {
   // Quick
   'quick': 'quick',
   'quick ≤20m': 'quick',
+  'quick ≤20 m': 'quick',
+  'quick <=20m': 'quick',
+  'quick <=20 m': 'quick',
   'speedy lunch': 'quick',
   'speedy 15m': 'quick',
   'quick skillet': 'quick',
@@ -420,7 +423,8 @@ export const TAG_ALIASES: Record<string, string> = {
   'summer': 'summer',
   'winter': 'winter',
   'all year': 'all-year',
-  'standard': 'all-year',
+  'all-year': 'all-year',
+  'allyear': 'all-year',
 
   // Dietary
   'high fiber': 'high-fiber',
@@ -576,6 +580,8 @@ export function getTagDefinition(rawTag: string): TagDefinition {
 
 /**
  * Normalize and deduplicate a list of tag strings.
+ * Filters out legacy filler tags (like 'Standard' speed), empty strings,
+ * and collapses variant aliases to their canonical definitions.
  */
 export function normalizeTagList(tags: string[]): string[] {
   if (!Array.isArray(tags)) return [];
@@ -583,7 +589,13 @@ export function normalizeTagList(tags: string[]): string[] {
   const normalized: string[] = [];
 
   tags.forEach((raw) => {
-    const def = getTagDefinition(raw);
+    const trimmed = (raw || '').trim();
+    if (!trimmed) return;
+
+    // Ignore legacy/filler speed tag 'standard' so it never generates duplicate or unwanted badges
+    if (trimmed.toLowerCase() === 'standard') return;
+
+    const def = getTagDefinition(trimmed);
     if (!seenSlugs.has(def.id)) {
       seenSlugs.add(def.id);
       normalized.push(def.label);
@@ -591,6 +603,39 @@ export function normalizeTagList(tags: string[]): string[] {
   });
 
   return normalized;
+}
+
+/**
+ * Deduplicate and normalize tags for a meal object.
+ */
+export function normalizeMealTags<T extends Meal>(meal: T): T {
+  if (!meal) return meal;
+  return {
+    ...meal,
+    tags: normalizeTagList(meal.tags || [])
+  };
+}
+
+/**
+ * Deduplicate and normalize tags across every meal in a weekly plan.
+ */
+export function normalizeWeeklyPlan(plan: WeeklyPlan): WeeklyPlan {
+  if (!plan || !plan.days) return plan;
+  const days = { ...plan.days };
+  for (const day of Object.keys(days) as (keyof typeof days)[]) {
+    const dayPlan = days[day];
+    if (dayPlan) {
+      days[day] = {
+        ...dayPlan,
+        lunch: normalizeMealTags(dayPlan.lunch),
+        dinner: normalizeMealTags(dayPlan.dinner)
+      };
+    }
+  }
+  return {
+    ...plan,
+    days
+  };
 }
 
 /**

@@ -1,7 +1,7 @@
 import { DAYS_OF_WEEK, WeeklyPlan, PantryItem } from '../types';
 import { isIngredientExpiring } from './pantryMatcher';
 import { getAggregatedGroceryList } from './groceryUtils';
-import { getTagDefinition } from './tagRegistry';
+import { getTagDefinition, normalizeTagList } from './tagRegistry';
 
 /**
  * Escapes values for safe CSV format
@@ -60,7 +60,7 @@ export function exportToCSV(plan: WeeklyPlan): void {
       escapeCSV(dayPlan.lunch.prepTime),
       escapeCSV(dayPlan.lunch.cookTime),
       escapeCSV(dayPlan.lunch.calorieEstimate || ''),
-      escapeCSV(dayPlan.lunch.tags.join(', ')),
+      escapeCSV(normalizeTagList(dayPlan.lunch.tags).join(', ')),
       escapeCSV(lunchIngs),
       escapeCSV(dayPlan.lunch.reheatInstructions || ''),
       escapeCSV(dayPlan.lunch.notes),
@@ -87,7 +87,7 @@ export function exportToCSV(plan: WeeklyPlan): void {
       escapeCSV(dayPlan.dinner.prepTime),
       escapeCSV(dayPlan.dinner.cookTime),
       escapeCSV(dayPlan.dinner.calorieEstimate || ''),
-      escapeCSV(dayPlan.dinner.tags.join(', ')),
+      escapeCSV(normalizeTagList(dayPlan.dinner.tags).join(', ')),
       escapeCSV(dinnerIngs),
       escapeCSV(dayPlan.dinner.reheatInstructions || ''),
       escapeCSV(dayPlan.dinner.notes),
@@ -163,7 +163,7 @@ export function generateMarkdown(plan: WeeklyPlan, pantryItems?: PantryItem[]): 
     } else {
       lines.push(`- **Time:** ${dp.lunch.prepTime}m prep · ${dp.lunch.cookTime}m cook | **Est:** ~${dp.lunch.calorieEstimate || 500} kcal/person`);
     }
-    const lunchTagsFormatted = dp.lunch.tags.map((t) => {
+    const lunchTagsFormatted = normalizeTagList(dp.lunch.tags).map((t) => {
       const def = getTagDefinition(t);
       return `${def.emoji} ${def.label}`;
     }).join(' · ');
@@ -194,7 +194,7 @@ export function generateMarkdown(plan: WeeklyPlan, pantryItems?: PantryItem[]): 
     if (dp.dinner.leftoverSuitability) {
       lines.push(`- **Keeping Quality:** ${dp.dinner.leftoverSuitability === 'excellent' ? 'Excellent (keeps 3-4 days)' : dp.dinner.leftoverSuitability === 'good' ? 'Good (keeps 2 days)' : 'Cook fresh only'}`);
     }
-    const dinnerTagsFormatted = dp.dinner.tags.map((t) => {
+    const dinnerTagsFormatted = normalizeTagList(dp.dinner.tags).map((t) => {
       const def = getTagDefinition(t);
       return `${def.emoji} ${def.label}`;
     }).join(' · ');

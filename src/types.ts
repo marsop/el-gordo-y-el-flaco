@@ -41,6 +41,7 @@ export interface MasterIngredient {
   category: IngredientCategory;
   defaultQuantity?: string;
   defaultDaysUntilExpiry?: number;
+  usedInDishes?: string[];
 }
 
 export type LeftoverSuitability = 'excellent' | 'good' | 'cook_fresh_only';

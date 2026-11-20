@@ -17,7 +17,7 @@ import {
 import { Meal, WeeklyPlan, DayOfWeek, DAYS_OF_WEEK } from '../types';
 import { TagBadge } from './TagBadge';
 import { TagMultiSelectDropdown } from './TagMultiSelectDropdown';
-import { mealMatchesTag, getTagDefinition } from '../utils/tagRegistry';
+import { mealMatchesTag, getTagDefinition, normalizeTagList } from '../utils/tagRegistry';
 
 
 interface AllMealsModalProps {
@@ -247,7 +247,7 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
 
                   {/* Unified Tags */}
                   <div className="flex flex-wrap items-center gap-1.5">
-                    {meal.tags.map((t) => (
+                    {normalizeTagList(meal.tags).map((t) => (
                       <TagBadge key={t} tag={t} size="xs" />
                     ))}
                   </div>

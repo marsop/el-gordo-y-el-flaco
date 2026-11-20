@@ -25,8 +25,6 @@ interface PantryDrawerProps {
   onDeletePantryItem: (id: string) => void;
   onUpdatePantryItem?: (id: string, updates: Partial<PantryItem>) => void;
   onPrioritizeExpiring: () => void;
-  onAddMasterIngredient?: (item: Omit<MasterIngredient, 'id'>) => void;
-  onDeleteMasterIngredient?: (id: string) => void;
   plan: WeeklyPlan;
 }
 
@@ -75,8 +73,6 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
   onDeletePantryItem,
   onUpdatePantryItem,
   onPrioritizeExpiring,
-  onAddMasterIngredient,
-  onDeleteMasterIngredient,
   plan
 }) => {
   // Navigation tabs: 'expiring' = active soon-to-expire inventory; 'ingredients' = separate master ingredients catalog
@@ -91,11 +87,6 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
   // Master ingredients list filter state
   const [ingSearch, setIngSearch] = useState('');
   const [ingCategory, setIngCategory] = useState<string>('All');
-  const [isAddingNewMaster, setIsAddingNewMaster] = useState(false);
-  const [newMasterName, setNewMasterName] = useState('');
-  const [newMasterCat, setNewMasterCat] = useState<IngredientCategory>('Produce');
-  const [newMasterQty, setNewMasterQty] = useState('');
-  const [newMasterDays, setNewMasterDays] = useState<number>(3);
 
   // Recently added toast for the catalog view
   const [recentlyAddedId, setRecentlyAddedId] = useState<string | null>(null);
@@ -122,21 +113,6 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
       category
     });
 
-    // If the typed item doesn't exist in master catalog yet, add it automatically
-    if (
-      onAddMasterIngredient &&
-      !availableIngredients.some(
-        (i) => i.name.toLowerCase() === trimmedName.toLowerCase()
-      )
-    ) {
-      onAddMasterIngredient({
-        name: trimmedName,
-        category,
-        defaultQuantity: quantity.trim() || '1 portion',
-        defaultDaysUntilExpiry: Number(daysUntilExpiry) || 2
-      });
-    }
-
     setName('');
     setQuantity('');
     setDaysUntilExpiry(2);
@@ -154,24 +130,6 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
     setTimeout(() => {
       setRecentlyAddedId((curr) => (curr === item.id ? null : curr));
     }, 2000);
-  };
-
-  // Add new ingredient to master catalog
-  const handleCreateMasterIngredient = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newMasterName.trim()) return;
-    if (onAddMasterIngredient) {
-      onAddMasterIngredient({
-        name: newMasterName.trim(),
-        category: newMasterCat,
-        defaultQuantity: newMasterQty.trim() || '1 portion',
-        defaultDaysUntilExpiry: Number(newMasterDays) || 3
-      });
-    }
-    setNewMasterName('');
-    setNewMasterQty('');
-    setNewMasterDays(3);
-    setIsAddingNewMaster(false);
   };
 
   // Filter master ingredients
@@ -431,17 +389,6 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
                         }
                       }}
                       onSelectIngredient={handleSelectIngredient}
-                      onAddCustomIngredient={(newIng) => {
-                        if (onAddMasterIngredient) {
-                          onAddMasterIngredient(newIng);
-                        }
-                        setName(newIng.name);
-                        setCategory(newIng.category);
-                        if (newIng.defaultQuantity) setQuantity(newIng.defaultQuantity);
-                        if (newIng.defaultDaysUntilExpiry !== undefined) {
-                          setDaysUntilExpiry(newIng.defaultDaysUntilExpiry);
-                        }
-                      }}
                       dropdownPosition="top"
                       placeholder="Select or type ingredient..."
                     />
@@ -558,85 +505,20 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
               </div>
             </div>
 
-            {/* Quick Add New Master Ingredient Form Button */}
+            {/* Dish-Anchored Ingredients Header */}
             <div className="p-3 sm:px-6 bg-zinc-100 border-b border-zinc-200 flex items-center justify-between text-xs shrink-0">
-              <span className="font-bold text-zinc-700 font-['Oswald'] uppercase tracking-wider">
-                Cataloged Ingredients ({filteredMasterIngredients.length})
-              </span>
-              <button
-                type="button"
-                onClick={() => setIsAddingNewMaster((prev) => !prev)}
-                className="px-2.5 py-1 bg-zinc-900 hover:bg-zinc-800 text-amber-300 rounded font-['Oswald'] text-[11px] font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
-              >
-                <Plus className="w-3 h-3" />
-                <span>{isAddingNewMaster ? 'Close Form' : 'New Ingredient'}</span>
-              </button>
-            </div>
-
-            {/* Expandable Form to Add New Master Ingredient */}
-            {isAddingNewMaster && (
-              <form
-                onSubmit={handleCreateMasterIngredient}
-                className="p-3 sm:p-5 bg-amber-50 border-b border-amber-200 space-y-2.5 shrink-0 animate-in slide-in-from-top-2 duration-150 text-xs"
-              >
-                <span className="font-bold font-['Oswald'] uppercase tracking-wider text-amber-950 block">
-                  Add Item to Master Ingredients List
+              <div className="flex items-center gap-2">
+                <span className="font-bold text-zinc-800 font-['Oswald'] uppercase tracking-wider">
+                  Dish Ingredients ({filteredMasterIngredients.length})
                 </span>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  <input
-                    type="text"
-                    required
-                    placeholder="Ingredient Name"
-                    value={newMasterName}
-                    onChange={(e) => setNewMasterName(e.target.value)}
-                    className="px-2.5 py-1.5 bg-white border border-amber-300 rounded focus:ring-1 focus:ring-red-500 focus:outline-none"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Default Qty (e.g. 200g)"
-                    value={newMasterQty}
-                    onChange={(e) => setNewMasterQty(e.target.value)}
-                    className="px-2.5 py-1.5 bg-white border border-amber-300 rounded focus:ring-1 focus:ring-red-500 focus:outline-none"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  <select
-                    value={newMasterCat}
-                    onChange={(e) => setNewMasterCat(e.target.value as IngredientCategory)}
-                    className="px-2.5 py-1.5 bg-white border border-amber-300 rounded focus:ring-1 focus:ring-red-500 focus:outline-none"
-                  >
-                    {CATEGORIES.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat}
-                      </option>
-                    ))}
-                  </select>
-
-                  <div className="flex items-center gap-1.5">
-                    <input
-                      type="number"
-                      min="1"
-                      max="365"
-                      value={newMasterDays}
-                      onChange={(e) => setNewMasterDays(parseInt(e.target.value) || 3)}
-                      className="w-16 px-2 py-1.5 bg-white border border-amber-300 rounded focus:ring-1 focus:ring-red-500 focus:outline-none font-mono"
-                    />
-                    <span className="text-[11px] text-zinc-600 font-['Plus_Jakarta_Sans'] whitespace-nowrap">
-                      days shelf life
-                    </span>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-1.5 bg-red-600 hover:bg-red-500 text-white font-bold uppercase tracking-wider rounded font-['Oswald'] cursor-pointer transition-colors shadow-xs"
-                >
-                  Save Ingredient to Catalog
-                </button>
-              </form>
-            )}
+                <span className="text-[10px] bg-amber-100 text-amber-900 border border-amber-300 px-1.5 py-0.5 rounded font-mono font-medium hidden sm:inline">
+                  Fixed Dish Catalog
+                </span>
+              </div>
+              <span className="text-[11px] text-zinc-500 font-['Plus_Jakarta_Sans']">
+                Required across Diner recipes
+              </span>
+            </div>
 
             {/* Master Ingredients Scrollable Table */}
             <div className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-1.5 min-h-0">
@@ -676,6 +558,21 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
                             </>
                           )}
                         </div>
+
+                        {/* Associated dishes required for */}
+                        {item.usedInDishes && item.usedInDishes.length > 0 && (
+                          <div className="mt-1 flex items-center gap-1.5 text-[10px]">
+                            <span className="font-bold font-['Oswald'] uppercase tracking-wider px-1.5 py-0.2 rounded bg-amber-50 text-amber-900 border border-amber-200 font-mono shrink-0">
+                              {item.usedInDishes.length} {item.usedInDishes.length === 1 ? 'dish' : 'dishes'}
+                            </span>
+                            <span
+                              className="text-zinc-500 truncate"
+                              title={item.usedInDishes.join(', ')}
+                            >
+                              {item.usedInDishes.join(', ')}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-1.5 shrink-0">
@@ -701,17 +598,6 @@ export const PantryDrawer: React.FC<PantryDrawerProps> = ({
                             </>
                           )}
                         </button>
-
-                        {onDeleteMasterIngredient && (
-                          <button
-                            type="button"
-                            onClick={() => onDeleteMasterIngredient(item.id)}
-                            title="Remove from master catalog"
-                            className="p-1 text-zinc-300 hover:text-red-500 rounded transition-colors cursor-pointer"
-                          >
-                            <Trash2 className="w-3.5 h-3.5" />
-                          </button>
-                        )}
                       </div>
                     </div>
                   );

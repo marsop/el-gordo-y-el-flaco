@@ -15,6 +15,7 @@ import {
 import { Meal, PantryItem } from '../types';
 import { getExpiringIngredientsForMeal, isIngredientExpiring } from '../utils/pantryMatcher';
 import { TagBadge } from './TagBadge';
+import { normalizeTagList } from '../utils/tagRegistry';
 
 interface MealCardProps {
   meal: Meal;
@@ -134,7 +135,7 @@ export const MealCard: React.FC<MealCardProps> = ({
 
           {/* Unified Tags */}
           <div className="mt-2 flex flex-wrap items-center gap-1.5">
-            {meal.tags.map((tag) => (
+            {normalizeTagList(meal.tags).map((tag) => (
               <TagBadge key={tag} tag={tag} size="xs" />
             ))}
           </div>

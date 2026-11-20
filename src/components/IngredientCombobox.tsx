@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { ChevronDown, Check, Plus, X, Search, Tag } from 'lucide-react';
+import { ChevronDown, Check, X, Search } from 'lucide-react';
 import { MasterIngredient, IngredientCategory } from '../types';
 
 interface IngredientComboboxProps {
@@ -7,7 +7,6 @@ interface IngredientComboboxProps {
   value: string;
   onChange: (value: string, matchedIngredient?: MasterIngredient) => void;
   onSelectIngredient: (ingredient: MasterIngredient) => void;
-  onAddCustomIngredient?: (ingredient: Omit<MasterIngredient, 'id'>) => void;
   placeholder?: string;
   categoryFilter?: IngredientCategory;
   disabled?: boolean;
@@ -55,7 +54,6 @@ export const IngredientCombobox: React.FC<IngredientComboboxProps> = ({
   value,
   onChange,
   onSelectIngredient,
-  onAddCustomIngredient,
   placeholder = 'Select or type ingredient (e.g. Avocado)...',
   categoryFilter,
   disabled = false,
@@ -163,27 +161,6 @@ export const IngredientCombobox: React.FC<IngredientComboboxProps> = ({
   const handleClear = () => {
     onChange('');
     inputRef.current?.focus();
-  };
-
-  // Determine if typed value is not in ingredients list
-  const isCustomEntry =
-    value.trim().length > 0 &&
-    !ingredients.some(
-      (i) => i.name.toLowerCase() === value.trim().toLowerCase()
-    );
-
-  const handleAddCustom = (cat: IngredientCategory = 'Produce') => {
-    if (!value.trim()) return;
-    const newName = value.trim();
-    if (onAddCustomIngredient) {
-      onAddCustomIngredient({
-        name: newName,
-        category: cat,
-        defaultQuantity: '1 portion',
-        defaultDaysUntilExpiry: 3
-      });
-    }
-    setIsOpen(false);
   };
 
   return (
@@ -339,23 +316,6 @@ export const IngredientCombobox: React.FC<IngredientComboboxProps> = ({
               </li>
             )}
           </ul>
-
-          {/* Custom Ingredient Creation Banner if typed text is unique */}
-          {isCustomEntry && (
-            <div className="p-2 bg-amber-50 border-t border-amber-200 flex items-center justify-between gap-2">
-              <div className="text-[11px] text-amber-900 truncate">
-                <span className="font-bold">Not in list?</span> Add &quot;{value.trim()}&quot; to master catalog
-              </div>
-              <button
-                type="button"
-                onClick={() => handleAddCustom('Produce')}
-                className="px-2 py-1 bg-zinc-900 hover:bg-zinc-800 text-amber-300 text-[10px] font-bold uppercase tracking-wider rounded font-['Oswald'] shrink-0 flex items-center gap-1 cursor-pointer"
-              >
-                <Plus className="w-3 h-3" />
-                <span>Save to List</span>
-              </button>
-            </div>
-          )}
         </div>
       )}
     </div>

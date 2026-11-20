@@ -17,12 +17,12 @@ import {
 } from './data/defaultData';
 import { DayOfWeek, Meal, PantryItem, WeeklyPlan, DAYS_OF_WEEK, MasterIngredient } from './types';
 import { getExpiringIngredientsForMeal } from './utils/pantryMatcher';
+import { normalizeMealTags, normalizeWeeklyPlan } from './utils/tagRegistry';
 import { Check, Info, Sparkles, ChefHat } from 'lucide-react';
 
 const PLAN_STORAGE_KEY = 'el_gordo_weekly_plan_v3';
 const PANTRY_STORAGE_KEY = 'el_gordo_pantry_v3';
 const RECIPES_STORAGE_KEY = 'el_gordo_recipes_v3';
-const INGREDIENTS_STORAGE_KEY = 'el_gordo_ingredients_v4';
 
 export default function App() {
   const [plan, setPlan] = useState<WeeklyPlan>(() => {
@@ -32,11 +32,11 @@ export default function App() {
         const parsed = JSON.parse(saved);
         const monDinner = parsed?.days?.Monday?.dinner;
         if (monDinner?.id && !monDinner.id.startsWith('fav-') && !monDinner.id.startsWith('rec-')) {
-          return parsed;
+          return normalizeWeeklyPlan(parsed);
         }
       }
     } catch {}
-    return INITIAL_WEEKLY_PLAN;
+    return normalizeWeeklyPlan(INITIAL_WEEKLY_PLAN);
   });
 
   const [pantryItems, setPantryItems] = useState<PantryItem[]>(() => {
@@ -47,18 +47,8 @@ export default function App() {
     return INITIAL_PANTRY_ITEMS;
   });
 
-  const [availableIngredients, setAvailableIngredients] = useState<MasterIngredient[]>(() => {
-    try {
-      const saved = localStorage.getItem(INGREDIENTS_STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
-      }
-    } catch {}
-    return INITIAL_INGREDIENTS;
-  });
+  // Fixed dish-anchored canonical ingredients catalog (required for 1 or more diner recipes)
+  const availableIngredients: MasterIngredient[] = INITIAL_INGREDIENTS;
 
   const [recipes, setRecipes] = useState<Meal[]>(() => {
     try {
@@ -66,11 +56,11 @@ export default function App() {
       if (saved) {
         const parsed: Meal[] = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0 && !parsed.some((r) => r.id.startsWith('fav-') || r.id.startsWith('rec-'))) {
-          return parsed;
+          return parsed.map(normalizeMealTags);
         }
       }
     } catch {}
-    return RECIPE_CATALOG;
+    return RECIPE_CATALOG.map(normalizeMealTags);
   });
 
   useEffect(() => {
@@ -78,6 +68,7 @@ export default function App() {
       localStorage.removeItem('el_gordo_weekly_plan');
       localStorage.removeItem('el_gordo_recipes');
       localStorage.removeItem('el_gordo_ingredients_v3');
+      localStorage.removeItem('el_gordo_ingredients_v4');
     } catch {}
   }, []);
 
@@ -92,10 +83,6 @@ export default function App() {
   useEffect(() => {
     try { localStorage.setItem(RECIPES_STORAGE_KEY, JSON.stringify(recipes)); } catch {}
   }, [recipes]);
-
-  useEffect(() => {
-    try { localStorage.setItem(INGREDIENTS_STORAGE_KEY, JSON.stringify(availableIngredients)); } catch {}
-  }, [availableIngredients]);
 
   // Active Menu Rotation preset
   const [activePreset, setActivePreset] = useState<'favorites' | 'batch_leftovers' | 'quick' | 'comfort' | null>(() => {
@@ -156,7 +143,7 @@ export default function App() {
         ...prev.days,
         [day]: {
           ...prev.days[day],
-          [mealType]: { ...recipe, mealType, isLeftover: false }
+          [mealType]: { ...normalizeMealTags(recipe), mealType, isLeftover: false }
         }
       }
     }));
@@ -176,7 +163,7 @@ export default function App() {
         ...prev.days,
         [day]: {
           ...prev.days[day],
-          [mealType]: updatedMeal
+          [mealType]: normalizeMealTags(updatedMeal)
         }
       }
     }));
@@ -305,7 +292,7 @@ export default function App() {
     // Sun Dinner: Oven-Baked Salmon, Potatoes & Greens
     newDays['Sunday'].dinner = recipes.find((r) => r.id === 'dish-oven-baked-salmon') || recipes[12];
 
-    setPlan((prev) => ({ ...prev, days: newDays }));
+    setPlan((prev) => normalizeWeeklyPlan({ ...prev, days: newDays }));
     showToast('Applied "Cook Once, Eat Twice" plan! 4 meals are zero-cooking reheats.');
   };
 
@@ -317,7 +304,7 @@ export default function App() {
     const randomLunch = lunches[Math.floor(Math.random() * lunches.length)] || recipes[0];
     const randomDinner = dinners[Math.floor(Math.random() * dinners.length)] || recipes[1];
 
-    setPlan((prev) => ({
+    setPlan((prev) => normalizeWeeklyPlan({
       ...prev,
       days: {
         ...prev.days,
@@ -349,7 +336,7 @@ export default function App() {
       };
     });
 
-    setPlan((prev) => ({ ...prev, days: newDays }));
+    setPlan((prev) => normalizeWeeklyPlan({ ...prev, days: newDays }));
     showToast('Weekly diner lineup refreshed across all 7 days!');
   };
 
@@ -381,7 +368,7 @@ export default function App() {
       newDays['Tuesday'].dinner = { ...(dinnerExpiring[1] || dinnerExpiring[0]), mealType: 'dinner' };
     }
 
-    setPlan((prev) => ({ ...prev, days: newDays }));
+    setPlan((prev) => normalizeWeeklyPlan({ ...prev, days: newDays }));
     showToast('Expiring pantry ingredients prioritized for Monday & Tuesday!');
   };
 
@@ -445,7 +432,7 @@ export default function App() {
         }
       };
 
-      setPlan((prev) => ({ ...prev, days: favDays }));
+      setPlan((prev) => normalizeWeeklyPlan({ ...prev, days: favDays }));
       showToast('Loaded your personalized favorites rotation with batch cooking!');
       return;
     }
@@ -505,7 +492,7 @@ export default function App() {
       };
     });
 
-    setPlan((prev) => ({ ...prev, days: newDays }));
+    setPlan((prev) => normalizeWeeklyPlan({ ...prev, days: newDays }));
   };
 
   // 10. Add & delete pantry items
@@ -527,20 +514,6 @@ export default function App() {
     setPantryItems((prev) =>
       prev.map((item) => (item.id === id ? { ...item, ...updates } : item))
     );
-  };
-
-  const handleAddMasterIngredient = (item: Omit<MasterIngredient, 'id'>) => {
-    const newItem: MasterIngredient = {
-      ...item,
-      id: `ing-custom-${Date.now()}`
-    };
-    setAvailableIngredients((prev) => [newItem, ...prev]);
-    showToast(`Added "${newItem.name}" to ingredients list!`);
-  };
-
-  const handleDeleteMasterIngredient = (id: string) => {
-    setAvailableIngredients((prev) => prev.filter((i) => i.id !== id));
-    showToast('Removed ingredient from master list.');
   };
 
   const urgentPantryCount = pantryItems.filter((i) => i.daysUntilExpiry <= 2).length;
@@ -636,8 +609,6 @@ export default function App() {
         onDeletePantryItem={handleDeletePantryItem}
         onUpdatePantryItem={handleUpdatePantryItem}
         onPrioritizeExpiring={handlePrioritizeExpiring}
-        onAddMasterIngredient={handleAddMasterIngredient}
-        onDeleteMasterIngredient={handleDeleteMasterIngredient}
         plan={plan}
       />
 

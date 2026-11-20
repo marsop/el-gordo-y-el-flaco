@@ -4,7 +4,7 @@ import { Meal, DayOfWeek, PantryItem } from '../types';
 import { getExpiringIngredientsForMeal } from '../utils/pantryMatcher';
 import { TagBadge } from './TagBadge';
 import { TagMultiSelectDropdown } from './TagMultiSelectDropdown';
-import { mealMatchesTag, getTagDefinition } from '../utils/tagRegistry';
+import { mealMatchesTag, getTagDefinition, normalizeTagList } from '../utils/tagRegistry';
 
 interface RecipeCatalogModalProps {
   isOpen: boolean;
@@ -234,7 +234,7 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
 
                   {/* Unified Tags */}
                   <div className="mt-2 flex flex-wrap items-center gap-1.5">
-                    {recipe.tags.map((tag) => (
+                    {normalizeTagList(recipe.tags).map((tag) => (
                       <TagBadge key={tag} tag={tag} size="xs" />
                     ))}
                   </div>
