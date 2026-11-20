@@ -16,21 +16,9 @@ import {
 } from 'lucide-react';
 import { Meal, WeeklyPlan, DayOfWeek, DAYS_OF_WEEK } from '../types';
 import { TagBadge } from './TagBadge';
-import { mealMatchesTag } from '../utils/tagRegistry';
+import { TagMultiSelectDropdown } from './TagMultiSelectDropdown';
+import { mealMatchesTag, getTagDefinition } from '../utils/tagRegistry';
 
-const FILTER_TAGS = [
-  'High Protein',
-  'Great Base',
-  'Balanced',
-  'Classics',
-  'Quick ≤20m',
-  'Batch Hero',
-  'Slow Burn',
-  'Summer',
-  'Winter',
-  'High Fiber',
-  'Vegetarian'
-];
 
 interface AllMealsModalProps {
   isOpen: boolean;
@@ -50,8 +38,25 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
   onEditMeal
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [filterMode, setFilterMode] = useState<'and' | 'or'>('and');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const handleToggleTag = (tagLabel: string) => {
+    const def = getTagDefinition(tagLabel);
+    setSelectedTags((prev) => {
+      const exists = prev.some((t) => getTagDefinition(t).id === def.id);
+      if (exists) {
+        return prev.filter((t) => getTagDefinition(t).id !== def.id);
+      } else {
+        return [...prev, def.label];
+      }
+    });
+  };
+
+  const handleClearTags = () => {
+    setSelectedTags([]);
+  };
 
   // Scheduling popover state for a specific card
   const [schedulingMealId, setSchedulingMealId] = useState<string | null>(null);
@@ -76,7 +81,12 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
       r.tags.some((t) => t.toLowerCase().includes(searchTerm.toLowerCase())) ||
       r.ingredients.some((i) => i.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
-    const matchesTag = activeTag ? mealMatchesTag(r, activeTag) : true;
+    const matchesTag =
+      selectedTags.length === 0
+        ? true
+        : filterMode === 'and'
+          ? selectedTags.every((t) => mealMatchesTag(r, t))
+          : selectedTags.some((t) => mealMatchesTag(r, t));
 
     return matchesSearch && matchesTag;
   });
@@ -118,52 +128,82 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
           </button>
         </div>
 
-        {/* Toolbar: Search & Category Filters */}
-        <div className="p-4 bg-zinc-100 border-b border-zinc-200 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 shrink-0">
-          <div className="relative flex-1">
-            <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-2.5" />
-            <input
-              type="text"
-              placeholder="Search dishes (e.g. Fajitas, Orzo, Lasagna, Poke Bowl, Lentils, Kässpätzle)..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-white border border-zinc-300 rounded text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
-            />
+        {/* Toolbar: Search & Multi-Select Tag Dropdown */}
+        <div className="p-4 bg-zinc-100 border-b border-zinc-200 flex flex-col gap-2.5 shrink-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <div className="relative flex-1">
+              <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-2.5" />
+              <input
+                type="text"
+                placeholder="Search dishes (e.g. Fajitas, Orzo, Lasagna, Poke Bowl, Lentils, Kässpätzle)..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-9 pr-3 py-2 bg-white border border-zinc-300 rounded text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
+              />
+            </div>
+
+            {/* Retro Multi-Select Tag Dropdown */}
+            <div className="flex items-center gap-2">
+              <TagMultiSelectDropdown
+                recipes={recipes}
+                selectedTags={selectedTags}
+                onToggleTag={handleToggleTag}
+                onClearAll={handleClearTags}
+                filterMode={filterMode}
+                onFilterModeChange={setFilterMode}
+              />
+            </div>
           </div>
 
-          {/* Unified Tag Filter Buttons */}
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none bg-zinc-200/70 p-1 rounded">
-            <button
-              onClick={() => setActiveTag(null)}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeTag === null
-                  ? 'bg-zinc-900 text-amber-300 shadow-xs ring-2 ring-zinc-950 font-black'
-                  : 'text-zinc-600 hover:text-zinc-900'
-              }`}
-            >
-              All ({recipes.length})
-            </button>
-            {FILTER_TAGS.map((tagName) => {
-              const count = recipes.filter((r) => mealMatchesTag(r, tagName)).length;
-              if (count === 0) return null;
-              const isSelected = activeTag === tagName;
-              return (
+          {/* Active Filter Chips / Summary Bar */}
+          {selectedTags.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-zinc-200/80 animate-in fade-in duration-150">
+              <span className="text-[11px] font-mono font-bold text-zinc-500 uppercase tracking-wider mr-1">
+                Active Tags ({filterMode.toUpperCase()}):
+              </span>
+              {selectedTags.map((t) => (
                 <TagBadge
-                  key={tagName}
-                  tag={tagName}
-                  size="sm"
-                  count={count}
-                  isActive={isSelected}
-                  onClick={() => setActiveTag(isSelected ? null : tagName)}
+                  key={t}
+                  tag={t}
+                  size="xs"
+                  removable
+                  onRemove={() => handleToggleTag(t)}
                 />
-              );
-            })}
-          </div>
+              ))}
+              <button
+                type="button"
+                onClick={handleClearTags}
+                className="ml-auto text-[10px] font-mono text-zinc-500 hover:text-red-600 underline uppercase cursor-pointer"
+              >
+                Clear all
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Recipe Grid */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-amber-50/20">
-          {filtered.map((meal) => {
+          {filtered.length === 0 ? (
+            <div className="col-span-full py-12 px-4 text-center space-y-3 bg-white rounded-lg border-2 border-dashed border-zinc-300 p-8 my-auto">
+              <p className="text-base font-bold font-['Oswald'] uppercase text-zinc-700">
+                No diner dishes matched your active filters
+              </p>
+              <p className="text-xs text-zinc-500 max-w-md mx-auto">
+                Try removing some tags, switching match mode to &quot;Any Tag (OR)&quot;, or adjusting your search keyword.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedTags([]);
+                  setSearchTerm('');
+                }}
+                className="px-4 py-1.5 bg-zinc-900 hover:bg-red-600 text-white font-['Oswald'] uppercase text-xs font-bold rounded transition-colors cursor-pointer"
+              >
+                Reset All Filters
+              </button>
+            </div>
+          ) : (
+            filtered.map((meal) => {
             const isExpanded = expandedId === meal.id;
             const scheduledInfo = scheduledMap.get(meal.id);
             const totalTime = meal.prepTime + meal.cookTime;
@@ -348,7 +388,8 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
                 </div>
               </div>
             );
-          })}
+          })
+        )}
         </div>
       </div>
     </div>

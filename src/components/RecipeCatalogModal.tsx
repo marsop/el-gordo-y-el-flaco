@@ -3,21 +3,8 @@ import { X, Clock, Flame, Check, AlertCircle, Search } from 'lucide-react';
 import { Meal, DayOfWeek, PantryItem } from '../types';
 import { getExpiringIngredientsForMeal } from '../utils/pantryMatcher';
 import { TagBadge } from './TagBadge';
-import { mealMatchesTag } from '../utils/tagRegistry';
-
-const FILTER_TAGS = [
-  'High Protein',
-  'Great Base',
-  'Balanced',
-  'Classics',
-  'Quick ≤20m',
-  'Batch Hero',
-  'Slow Burn',
-  'Summer',
-  'Winter',
-  'High Fiber',
-  'Vegetarian'
-];
+import { TagMultiSelectDropdown } from './TagMultiSelectDropdown';
+import { mealMatchesTag, getTagDefinition } from '../utils/tagRegistry';
 
 interface RecipeCatalogModalProps {
   isOpen: boolean;
@@ -40,7 +27,24 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [mealTypeFilter, setMealTypeFilter] = useState<'all' | 'lunch' | 'dinner'>('all');
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [filterMode, setFilterMode] = useState<'and' | 'or'>('and');
+
+  const handleToggleTag = (tagLabel: string) => {
+    const def = getTagDefinition(tagLabel);
+    setSelectedTags((prev) => {
+      const exists = prev.some((t) => getTagDefinition(t).id === def.id);
+      if (exists) {
+        return prev.filter((t) => getTagDefinition(t).id !== def.id);
+      } else {
+        return [...prev, def.label];
+      }
+    });
+  };
+
+  const handleClearTags = () => {
+    setSelectedTags([]);
+  };
 
   if (!isOpen) return null;
 
@@ -51,7 +55,12 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
       r.ingredients.some((i) => i.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     const matchesMealType = mealTypeFilter === 'all' || r.mealType === mealTypeFilter;
-    const matchesTag = activeTag ? mealMatchesTag(r, activeTag) : true;
+    const matchesTag =
+      selectedTags.length === 0
+        ? true
+        : filterMode === 'and'
+          ? selectedTags.every((t) => mealMatchesTag(r, t))
+          : selectedTags.some((t) => mealMatchesTag(r, t));
 
     return matchesSearch && matchesMealType && matchesTag;
   });
@@ -78,66 +87,119 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
         </div>
 
         {/* Search & Filters */}
-        <div className="p-4 bg-zinc-100 border-b border-zinc-200 flex flex-col items-stretch gap-3">
-          <div className="relative flex-1">
-            <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-2.5" />
-            <input
-              type="text"
-              placeholder="Search dishes (e.g. Fajitas, Orzo, Lasagna, Poke Bowl, Lentils, Kässpätzle)..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-white border border-zinc-300 rounded text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
-            />
+        <div className="p-4 bg-zinc-100 border-b border-zinc-200 flex flex-col gap-2.5">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
+            <div className="relative flex-1">
+              <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-2.5" />
+              <input
+                type="text"
+                placeholder="Search dishes (e.g. Fajitas, Orzo, Lasagna, Poke Bowl, Lentils, Kässpätzle)..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-9 pr-3 py-2 bg-white border border-zinc-300 rounded text-xs focus:ring-2 focus:ring-red-500 focus:outline-none"
+              />
+            </div>
+
+            <div className="flex items-center gap-2">
+              {/* Meal Type Filter */}
+              <div className="flex items-center bg-zinc-200/90 p-0.5 rounded border border-zinc-300">
+                <button
+                  type="button"
+                  onClick={() => setMealTypeFilter('all')}
+                  className={`px-2 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
+                    mealTypeFilter === 'all'
+                      ? 'bg-zinc-900 text-amber-300 shadow-xs ring-1 ring-zinc-950 font-black'
+                      : 'text-zinc-600 hover:text-zinc-900'
+                  }`}
+                >
+                  All
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMealTypeFilter('lunch')}
+                  className={`px-2 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
+                    mealTypeFilter === 'lunch'
+                      ? 'bg-amber-500 text-zinc-950 font-black shadow-xs ring-1 ring-zinc-950'
+                      : 'text-zinc-700 hover:text-zinc-900'
+                  }`}
+                >
+                  Lunches
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMealTypeFilter('dinner')}
+                  className={`px-2 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
+                    mealTypeFilter === 'dinner'
+                      ? 'bg-red-600 text-white font-black shadow-xs ring-1 ring-zinc-950'
+                      : 'text-zinc-700 hover:text-zinc-900'
+                  }`}
+                >
+                  Dinners
+                </button>
+              </div>
+
+              {/* Tag Multi-Select Dropdown */}
+              <TagMultiSelectDropdown
+                recipes={recipes}
+                selectedTags={selectedTags}
+                onToggleTag={handleToggleTag}
+                onClearAll={handleClearTags}
+                filterMode={filterMode}
+                onFilterModeChange={setFilterMode}
+              />
+            </div>
           </div>
 
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none bg-zinc-200/80 p-1 rounded">
-            <button
-              onClick={() => { setMealTypeFilter('all'); setActiveTag(null); }}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                mealTypeFilter === 'all' && activeTag === null
-                  ? 'bg-zinc-900 text-amber-300 shadow-xs ring-2 ring-zinc-950 font-black'
-                  : 'text-zinc-600 hover:text-zinc-900'
-              }`}
-            >
-              All ({recipes.length})
-            </button>
-            <button
-              onClick={() => setMealTypeFilter(mealTypeFilter === 'lunch' ? 'all' : 'lunch')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                mealTypeFilter === 'lunch' ? 'bg-amber-500 text-zinc-950 font-black shadow-xs ring-2 ring-zinc-950' : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              Lunches
-            </button>
-            <button
-              onClick={() => setMealTypeFilter(mealTypeFilter === 'dinner' ? 'all' : 'dinner')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                mealTypeFilter === 'dinner' ? 'bg-red-600 text-white font-black shadow-xs ring-2 ring-zinc-950' : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              Dinners
-            </button>
-            {FILTER_TAGS.map((tagName) => {
-              const count = recipes.filter((r) => mealMatchesTag(r, tagName)).length;
-              if (count === 0) return null;
-              const isSelected = activeTag === tagName;
-              return (
+          {/* Active Tags Chips */}
+          {selectedTags.length > 0 && (
+            <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-zinc-200/80 animate-in fade-in duration-150">
+              <span className="text-[11px] font-mono font-bold text-zinc-500 uppercase tracking-wider mr-1">
+                Active Tags ({filterMode.toUpperCase()}):
+              </span>
+              {selectedTags.map((t) => (
                 <TagBadge
-                  key={tagName}
-                  tag={tagName}
-                  size="sm"
-                  count={count}
-                  isActive={isSelected}
-                  onClick={() => setActiveTag(isSelected ? null : tagName)}
+                  key={t}
+                  tag={t}
+                  size="xs"
+                  removable
+                  onRemove={() => handleToggleTag(t)}
                 />
-              );
-            })}
-          </div>
+              ))}
+              <button
+                type="button"
+                onClick={handleClearTags}
+                className="ml-auto text-[10px] font-mono text-zinc-500 hover:text-red-600 underline uppercase cursor-pointer"
+              >
+                Clear all
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Recipe Grid */}
         <div className="p-6 max-h-[65vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filtered.map((recipe) => {
+          {filtered.length === 0 ? (
+            <div className="col-span-full py-12 px-4 text-center space-y-3 bg-white rounded-lg border-2 border-dashed border-zinc-300 p-8 my-auto">
+              <p className="text-base font-bold font-['Oswald'] uppercase text-zinc-700">
+                No diner dishes matched your filters
+              </p>
+              <p className="text-xs text-zinc-500 max-w-md mx-auto">
+                Try removing some tags, switching meal slot, or resetting filters.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedTags([]);
+                  setSearchTerm('');
+                  setMealTypeFilter('all');
+                }}
+                className="px-4 py-1.5 bg-zinc-900 hover:bg-red-600 text-white font-['Oswald'] uppercase text-xs font-bold rounded transition-colors cursor-pointer"
+              >
+                Reset All Filters
+              </button>
+            </div>
+          ) : (
+            filtered.map((recipe) => {
             const expiringCount = pantryItems
               ? getExpiringIngredientsForMeal(recipe, pantryItems).length
               : recipe.ingredients.filter((i) => i.isExpiring).length;
@@ -212,7 +274,8 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
                 </button>
               </div>
             );
-          })}
+          })
+        )}
         </div>
       </div>
     </div>
