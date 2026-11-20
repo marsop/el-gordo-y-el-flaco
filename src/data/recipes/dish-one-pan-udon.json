@@ -1,0 +1,75 @@
+{
+  "id": "dish-one-pan-udon",
+  "title": "One-Pan Udon",
+  "category": "Moderately Balanced",
+  "speed": "Quick",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 10,
+  "cookTime": 10,
+  "servings": 2,
+  "calorieEstimate": 560,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Toss in a hot skillet with 1 tbsp water or coconut milk for 2 mins to revive chewy udon texture.",
+  "tags": [
+    "Moderately Balanced",
+    "Quick",
+    "All Year",
+    "Noodle Stir-Fry",
+    "One-Pan"
+  ],
+  "notes": "Chewy udon noodles tossed with edamame or cubed tofu, sweet potato matchsticks, zucchini, carrots, and savory coconut-teriyaki sauce.",
+  "gordoPortionNotes": "Generous tangle of udon noodles with sweet coconut-teriyaki glaze, double cubed tofu/edamame, and sesame seeds.",
+  "flacoPortionNotes": "Veggie-loaded udon bowl with ribbons of carrots, bell peppers, zucchini, edamame and savory light soy drizzle.",
+  "ingredients": [
+    {
+      "id": "ing-udon-1",
+      "name": "Udon/wok noodles",
+      "amount": "300g fresh or dry",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-udon-2",
+      "name": "Edamame or cubed tofu",
+      "amount": "180g",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-udon-3",
+      "name": "Sweet potato",
+      "amount": "1 small (150g) thinly shaved",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-udon-4",
+      "name": "Zucchini",
+      "amount": "1 medium sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-udon-5",
+      "name": "Carrots",
+      "amount": "1 shredded matchsticks",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-udon-6",
+      "name": "Bell peppers",
+      "amount": "1 sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-udon-7",
+      "name": "Coconut milk/teriyaki",
+      "amount": "80ml coconut milk or teriyaki sauce",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "ing-udon-8",
+      "name": "Soy sauce",
+      "amount": "2 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

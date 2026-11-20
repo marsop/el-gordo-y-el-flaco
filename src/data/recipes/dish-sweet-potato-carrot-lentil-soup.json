@@ -1,0 +1,82 @@
+{
+  "id": "dish-sweet-potato-carrot-lentil-soup",
+  "title": "Sweet Potato Carrot & Lentil Soup",
+  "category": "Remastered Classics",
+  "speed": "Standard",
+  "season": "Winter",
+  "mealType": "dinner",
+  "prepTime": 12,
+  "cookTime": 25,
+  "servings": 2,
+  "calorieEstimate": 470,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Simmer on low 2-3 mins. Add a splash of water if soup thickens overnight. Garnish with roasted pumpkin seeds.",
+  "tags": [
+    "Remastered Classics",
+    "Standard",
+    "Winter",
+    "Batch Hero",
+    "Velvety Soup",
+    "Plant Power",
+    "High Fiber"
+  ],
+  "notes": "Velvety blended soup made with sweet potato, tender carrots, simmered red lentils, creamy coconut milk, and warming spices.",
+  "gordoPortionNotes": "Big steaming bowl of velvety soup with crusty bread, extra coconut cream swirl, and roasted pumpkin seeds.",
+  "flacoPortionNotes": "Nutritious comforting bowl topped with pumpkin seeds, a swirl of yogurt, and fresh cilantro or parsley.",
+  "ingredients": [
+    {
+      "id": "ing-swp-1",
+      "name": "Sweet potato",
+      "amount": "300g peeled & cubed",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-swp-2",
+      "name": "Carrots",
+      "amount": "300g sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-swp-3",
+      "name": "1/2 cup red lentils (simmered & blended)",
+      "amount": "100g red lentils",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-swp-4",
+      "name": "Onion",
+      "amount": "1 diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-swp-5",
+      "name": "Garlic",
+      "amount": "3 cloves minced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-swp-6",
+      "name": "Vegetable broth",
+      "amount": "750ml (3 cups)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-swp-7",
+      "name": "Coconut milk",
+      "amount": "200ml",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-swp-8",
+      "name": "Spices",
+      "amount": "1 tbsp cumin, ginger & turmeric",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-swp-9",
+      "name": "Pumpkin seeds",
+      "amount": "30g toasted seeds for garnish",
+      "category": "Pantry"
+    }
+  ]
+}

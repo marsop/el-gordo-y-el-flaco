@@ -23,15 +23,17 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Zone 1: Single text element wordmark */}
         <a 
           href="#" 
-          className="group flex items-center gap-3 text-xl font-black tracking-wider uppercase font-['Oswald'] text-amber-400 hover:text-amber-300 transition-colors whitespace-nowrap shrink-0"
+          className="group flex items-center gap-3 text-xl font-black tracking-wider uppercase font-['Oswald'] text-white hover:text-zinc-100 transition-colors whitespace-nowrap shrink-0"
         >
           <img 
             src={`${import.meta.env.BASE_URL}favicon-32x32.png`} 
             srcSet={`${import.meta.env.BASE_URL}logo.png 2x`} 
-            alt="El Gordo Y El Flaco" 
+            alt="El Gordo & El Flaco" 
             className="w-9 h-9 object-contain drop-shadow group-hover:scale-105 transition-transform" 
           />
-          <span>EL GORDO Y EL FLACO</span>
+          <span>
+            EL GORDO <span className="text-amber-400 group-hover:text-amber-300 transition-colors">&</span> EL FLACO
+          </span>
         </a>
 
         {/* Zone 2: Nav links */}

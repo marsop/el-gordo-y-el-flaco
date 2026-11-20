@@ -1,0 +1,59 @@
+{
+  "id": "dish-russian-potato-salad",
+  "title": "Russian Potato Salad",
+  "category": "Moderately Balanced",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "lunch",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "calorieEstimate": 530,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Serve chilled or room temp! Perfect make-ahead salad that stays delicious in the fridge for 3 days.",
+  "tags": [
+    "Moderately Balanced",
+    "Standard",
+    "All Year",
+    "Batch Hero",
+    "Deli Classic",
+    "Make Ahead"
+  ],
+  "notes": "Tender boiled skin-on potatoes, sweet carrots, peas, and hard-boiled eggs tossed in a lighter 50/50 blend of mayo and Greek yogurt.",
+  "gordoPortionNotes": "Big scoop of Russian salad with extra chopped hard-boiled egg, tuna flakes and crunchy breadsticks.",
+  "flacoPortionNotes": "Moderate portion balanced with crisp salad greens and light 50/50 yogurt-mayo dressing.",
+  "ingredients": [
+    {
+      "id": "ing-rus-1",
+      "name": "Potatoes (skin-on)",
+      "amount": "400g diced & boiled",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-rus-2",
+      "name": "Carrots",
+      "amount": "200g diced & boiled",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-rus-3",
+      "name": "Frozen peas/veggies",
+      "amount": "150g steamed",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-rus-4",
+      "name": "Eggs",
+      "amount": "3 hard-boiled eggs chopped",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-rus-5",
+      "name": "50/50 mayo and Greek yogurt",
+      "amount": "3 tbsp mayo + 3 tbsp Greek yogurt",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    }
+  ]
+}

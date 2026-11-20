@@ -1,0 +1,70 @@
+{
+  "id": "dish-spanish-lentils-chorizo",
+  "title": "Spanish Lentils with Chorizo",
+  "category": "High Protein & High Fiber",
+  "speed": "Slow Burn",
+  "season": "Winter",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 45,
+  "servings": 2,
+  "calorieEstimate": 640,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Stew flavors deepen overnight! Simmer in saucepan on low with 1/4 cup water for 3-4 mins.",
+  "tags": [
+    "High Protein & High Fiber",
+    "Slow Burn",
+    "Winter",
+    "Batch Hero",
+    "Cozy Warm",
+    "Spanish Classic",
+    "High Fiber"
+  ],
+  "notes": "Traditional Spanish winter stew. The smoked paprika and rendered fat from the chorizo infuse the earthy lentils.",
+  "gordoPortionNotes": "Deep bowl with thick Spanish chorizo slices, tender skin-on potatoes, and crusty bread for dipping.",
+  "flacoPortionNotes": "Lentil and root veggie heavy bowl with diced carrots, stewed tomatoes, garlic broth and modest chorizo slices.",
+  "ingredients": [
+    {
+      "id": "ing-len-1",
+      "name": "Brown or green lentils",
+      "amount": "500g dry",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-len-2",
+      "name": "Fresh tomatoes",
+      "amount": "500g diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-len-3",
+      "name": "Carrots",
+      "amount": "300g sliced into rounds",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-len-4",
+      "name": "Potatoes (skin-on)",
+      "amount": "500g washed & cubed",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-len-5",
+      "name": "Onions",
+      "amount": "2 medium onions chopped",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-len-6",
+      "name": "Garlic",
+      "amount": "4 cloves crushed",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-len-7",
+      "name": "Spanish chorizo",
+      "amount": "150g sliced rings",
+      "category": "Meat & Seafood"
+    }
+  ]
+}

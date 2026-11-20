@@ -1,0 +1,65 @@
+{
+  "id": "dish-loaded-potatoes-cheese-egg",
+  "title": "Loaded Potatoes with Cheese & Egg",
+  "category": "Remastered Classics",
+  "speed": "Quick",
+  "season": "Winter",
+  "mealType": "dinner",
+  "prepTime": 8,
+  "cookTime": 17,
+  "servings": 2,
+  "calorieEstimate": 580,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Broil loaded potatoes in the oven for 3-4 mins until cheese is bubbling hot.",
+  "tags": [
+    "Remastered Classics",
+    "Quick",
+    "Winter",
+    "Comfort Food",
+    "Diner Classic",
+    "High Protein"
+  ],
+  "notes": "Tender skin-on jacket potatoes split open, filled with melting cheese, fried or poached eggs, herbs, and steamed broccoli or roasted carrots.",
+  "gordoPortionNotes": "3 large loaded jacket potatoes with melted cheddar, 2 fried eggs with runny yolks, butter, and bacon or crispy onion bits.",
+  "flacoPortionNotes": "1-2 skin-on potatoes topped with melted cheese, 1 soft egg, paired with a generous mound of steamed bright broccoli and roasted carrots.",
+  "ingredients": [
+    {
+      "id": "ing-load-1",
+      "name": "Skin-on potatoes",
+      "amount": "500g russet or yellow potatoes",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-load-2",
+      "name": "Melting cheese",
+      "amount": "80g shredded cheddar or raclette",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-load-3",
+      "name": "2 eggs",
+      "amount": "2-3 large eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-load-4",
+      "name": "Butter/oil",
+      "amount": "1 tbsp butter or olive oil",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "ing-load-5",
+      "name": "Herbs",
+      "amount": "2 tbsp chopped chives/parsley",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-load-6",
+      "name": "Side of steamed broccoli or roasted carrots",
+      "amount": "250g fresh broccoli or carrots",
+      "category": "Produce"
+    }
+  ]
+}

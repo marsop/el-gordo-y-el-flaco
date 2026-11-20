@@ -1,0 +1,90 @@
+{
+  "id": "dish-burritos-guacamole",
+  "title": "Burritos with Guacamole",
+  "category": "Great Base",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 20,
+  "servings": 2,
+  "calorieEstimate": 630,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Toast in a dry skillet over medium heat 2-3 mins per side for a crisp exterior and melted center.",
+  "tags": [
+    "Great Base",
+    "Standard",
+    "All Year",
+    "Mexican Diner",
+    "High Fiber",
+    "Vegetarian"
+  ],
+  "notes": "Stuffed with roasted sweet potatoes, seasoned black beans, sautéed zucchini, and melted cheese.",
+  "gordoPortionNotes": "2 large tightly wrapped burritos loaded with melted cheddar cheese, black beans, tomato sauce, and double guacamole.",
+  "flacoPortionNotes": "1 burrito packed with roasted sweet potato, zucchini, bell peppers, fresh lime, and fresh salsa verde.",
+  "ingredients": [
+    {
+      "id": "ing-bur-1",
+      "name": "Whole-wheat tortillas",
+      "amount": "4 large tortillas",
+      "category": "Bakery"
+    },
+    {
+      "id": "ing-bur-2",
+      "name": "Black beans",
+      "amount": "1 can (240g drained)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-bur-3",
+      "name": "Sweet potato",
+      "amount": "1 large (300g) cubed & roasted",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-bur-4",
+      "name": "Bell peppers",
+      "amount": "2 sliced (red & green)",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-bur-5",
+      "name": "Zucchini",
+      "amount": "1 medium diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-bur-6",
+      "name": "Cheese (cheddar or jack)",
+      "amount": "80g shredded",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-bur-7",
+      "name": "Tomato sauce",
+      "amount": "150ml salsa or purée",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-bur-8",
+      "name": "Avocado (for guacamole)",
+      "amount": "2 ripe avocados",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-bur-9",
+      "name": "Lime",
+      "amount": "1 lime",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-bur-10",
+      "name": "Garlic",
+      "amount": "2 cloves minced",
+      "category": "Produce"
+    }
+  ]
+}

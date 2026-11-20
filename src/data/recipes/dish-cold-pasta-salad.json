@@ -1,0 +1,65 @@
+{
+  "id": "dish-cold-pasta-salad",
+  "title": "Cold Pasta Salad",
+  "category": "Remastered Classics",
+  "speed": "Quick",
+  "season": "Summer",
+  "mealType": "lunch",
+  "prepTime": 12,
+  "cookTime": 10,
+  "servings": 2,
+  "calorieEstimate": 520,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Enjoy cold right out of the fridge! Flavors marry overnight.",
+  "tags": [
+    "Remastered Classics",
+    "Quick",
+    "Summer",
+    "Batch Hero",
+    "Picnic Hero",
+    "High Protein"
+  ],
+  "notes": "Whole-wheat or chickpea pasta tossed with canned tuna or diced chicken, sweet cherry tomatoes, mozzarella or feta, bell peppers, and vinaigrette.",
+  "gordoPortionNotes": "Big bowl of pasta salad with double canned tuna, mozzarella pearls, and extra Italian herb vinaigrette.",
+  "flacoPortionNotes": "Chickpea pasta base tossed with sweet cherry tomatoes, diced bell peppers, cucumber, diced chicken breast, and crumbled feta.",
+  "ingredients": [
+    {
+      "id": "ing-cpas-1",
+      "name": "Whole-wheat or chickpea pasta",
+      "amount": "200g fusilli or penne",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-cpas-2",
+      "name": "Canned tuna or diced chicken",
+      "amount": "200g tuna or cooked chicken",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "ing-cpas-3",
+      "name": "Cherry tomatoes",
+      "amount": "200g halved",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-cpas-4",
+      "name": "Mozzarella/feta",
+      "amount": "80g diced mozzarella or crumbled feta",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-cpas-5",
+      "name": "Bell peppers",
+      "amount": "1 crunchy bell pepper diced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-cpas-6",
+      "name": "Vinaigrette",
+      "amount": "3 tbsp olive oil & herb vinaigrette",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

@@ -19,15 +19,40 @@ export const DAYS_OF_WEEK: DayOfWeek[] = [
 
 export type MealType = 'lunch' | 'dinner';
 
+export type IngredientCategory = 
+  | 'Produce' 
+  | 'Dairy & Eggs' 
+  | 'Meat & Seafood' 
+  | 'Bakery' 
+  | 'Pantry' 
+  | 'Sauces & Condiments';
+
 export interface Ingredient {
   id: string;
   name: string;
   amount: string;
-  category: 'Produce' | 'Dairy & Eggs' | 'Meat & Seafood' | 'Bakery' | 'Pantry' | 'Sauces & Condiments';
+  category: IngredientCategory;
   isExpiring?: boolean;
 }
 
+export interface MasterIngredient {
+  id: string;
+  name: string;
+  category: IngredientCategory;
+  defaultQuantity?: string;
+  defaultDaysUntilExpiry?: number;
+}
+
 export type LeftoverSuitability = 'excellent' | 'good' | 'cook_fresh_only';
+
+export type MasterCategory = 
+  | 'High Protein & High Fiber' 
+  | 'Great Base' 
+  | 'Moderately Balanced' 
+  | 'Remastered Classics';
+
+export type SpeedTag = 'Quick' | 'Standard' | 'Slow Burn';
+export type SeasonTag = 'All Year' | 'Summer' | 'Winter';
 
 export interface Meal {
   id: string;
@@ -44,6 +69,11 @@ export interface Meal {
   flacoPortionNotes?: string;
   usesExpiringItemIds?: string[];
   
+  // Master Recipe Metadata
+  category?: MasterCategory;
+  speed?: SpeedTag;
+  season?: SeasonTag;
+
   // Leftover & Low-Effort Batch Cooking
   leftoverSuitability?: LeftoverSuitability;
   isLeftover?: boolean;
@@ -72,7 +102,7 @@ export interface WeeklyPlan {
 export interface PantryItem {
   id: string;
   name: string;
-  category: 'Produce' | 'Dairy & Eggs' | 'Meat & Seafood' | 'Bakery' | 'Pantry' | 'Sauces & Condiments';
+  category: IngredientCategory;
   quantity: string;
   daysUntilExpiry: number; // e.g. 1 = tomorrow, 0 = today, negative = past
   addedDate?: string;

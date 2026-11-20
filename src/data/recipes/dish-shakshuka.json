@@ -1,0 +1,72 @@
+{
+  "id": "dish-shakshuka",
+  "title": "Shakshuka",
+  "category": "Great Base",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 20,
+  "servings": 2,
+  "calorieEstimate": 490,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Warm tomato pepper sauce in a skillet on medium-low. Add fresh eggs if reheating sauce alone.",
+  "tags": [
+    "Great Base",
+    "Standard",
+    "All Year",
+    "Skillet Eggs",
+    "Mediterranean",
+    "High Protein",
+    "Vegetarian"
+  ],
+  "notes": "Fresh eggs poached in a rich simmer of ripe tomatoes, sweet peppers, yellow onion, garlic, and tomato paste.",
+  "gordoPortionNotes": "3 soft-poached eggs in thick tomato-pepper sauce with 3 thick slices of toasted whole-grain sourdough for dipping.",
+  "flacoPortionNotes": "1-2 soft eggs nestled in deep tomato sauce with extra bell peppers, onion and 1 slice of whole-grain toast.",
+  "ingredients": [
+    {
+      "id": "ing-shak-1",
+      "name": "Eggs",
+      "amount": "4 fresh eggs",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-shak-2",
+      "name": "Tomatoes",
+      "amount": "500g fresh chopped",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-shak-3",
+      "name": "Peppers",
+      "amount": "2 bell peppers sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-shak-4",
+      "name": "Onion",
+      "amount": "1 diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-shak-5",
+      "name": "Garlic",
+      "amount": "3 cloves minced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-shak-6",
+      "name": "Tomato paste",
+      "amount": "2 tbsp",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-shak-7",
+      "name": "Whole-grain bread",
+      "amount": "4 thick slices",
+      "category": "Bakery"
+    }
+  ]
+}

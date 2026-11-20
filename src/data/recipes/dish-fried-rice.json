@@ -1,0 +1,70 @@
+{
+  "id": "dish-fried-rice",
+  "title": "Fried Rice",
+  "category": "Moderately Balanced",
+  "speed": "Quick",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 10,
+  "cookTime": 12,
+  "servings": 2,
+  "calorieEstimate": 540,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Stir-fry in a hot skillet with a splash of water and drop of sesame oil for 2 mins, or microwave covered.",
+  "tags": [
+    "Moderately Balanced",
+    "Quick",
+    "All Year",
+    "Wok Special",
+    "Quick Skillet",
+    "High Fiber"
+  ],
+  "notes": "Healthy diner wok toss using fiber-rich brown rice, scrambled eggs or edamame, crunchy carrots, and toasted sesame oil.",
+  "gordoPortionNotes": "Big heaping wok bowl with extra brown rice, 2 scrambled eggs, sweet peas, and generous drizzle of soy & sesame oil.",
+  "flacoPortionNotes": "Veggie-forward fried rice loaded with edamame, diced carrots, spring onion, peas, and light tamari soy sauce.",
+  "ingredients": [
+    {
+      "id": "ing-rice-1",
+      "name": "Brown rice",
+      "amount": "300g cooked",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-rice-2",
+      "name": "Eggs (or edamame)",
+      "amount": "3-4 eggs (or 150g edamame)",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-rice-3",
+      "name": "Carrots",
+      "amount": "150g finely diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-rice-4",
+      "name": "Spring onion",
+      "amount": "3 stalks sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-rice-5",
+      "name": "Frozen peas/veggies",
+      "amount": "150g",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-rice-6",
+      "name": "Soy sauce",
+      "amount": "2 tbsp",
+      "category": "Sauces & Condiments"
+    },
+    {
+      "id": "ing-rice-7",
+      "name": "Sesame oil",
+      "amount": "1 tbsp toasted sesame oil",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

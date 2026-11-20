@@ -1,0 +1,76 @@
+{
+  "id": "dish-alpine-barley-soup",
+  "title": "Alpine Barley Soup",
+  "category": "Great Base",
+  "speed": "Slow Burn",
+  "season": "Winter",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 40,
+  "servings": 2,
+  "calorieEstimate": 510,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Barley thickens soup overnight; stir in 1/2 cup water or broth and simmer 3 mins.",
+  "tags": [
+    "Great Base",
+    "Slow Burn",
+    "Winter",
+    "Batch Hero",
+    "Alpine Classic",
+    "Cozy Warm",
+    "High Fiber"
+  ],
+  "notes": "The classic Grisons alpine recipe enriched with white beans for extra creamy texture and protein.",
+  "gordoPortionNotes": "Heaping bowl with double thick-cut crusty country bread, butter, and extra white beans.",
+  "flacoPortionNotes": "Aromatic vegetable and barley bowl with tender leeks, diced carrots, dried tomatoes and fresh herbs.",
+  "ingredients": [
+    {
+      "id": "ing-bar-1",
+      "name": "Barley",
+      "amount": "80g pearl barley",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-bar-2",
+      "name": "White beans",
+      "amount": "1 can (240g drained cannellini)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-bar-3",
+      "name": "Carrots",
+      "amount": "200g diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-bar-4",
+      "name": "Potatoes",
+      "amount": "200g diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-bar-5",
+      "name": "Leek",
+      "amount": "1 large sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-bar-6",
+      "name": "Dried tomatoes",
+      "amount": "50g sun-dried sliced",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-bar-7",
+      "name": "Vegetable broth",
+      "amount": "1 liter (4 cups)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-bar-8",
+      "name": "Crusty bread",
+      "amount": "4 thick artisan slices",
+      "category": "Bakery"
+    }
+  ]
+}

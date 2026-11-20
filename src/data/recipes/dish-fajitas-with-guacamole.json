@@ -1,0 +1,90 @@
+{
+  "id": "dish-fajitas-with-guacamole",
+  "title": "Fajitas with Guacamole",
+  "category": "High Protein & High Fiber",
+  "speed": "Standard",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 15,
+  "servings": 2,
+  "calorieEstimate": 620,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat chicken, quinoa, and peppers in a hot skillet for 2 mins; serve in fresh warm tortillas with fresh guacamole.",
+  "tags": [
+    "High Protein & High Fiber",
+    "Standard",
+    "All Year",
+    "High Protein",
+    "High Fiber",
+    "Mexican Diner",
+    "User Favorite"
+  ],
+  "notes": "Searing the peppers and onions over high griddle heat caramelizes natural sugars for restaurant sizzle.",
+  "gordoPortionNotes": "4 warm flour tortillas, double sliced chicken breast, extra black beans, cheddar & generous guacamole.",
+  "flacoPortionNotes": "Quinoa & black bean bowl base with grilled chicken strips, charred bell peppers, Mexican veg mix, light feta & squeeze of fresh lime.",
+  "ingredients": [
+    {
+      "id": "ing-faj-1",
+      "name": "Chicken breast",
+      "amount": "350g sliced strips",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "ing-faj-2",
+      "name": "Quinoa",
+      "amount": "1 cup cooked",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-faj-3",
+      "name": "Black beans",
+      "amount": "1 can (240g drained)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-faj-4",
+      "name": "Mexican frozen veggie mix",
+      "amount": "200g (corn, peppers, peas)",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-faj-5",
+      "name": "Feta cheese",
+      "amount": "50g crumbled",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "ing-faj-6",
+      "name": "Bell pepper",
+      "amount": "2 sliced (red & yellow)",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-faj-7",
+      "name": "Tortillas",
+      "amount": "6 whole-wheat or flour tortillas",
+      "category": "Bakery"
+    },
+    {
+      "id": "ing-faj-8",
+      "name": "Avocado (for guacamole)",
+      "amount": "2 ripe avocados",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-faj-9",
+      "name": "Lime",
+      "amount": "2 fresh limes",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-faj-10",
+      "name": "Garlic",
+      "amount": "3 cloves minced",
+      "category": "Produce"
+    }
+  ]
+}

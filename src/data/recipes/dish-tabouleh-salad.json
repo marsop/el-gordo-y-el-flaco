@@ -1,0 +1,76 @@
+{
+  "id": "dish-tabouleh-salad",
+  "title": "Tabouleh Salad",
+  "category": "High Protein & High Fiber",
+  "speed": "Quick",
+  "season": "Summer",
+  "mealType": "lunch",
+  "prepTime": 15,
+  "cookTime": 5,
+  "servings": 2,
+  "calorieEstimate": 420,
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Serve fresh and chilled! Do not reheat.",
+  "tags": [
+    "High Protein & High Fiber",
+    "Quick",
+    "Summer",
+    "Fresh Salad",
+    "Levantine",
+    "High Fiber",
+    "Vegetarian"
+  ],
+  "notes": "Herb-forward salad where fresh flat-leaf parsley is the star, backed by nutty bulgur, diced ripe tomatoes, and salty feta.",
+  "gordoPortionNotes": "Double feta cheese crumbles, toasted whole-wheat pita triangles, generous extra virgin olive oil drizzle.",
+  "flacoPortionNotes": "Herb-packed bowl overflowing with fresh parsley, mint, diced tomatoes, crisp red onion and zesty lemon dressing.",
+  "ingredients": [
+    {
+      "id": "ing-tab-1",
+      "name": "Bulgur wheat",
+      "amount": "100g dry",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-tab-2",
+      "name": "Feta cheese",
+      "amount": "100g crumbled",
+      "category": "Dairy & Eggs"
+    },
+    {
+      "id": "ing-tab-3",
+      "name": "Tomatoes",
+      "amount": "300g finely diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-tab-4",
+      "name": "Fresh flat-leaf parsley",
+      "amount": "2 large bunches finely chopped",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-tab-5",
+      "name": "Fresh mint",
+      "amount": "1 bunch chopped",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-tab-6",
+      "name": "Red onion",
+      "amount": "1 small finely minced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-tab-7",
+      "name": "Fresh lemon juice",
+      "amount": "2 lemons juiced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-tab-8",
+      "name": "Olive oil",
+      "amount": "3 tbsp extra virgin",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

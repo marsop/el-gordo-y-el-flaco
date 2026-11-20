@@ -1,12 +1,12 @@
 # AGENTS.md — Agent Developer Guide
 
-Welcome to the **El Gordo Y El Flaco** repository. This document provides technical context, architecture specifications, design conventions, and operational guidelines for AI agents and human developers contributing to this codebase.
+Welcome to the **El Gordo & El Flaco** repository. This document provides technical context, architecture specifications, design conventions, and operational guidelines for AI agents and human developers contributing to this codebase.
 
 ---
 
 ## 1. Project Overview & Vision
 
-**El Gordo Y El Flaco** is an 80s fast-food and retro diner styled weekly meal planner built for two people with distinct dietary appetites:
+**El Gordo & El Flaco** is an 80s fast-food and retro diner styled weekly meal planner built for two people with distinct dietary appetites:
 - **El Gordo**: Hearty portions, protein & carb emphasis, generous servings.
 - **El Flaco**: Lighter portions, veggie-forward, calorie-conscious balance.
 
@@ -52,7 +52,7 @@ Welcome to the **El Gordo Y El Flaco** repository. This document provides techni
 │   │   ├── MarqueeBanner.tsx     # Animated ticker with meal stats & pantry alerts
 │   │   ├── MealCard.tsx          # Card for lunch/dinner slots with leftover badges
 │   │   ├── MealModal.tsx         # Detailed meal editor (ingredients, portions)
-│   │   ├── PantryDrawer.tsx      # Slide-out pantry inventory with expiry tracker
+│   │   ├── PantryDrawer.tsx      # Centered expiring pantry inventory modal with expiry tracker
 │   │   ├── RecipeCatalogModal.tsx# Recipe book with filters, search, and swap selection
 │   │   └── WeekView.tsx          # Monday-to-Sunday 7-day responsive layout
 │   ├── data/

@@ -6,8 +6,9 @@ import {
   DINER_ORIGINALS,
   getRecipeById
 } from './recipes';
+import { INITIAL_INGREDIENTS } from './defaultIngredients';
 
-export { ALL_RECIPES, RECIPE_CATALOG, USER_FAVORITE_RECIPES, DINER_ORIGINALS, getRecipeById };
+export { ALL_RECIPES, RECIPE_CATALOG, USER_FAVORITE_RECIPES, DINER_ORIGINALS, getRecipeById, INITIAL_INGREDIENTS };
 
 export const INITIAL_PANTRY_ITEMS: PantryItem[] = [
   { id: 'p1', name: 'Baby Spinach (Organic)', category: 'Produce', quantity: '1 bag (200g)', daysUntilExpiry: 1 },
@@ -47,12 +48,12 @@ export function createLeftoverFromMeal(
 // Find user favorite recipes helper
 const getFav = (id: string) => getRecipeById(id) || ALL_RECIPES[0];
 
-const monDinnerDish = getFav('fav-chili-sin-carne');
-const tueDinnerDish = getFav('fav-lasagne');
-const thuDinnerDish = getFav('fav-curry-garam-masala');
-const satDinnerDish = getFav('fav-kasspatzle');
+const monDinnerDish = getFav('dish-spanish-lentils-chorizo');
+const tueDinnerDish = getFav('dish-baked-lasagna');
+const thuDinnerDish = getFav('dish-red-lentil-mango-curry');
+const satDinnerDish = getFav('dish-kasspatzle-side-salad');
 
-// Initial Weekly Plan showcasing user favorite meals and low-effort batching
+// Initial Weekly Plan showcasing the new Master Recipe Collection and low-effort batching
 export const INITIAL_WEEKLY_PLAN: WeeklyPlan = {
   id: 'week-1',
   weekName: 'Week of Monday, Oct 12',
@@ -61,12 +62,13 @@ export const INITIAL_WEEKLY_PLAN: WeeklyPlan = {
     Monday: {
       day: 'Monday',
       dateLabel: 'Oct 12',
-      lunch: { ...getFav('fav-tortilla-patatas') }, // Tortilla de Patatas
+      lunch: { ...getFav('dish-vegetable-frittata'), mealType: 'lunch' }, // Vegetable Frittata
       dinner: { 
-        ...monDinnerDish, // Chili sin carne
+        ...monDinnerDish, // Spanish Lentils with Chorizo
+        mealType: 'dinner',
         isBatchCook: true,
         batchServings: 4,
-        notes: 'Double batch of chili tonight (4 servings total)! Saves Tuesday lunch with zero cooking.'
+        notes: 'Simmer a hearty double batch of Spanish Lentils! Saves Tuesday lunch with zero cooking.'
       }
     },
     Tuesday: {
@@ -74,51 +76,54 @@ export const INITIAL_WEEKLY_PLAN: WeeklyPlan = {
       dateLabel: 'Oct 13',
       lunch: createLeftoverFromMeal(monDinnerDish, 'Monday', 'dinner'),
       dinner: { 
-        ...tueDinnerDish, // Classic Lasagne al Forno
+        ...tueDinnerDish, // Baked Lasagna
+        mealType: 'dinner',
         isBatchCook: true,
         batchServings: 4,
-        notes: 'Bake a 4-serving Lasagne tonight! Wednesday lunch will be an effortless reheat.'
+        notes: 'Bake a 4-serving Lasagna tonight! Wednesday lunch will be an effortless reheat.'
       }
     },
     Wednesday: {
       day: 'Wednesday',
       dateLabel: 'Oct 14',
       lunch: createLeftoverFromMeal(tueDinnerDish, 'Tuesday', 'dinner'),
-      dinner: { ...getFav('fav-fajitas-chicken') } // Sizzling Fajitas (Chicken / Quinoa / Guacamole)
+      dinner: { ...getFav('dish-fajitas-with-guacamole'), mealType: 'dinner' } // Fajitas with Guacamole
     },
     Thursday: {
       day: 'Thursday',
       dateLabel: 'Oct 15',
-      lunch: { ...getFav('fav-shakshuka') }, // Shakshuka with warm bread
+      lunch: { ...getFav('dish-shakshuka'), mealType: 'lunch' }, // Shakshuka with warm bread
       dinner: { 
-        ...thuDinnerDish, // Garam Masala Curry
+        ...thuDinnerDish, // Red Lentil Mango Curry
+        mealType: 'dinner',
         isBatchCook: true,
         batchServings: 4,
-        notes: 'Simmer fragrant curry for 4! Spices meld overnight for Friday lunch.'
+        notes: 'Simmer fragrant mango curry for 4! Spices meld overnight for Friday lunch.'
       }
     },
     Friday: {
       day: 'Friday',
       dateLabel: 'Oct 16',
       lunch: createLeftoverFromMeal(thuDinnerDish, 'Thursday', 'dinner'),
-      dinner: { ...getFav('fav-burgers-veggies-oven') } // Burgers + Veggies in the Oven
+      dinner: { ...getFav('dish-burgers-oven-potato-wedges'), mealType: 'dinner' } // Burgers with Oven Potato Wedges
     },
     Saturday: {
       day: 'Saturday',
       dateLabel: 'Oct 17',
-      lunch: { ...getFav('fav-wraps-chicken') }, // Wraps with chicken & fresh veggies
+      lunch: { ...getFav('dish-crunchy-cheese-veggie-wraps'), mealType: 'lunch' }, // Crunchy Cheese & Veggie Wraps
       dinner: { 
-        ...satDinnerDish, // Kässpätzle with caramelized onions
+        ...satDinnerDish, // Kässpätzle with Side Salad
+        mealType: 'dinner',
         isBatchCook: true,
         batchServings: 4,
-        notes: 'Make double batch of Alpine Kässpätzle! Leftovers warm up in skillet in 2 mins.'
+        notes: 'Make a double batch of Alpine Kässpätzle! Leftovers warm up in skillet in 2 mins.'
       }
     },
     Sunday: {
       day: 'Sunday',
       dateLabel: 'Oct 18',
       lunch: createLeftoverFromMeal(satDinnerDish, 'Saturday', 'dinner'),
-      dinner: { ...getFav('fav-salmon-oven') } // Salmon in the oven with roasted potatoes
+      dinner: { ...getFav('dish-oven-baked-salmon'), mealType: 'dinner' } // Oven-Baked Salmon, Potatoes & Greens
     }
   }
 };

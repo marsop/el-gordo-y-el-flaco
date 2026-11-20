@@ -1,0 +1,77 @@
+{
+  "id": "dish-veggie-sandwich",
+  "title": "Veggie Sandwich",
+  "category": "Great Base",
+  "speed": "Quick",
+  "season": "All Year",
+  "mealType": "lunch",
+  "prepTime": 10,
+  "cookTime": 5,
+  "servings": 2,
+  "calorieEstimate": 520,
+  "leftoverSuitability": "cook_fresh_only",
+  "reheatInstructions": "Assemble fresh! Toast bread right before serving for maximum crunch.",
+  "tags": [
+    "Great Base",
+    "Quick",
+    "All Year",
+    "Diner Sandwich",
+    "High Protein",
+    "Vegetarian"
+  ],
+  "notes": "Layered whole-grain club sandwich with boiled or fried eggs, tender blanched asparagus spears, hummus, cheese, and lettuce.",
+  "gordoPortionNotes": "Double-decker toasted sandwich with 3 eggs, extra cheese, mayo spread and thick tomato slices.",
+  "flacoPortionNotes": "Single open-faced or neat whole-grain sandwich with 1 egg, steamed asparagus, hummus smear, crisp romaine and tomato.",
+  "ingredients": [
+    {
+      "id": "ing-sand-1",
+      "name": "Whole-grain toast bread",
+      "amount": "4 slices",
+      "category": "Bakery"
+    },
+    {
+      "id": "ing-sand-2",
+      "name": "Eggs",
+      "amount": "4 eggs (hard-boiled or fried)",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-sand-3",
+      "name": "Asparagus",
+      "amount": "150g tender spears trimmed",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-sand-4",
+      "name": "Hummus",
+      "amount": "3 tbsp (50g)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-sand-5",
+      "name": "Cheese",
+      "amount": "50g (2 slices havarti or swiss)",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-sand-6",
+      "name": "Tomato",
+      "amount": "1 large sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-sand-7",
+      "name": "Lettuce",
+      "amount": "4 crisp romaine leaves",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-sand-8",
+      "name": "Mayonnaise",
+      "amount": "2 tbsp",
+      "category": "Sauces & Condiments"
+    }
+  ]
+}

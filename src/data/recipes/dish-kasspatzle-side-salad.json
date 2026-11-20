@@ -1,0 +1,52 @@
+{
+  "id": "dish-kasspatzle-side-salad",
+  "title": "Kässpätzle with Side Salad",
+  "category": "Remastered Classics",
+  "speed": "Standard",
+  "season": "Winter",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 20,
+  "servings": 2,
+  "calorieEstimate": 690,
+  "leftoverSuitability": "excellent",
+  "reheatInstructions": "Toss in a hot skillet with a tsp of butter or 2 tbsp milk for 2-3 mins until cheese strings again.",
+  "tags": [
+    "Remastered Classics",
+    "Standard",
+    "Winter",
+    "Batch Hero",
+    "Alpine Comfort",
+    "Comfort Food"
+  ],
+  "notes": "Swabian-Alpine egg noodles tossed with sharp melting mountain cheese, sweet caramelized onions, and balanced by a crisp rainbow salad with roasted chickpeas.",
+  "gordoPortionNotes": "Double serving of bubbling cheesy spätzle topped with heaps of sweet dark caramelized onions and diced cured ham.",
+  "flacoPortionNotes": "Moderate portion of spätzle accompanied by a large colorful side salad with shredded carrots, shaved zucchini, and crunchy roasted chickpeas.",
+  "ingredients": [
+    {
+      "id": "ing-spat-1",
+      "name": "Spätzle",
+      "amount": "300g egg spätzle (fresh or dry)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-spat-2",
+      "name": "Melting cheese",
+      "amount": "120g grated bergkäse or gruyère",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-spat-3",
+      "name": "Caramelized onions",
+      "amount": "2 large onions sliced thin",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-spat-4",
+      "name": "Large side salad with carrots, zucchini, and roasted chickpeas (or diced ham)",
+      "amount": "Mixed greens, 1 carrot, 1 zucchini, 100g roasted chickpeas or diced ham",
+      "category": "Produce"
+    }
+  ]
+}

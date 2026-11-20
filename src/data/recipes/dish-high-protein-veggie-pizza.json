@@ -1,0 +1,64 @@
+{
+  "id": "dish-high-protein-veggie-pizza",
+  "title": "High-Protein Veggie Pizza",
+  "category": "Remastered Classics",
+  "speed": "Slow Burn",
+  "season": "All Year",
+  "mealType": "dinner",
+  "prepTime": 15,
+  "cookTime": 20,
+  "servings": 2,
+  "calorieEstimate": 630,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Reheat slices in a dry skillet on medium heat for 3 mins to crisp the bottom crust, or oven at 200°C for 4 mins.",
+  "tags": [
+    "Remastered Classics",
+    "Slow Burn",
+    "All Year",
+    "Pizza Night",
+    "High Protein"
+  ],
+  "notes": "Crispy whole-wheat artisan crust topped with savory tomato sauce, flaked tuna for high protein, melted mozzarella, peppers, and zucchini.",
+  "gordoPortionNotes": "4 large slices with bubbling mozzarella, flaked tuna, sliced bell peppers, and chili flake oil.",
+  "flacoPortionNotes": "2-3 thin slices loaded with colorful roasted peppers, sliced zucchini, mushrooms, and light mozzarella.",
+  "ingredients": [
+    {
+      "id": "ing-pizz-1",
+      "name": "Whole-wheat pizza dough",
+      "amount": "350g dough ball",
+      "category": "Bakery"
+    },
+    {
+      "id": "ing-pizz-2",
+      "name": "Tomato sauce",
+      "amount": "150ml pizza sauce",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-pizz-3",
+      "name": "Tuna",
+      "amount": "1 can (150g drained)",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-pizz-4",
+      "name": "Mozzarella",
+      "amount": "120g shredded",
+      "category": "Dairy & Eggs",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-pizz-5",
+      "name": "Bell peppers",
+      "amount": "1 sliced into rings",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-pizz-6",
+      "name": "Zucchini",
+      "amount": "1 sliced into thin rounds",
+      "category": "Produce"
+    }
+  ]
+}

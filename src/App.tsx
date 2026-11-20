@@ -12,48 +12,90 @@ import {
   INITIAL_PANTRY_ITEMS, 
   INITIAL_WEEKLY_PLAN, 
   RECIPE_CATALOG, 
+  INITIAL_INGREDIENTS,
   createLeftoverFromMeal
 } from './data/defaultData';
-import { DayOfWeek, Meal, PantryItem, WeeklyPlan, DAYS_OF_WEEK } from './types';
+import { DayOfWeek, Meal, PantryItem, WeeklyPlan, DAYS_OF_WEEK, MasterIngredient } from './types';
 import { getExpiringIngredientsForMeal } from './utils/pantryMatcher';
 import { Check, Info, Sparkles, ChefHat } from 'lucide-react';
+
+const PLAN_STORAGE_KEY = 'el_gordo_weekly_plan_v3';
+const PANTRY_STORAGE_KEY = 'el_gordo_pantry_v3';
+const RECIPES_STORAGE_KEY = 'el_gordo_recipes_v3';
+const INGREDIENTS_STORAGE_KEY = 'el_gordo_ingredients_v4';
 
 export default function App() {
   const [plan, setPlan] = useState<WeeklyPlan>(() => {
     try {
-      const saved = localStorage.getItem('el_gordo_weekly_plan');
-      if (saved) return JSON.parse(saved);
+      const saved = localStorage.getItem(PLAN_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        const monDinner = parsed?.days?.Monday?.dinner;
+        if (monDinner?.id && !monDinner.id.startsWith('fav-') && !monDinner.id.startsWith('rec-')) {
+          return parsed;
+        }
+      }
     } catch {}
     return INITIAL_WEEKLY_PLAN;
   });
 
   const [pantryItems, setPantryItems] = useState<PantryItem[]>(() => {
     try {
-      const saved = localStorage.getItem('el_gordo_pantry');
+      const saved = localStorage.getItem(PANTRY_STORAGE_KEY) || localStorage.getItem('el_gordo_pantry');
       if (saved) return JSON.parse(saved);
     } catch {}
     return INITIAL_PANTRY_ITEMS;
   });
 
+  const [availableIngredients, setAvailableIngredients] = useState<MasterIngredient[]>(() => {
+    try {
+      const saved = localStorage.getItem(INGREDIENTS_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch {}
+    return INITIAL_INGREDIENTS;
+  });
+
   const [recipes, setRecipes] = useState<Meal[]>(() => {
     try {
-      const saved = localStorage.getItem('el_gordo_recipes');
-      if (saved) return JSON.parse(saved);
+      const saved = localStorage.getItem(RECIPES_STORAGE_KEY);
+      if (saved) {
+        const parsed: Meal[] = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0 && !parsed.some((r) => r.id.startsWith('fav-') || r.id.startsWith('rec-'))) {
+          return parsed;
+        }
+      }
     } catch {}
     return RECIPE_CATALOG;
   });
 
   useEffect(() => {
-    try { localStorage.setItem('el_gordo_weekly_plan', JSON.stringify(plan)); } catch {}
+    try {
+      localStorage.removeItem('el_gordo_weekly_plan');
+      localStorage.removeItem('el_gordo_recipes');
+      localStorage.removeItem('el_gordo_ingredients_v3');
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    try { localStorage.setItem(PLAN_STORAGE_KEY, JSON.stringify(plan)); } catch {}
   }, [plan]);
 
   useEffect(() => {
-    try { localStorage.setItem('el_gordo_pantry', JSON.stringify(pantryItems)); } catch {}
+    try { localStorage.setItem(PANTRY_STORAGE_KEY, JSON.stringify(pantryItems)); } catch {}
   }, [pantryItems]);
 
   useEffect(() => {
-    try { localStorage.setItem('el_gordo_recipes', JSON.stringify(recipes)); } catch {}
+    try { localStorage.setItem(RECIPES_STORAGE_KEY, JSON.stringify(recipes)); } catch {}
   }, [recipes]);
+
+  useEffect(() => {
+    try { localStorage.setItem(INGREDIENTS_STORAGE_KEY, JSON.stringify(availableIngredients)); } catch {}
+  }, [availableIngredients]);
 
   // Active Menu Rotation preset
   const [activePreset, setActivePreset] = useState<'favorites' | 'batch_leftovers' | 'quick' | 'comfort' | null>(() => {
@@ -228,40 +270,40 @@ export default function App() {
     const newDays = { ...plan.days };
 
     // Mon Dinner -> Tue Lunch
-    const monDinner = batchFriendly.find((r) => r.id === 'rec-5') || batchFriendly[0];
-    newDays['Monday'].lunch = freshOnly[0] || recipes[1];
+    const monDinner = batchFriendly.find((r) => r.id === 'dish-spanish-lentils-chorizo') || batchFriendly[0];
+    newDays['Monday'].lunch = freshOnly.find((r) => r.id === 'dish-vegetable-frittata') || freshOnly[0] || recipes[1];
     newDays['Monday'].dinner = { ...monDinner, isBatchCook: true, batchServings: 4 };
     newDays['Tuesday'].lunch = createLeftoverFromMeal(monDinner, 'Monday', 'dinner');
 
     // Tue Dinner -> Wed Lunch
-    const tueDinner = batchFriendly.find((r) => r.id === 'rec-10') || batchFriendly[1];
+    const tueDinner = batchFriendly.find((r) => r.id === 'dish-baked-lasagna') || batchFriendly[1];
     newDays['Tuesday'].dinner = { ...tueDinner, isBatchCook: true, batchServings: 4 };
     newDays['Wednesday'].lunch = createLeftoverFromMeal(tueDinner, 'Tuesday', 'dinner');
 
-    // Wed Dinner -> Fresh quick skillet
-    newDays['Wednesday'].dinner = recipes.find((r) => r.id === 'rec-4') || recipes[3];
+    // Wed Dinner -> Fresh skillet (Fajitas with Guacamole)
+    newDays['Wednesday'].dinner = recipes.find((r) => r.id === 'dish-fajitas-with-guacamole') || recipes[3];
 
-    // Thu Lunch: Fresh 10m eggs
-    newDays['Thursday'].lunch = recipes.find((r) => r.id === 'rec-9') || recipes[8];
+    // Thu Lunch: Shakshuka
+    newDays['Thursday'].lunch = recipes.find((r) => r.id === 'dish-shakshuka') || recipes[8];
 
-    // Thu Dinner -> Fri Lunch (Big Batch Chili)
-    const thuDinner = batchFriendly.find((r) => r.id === 'rec-14') || batchFriendly[2];
+    // Thu Dinner -> Fri Lunch (Red Lentil Mango Curry)
+    const thuDinner = batchFriendly.find((r) => r.id === 'dish-red-lentil-mango-curry') || batchFriendly[2];
     newDays['Thursday'].dinner = { ...thuDinner, isBatchCook: true, batchServings: 4 };
     newDays['Friday'].lunch = createLeftoverFromMeal(thuDinner, 'Thursday', 'dinner');
 
-    // Fri Dinner: Fresh Friday Smash Burgers
-    newDays['Friday'].dinner = recipes.find((r) => r.id === 'rec-1') || recipes[0];
+    // Fri Dinner: Burgers with Oven Potato Wedges
+    newDays['Friday'].dinner = recipes.find((r) => r.id === 'dish-burgers-oven-potato-wedges') || recipes[0];
 
-    // Sat Lunch: Quick Wrap
-    newDays['Saturday'].lunch = recipes.find((r) => r.id === 'rec-12') || recipes[11];
+    // Sat Lunch: Crunchy Cheese & Veggie Wraps
+    newDays['Saturday'].lunch = recipes.find((r) => r.id === 'dish-crunchy-cheese-veggie-wraps') || recipes[11];
 
-    // Sat Dinner -> Sun Lunch (Sesame Noodles)
-    const satDinner = batchFriendly.find((r) => r.id === 'rec-11') || batchFriendly[3];
+    // Sat Dinner -> Sun Lunch (Kässpätzle with Side Salad)
+    const satDinner = batchFriendly.find((r) => r.id === 'dish-kasspatzle-side-salad') || batchFriendly[3];
     newDays['Saturday'].dinner = { ...satDinner, isBatchCook: true, batchServings: 4 };
     newDays['Sunday'].lunch = createLeftoverFromMeal(satDinner, 'Saturday', 'dinner');
 
-    // Sun Dinner: Sunday Roast Chicken
-    newDays['Sunday'].dinner = recipes.find((r) => r.id === 'rec-13') || recipes[12];
+    // Sun Dinner: Oven-Baked Salmon, Potatoes & Greens
+    newDays['Sunday'].dinner = recipes.find((r) => r.id === 'dish-oven-baked-salmon') || recipes[12];
 
     setPlan((prev) => ({ ...prev, days: newDays }));
     showToast('Applied "Cook Once, Eat Twice" plan! 4 meals are zero-cooking reheats.');
@@ -353,16 +395,16 @@ export default function App() {
 
     if (preset === 'favorites') {
       const getFav = (id: string) => recipes.find((r) => r.id === id) || recipes[0];
-      const monDinner = getFav('fav-chili-sin-carne');
-      const tueDinner = getFav('fav-lasagne');
-      const thuDinner = getFav('fav-curry-garam-masala');
-      const satDinner = getFav('fav-kasspatzle');
+      const monDinner = getFav('dish-spanish-lentils-chorizo');
+      const tueDinner = getFav('dish-baked-lasagna');
+      const thuDinner = getFav('dish-red-lentil-mango-curry');
+      const satDinner = getFav('dish-kasspatzle-side-salad');
 
       const favDays = {
         Monday: {
           day: 'Monday' as DayOfWeek,
           dateLabel: plan.days['Monday'].dateLabel,
-          lunch: { ...getFav('fav-tortilla-patatas'), mealType: 'lunch' as const },
+          lunch: { ...getFav('dish-vegetable-frittata'), mealType: 'lunch' as const },
           dinner: { ...monDinner, mealType: 'dinner' as const, isBatchCook: true, batchServings: 4 }
         },
         Tuesday: {
@@ -375,31 +417,31 @@ export default function App() {
           day: 'Wednesday' as DayOfWeek,
           dateLabel: plan.days['Wednesday'].dateLabel,
           lunch: createLeftoverFromMeal(tueDinner, 'Tuesday', 'dinner'),
-          dinner: { ...getFav('fav-fajitas-chicken'), mealType: 'dinner' as const }
+          dinner: { ...getFav('dish-fajitas-with-guacamole'), mealType: 'dinner' as const }
         },
         Thursday: {
           day: 'Thursday' as DayOfWeek,
           dateLabel: plan.days['Thursday'].dateLabel,
-          lunch: { ...getFav('fav-shakshuka'), mealType: 'lunch' as const },
+          lunch: { ...getFav('dish-shakshuka'), mealType: 'lunch' as const },
           dinner: { ...thuDinner, mealType: 'dinner' as const, isBatchCook: true, batchServings: 4 }
         },
         Friday: {
           day: 'Friday' as DayOfWeek,
           dateLabel: plan.days['Friday'].dateLabel,
           lunch: createLeftoverFromMeal(thuDinner, 'Thursday', 'dinner'),
-          dinner: { ...getFav('fav-burgers-veggies-oven'), mealType: 'dinner' as const }
+          dinner: { ...getFav('dish-burgers-oven-potato-wedges'), mealType: 'dinner' as const }
         },
         Saturday: {
           day: 'Saturday' as DayOfWeek,
           dateLabel: plan.days['Saturday'].dateLabel,
-          lunch: { ...getFav('fav-wraps-chicken'), mealType: 'lunch' as const },
+          lunch: { ...getFav('dish-crunchy-cheese-veggie-wraps'), mealType: 'lunch' as const },
           dinner: { ...satDinner, mealType: 'dinner' as const, isBatchCook: true, batchServings: 4 }
         },
         Sunday: {
           day: 'Sunday' as DayOfWeek,
           dateLabel: plan.days['Sunday'].dateLabel,
           lunch: createLeftoverFromMeal(satDinner, 'Saturday', 'dinner'),
-          dinner: { ...getFav('fav-salmon-oven'), mealType: 'dinner' as const }
+          dinner: { ...getFav('dish-oven-baked-salmon'), mealType: 'dinner' as const }
         }
       };
 
@@ -415,13 +457,37 @@ export default function App() {
 
     let orderedIds: string[] = [];
     if (preset === 'quick') {
-      orderedIds = ['rec-2', 'rec-6', 'rec-3', 'rec-7', 'rec-9', 'rec-12', 'rec-4'];
+      orderedIds = [
+        'dish-veggie-sandwich',
+        'dish-tabouleh-salad',
+        'dish-protein-tomato-pasta',
+        'dish-one-pan-udon',
+        'dish-cold-pasta-salad',
+        'dish-crunchy-cheese-veggie-wraps',
+        'dish-pesto-pasta-bowl'
+      ];
       showToast('Applied "Quick 20m Diner" preset!');
     } else if (preset === 'comfort') {
-      orderedIds = ['rec-1', 'rec-7', 'rec-10', 'rec-4', 'rec-13', 'rec-1', 'rec-10'];
+      orderedIds = [
+        'dish-baked-lasagna',
+        'dish-burgers-oven-potato-wedges',
+        'dish-kasspatzle-side-salad',
+        'dish-spanish-lentils-chorizo',
+        'dish-loaded-potatoes-cheese-egg',
+        'dish-high-protein-veggie-pizza',
+        'dish-alpine-barley-soup'
+      ];
       showToast('Applied "80s Griddle & Comfort" preset!');
     } else {
-      orderedIds = ['rec-2', 'rec-1', 'rec-6', 'rec-4', 'rec-3', 'rec-5', 'rec-8'];
+      orderedIds = [
+        'dish-fried-rice',
+        'dish-fish-sticks-potatoes-veggies',
+        'dish-caesar-salad',
+        'dish-russian-potato-salad',
+        'dish-savory-crepes',
+        'dish-huevos-rotos',
+        'dish-oven-baked-salmon'
+      ];
       showToast('Applied "Balanced Diner Rotation" preset!');
     }
 
@@ -461,6 +527,20 @@ export default function App() {
     setPantryItems((prev) =>
       prev.map((item) => (item.id === id ? { ...item, ...updates } : item))
     );
+  };
+
+  const handleAddMasterIngredient = (item: Omit<MasterIngredient, 'id'>) => {
+    const newItem: MasterIngredient = {
+      ...item,
+      id: `ing-custom-${Date.now()}`
+    };
+    setAvailableIngredients((prev) => [newItem, ...prev]);
+    showToast(`Added "${newItem.name}" to ingredients list!`);
+  };
+
+  const handleDeleteMasterIngredient = (id: string) => {
+    setAvailableIngredients((prev) => prev.filter((i) => i.id !== id));
+    showToast('Removed ingredient from master list.');
   };
 
   const urgentPantryCount = pantryItems.filter((i) => i.daysUntilExpiry <= 2).length;
@@ -519,8 +599,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div className="flex items-center gap-2 text-zinc-300">
             <span className="w-2 h-2 bg-red-600 rounded-full"></span>
-            <span className="font-['Oswald'] text-sm uppercase tracking-wider font-bold text-amber-400">
-              EL GORDO Y EL FLACO
+            <span className="font-['Oswald'] text-sm uppercase tracking-wider font-bold text-white">
+              EL GORDO <span className="text-amber-400">&</span> EL FLACO
             </span>
             <span>— 80s Fast Food Kitchen Dispatch · Cook Once, Eat Twice</span>
           </div>
@@ -551,10 +631,13 @@ export default function App() {
         isOpen={isPantryOpen}
         onClose={() => setIsPantryOpen(false)}
         pantryItems={pantryItems}
+        availableIngredients={availableIngredients}
         onAddPantryItem={handleAddPantryItem}
         onDeletePantryItem={handleDeletePantryItem}
         onUpdatePantryItem={handleUpdatePantryItem}
         onPrioritizeExpiring={handlePrioritizeExpiring}
+        onAddMasterIngredient={handleAddMasterIngredient}
+        onDeleteMasterIngredient={handleDeleteMasterIngredient}
         plan={plan}
       />
 

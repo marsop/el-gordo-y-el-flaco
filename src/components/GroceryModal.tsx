@@ -44,7 +44,7 @@ export const GroceryModal: React.FC<GroceryModalProps> = ({
   const checkedCount = Object.values(checkedItems).filter(Boolean).length;
 
   const handleCopy = () => {
-    const lines = [`🛒 EL GORDO Y EL FLACO — 2-PERSON GROCERY LIST (${plan.weekName})\n`];
+    const lines = [`🛒 EL GORDO & EL FLACO — 2-PERSON GROCERY LIST (${plan.weekName})\n`];
 
     if (viewMode === 'consolidated') {
       Object.entries(aggregated).forEach(([cat, items]) => {

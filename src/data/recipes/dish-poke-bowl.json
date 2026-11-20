@@ -1,0 +1,89 @@
+{
+  "id": "dish-poke-bowl",
+  "title": "Poke Bowl",
+  "category": "High Protein & High Fiber",
+  "speed": "Standard",
+  "season": "Summer",
+  "mealType": "lunch",
+  "prepTime": 20,
+  "cookTime": 10,
+  "servings": 2,
+  "calorieEstimate": 590,
+  "leftoverSuitability": "good",
+  "reheatInstructions": "Best served chilled or room temperature. Keep sushi rice separate and assemble toppings fresh.",
+  "tags": [
+    "High Protein & High Fiber",
+    "Standard",
+    "Summer",
+    "High Protein",
+    "Seafood",
+    "Fresh & Crisp",
+    "Omega-3"
+  ],
+  "notes": "Vibrant Hawaiian bowl with fresh salmon, edamame, creamy avocado, sweet mango chunks and ruby pomegranate seeds.",
+  "gordoPortionNotes": "Hearty sushi rice base topped with generous salmon cubes, extra edamame, whole sliced avocado & sesame soy drizzle.",
+  "flacoPortionNotes": "Light rice base bulked with crunchy cucumber, sprouts, edamame, cubed tofu, mango and tart pomegranate seeds.",
+  "ingredients": [
+    {
+      "id": "ing-poke-1",
+      "name": "Firm tofu",
+      "amount": "150g pressed & cubed",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-poke-2",
+      "name": "Fresh salmon fillet",
+      "amount": "250g diced sashimi-grade or seared",
+      "category": "Meat & Seafood"
+    },
+    {
+      "id": "ing-poke-3",
+      "name": "Edamame",
+      "amount": "150g shelled",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-poke-4",
+      "name": "Sushi rice",
+      "amount": "200g seasoned cooked rice",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-poke-5",
+      "name": "Avocado",
+      "amount": "1 ripe avocado sliced",
+      "category": "Produce",
+      "isExpiring": true
+    },
+    {
+      "id": "ing-poke-6",
+      "name": "Sweet corn",
+      "amount": "100g kernels",
+      "category": "Pantry"
+    },
+    {
+      "id": "ing-poke-7",
+      "name": "Fresh mango",
+      "amount": "1 diced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-poke-8",
+      "name": "Cucumber",
+      "amount": "1 English cucumber sliced",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-poke-9",
+      "name": "Fresh sprouts",
+      "amount": "50g alfalfa or radish sprouts",
+      "category": "Produce"
+    },
+    {
+      "id": "ing-poke-10",
+      "name": "Pomegranate seeds",
+      "amount": "80g arils",
+      "category": "Produce"
+    }
+  ]
+}
