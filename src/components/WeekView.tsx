@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DAYS_OF_WEEK, DayOfWeek, Meal, PantryItem, WeeklyPlan } from '../types';
 import { MealCard } from './MealCard';
-import { Calendar, RefreshCw, Sparkles, ChefHat } from 'lucide-react';
+import { Calendar, RefreshCw, Sparkles } from 'lucide-react';
 
 interface WeekViewProps {
   plan: WeeklyPlan;
@@ -11,7 +11,6 @@ interface WeekViewProps {
   onShuffleDay: (day: DayOfWeek) => void;
   onToggleBatch?: (day: DayOfWeek, type: 'lunch' | 'dinner') => void;
   onMakeLeftover?: (day: DayOfWeek, type: 'lunch' | 'dinner') => void;
-  onOpenAllMeals?: () => void;
 }
 
 export const WeekView: React.FC<WeekViewProps> = ({
@@ -21,8 +20,7 @@ export const WeekView: React.FC<WeekViewProps> = ({
   onEditMeal,
   onShuffleDay,
   onToggleBatch,
-  onMakeLeftover,
-  onOpenAllMeals
+  onMakeLeftover
 }) => {
   const [selectedDayFilter, setSelectedDayFilter] = useState<'ALL' | DayOfWeek>('ALL');
 
@@ -42,15 +40,6 @@ export const WeekView: React.FC<WeekViewProps> = ({
             <span className="text-xs font-bold uppercase tracking-wider px-2 py-0.5 bg-red-600 text-white rounded font-mono">
               Mon — Sun
             </span>
-            {onOpenAllMeals && (
-              <button
-                onClick={onOpenAllMeals}
-                className="ml-2 px-2.5 py-1 bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 rounded font-['Oswald'] text-xs font-bold uppercase tracking-wider flex items-center gap-1 transition-colors cursor-pointer"
-              >
-                <ChefHat className="w-3.5 h-3.5 text-red-600" />
-                <span>See All Meals</span>
-              </button>
-            )}
           </div>
           <p className="text-xs sm:text-sm text-zinc-600 font-['Plus_Jakarta_Sans'] mt-0.5">
             Two daily meals for two diners. Batch cook dinners to yield effortless reheats for lunch!

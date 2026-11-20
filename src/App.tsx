@@ -489,13 +489,11 @@ export default function App() {
         <MarqueeBanner
           plan={plan}
           pantryItems={pantryItems}
-          totalRecipesCount={recipes.length}
           activePreset={activePreset}
           onShuffleAll={handleShuffleAll}
           onPrioritizeExpiring={handlePrioritizeExpiring}
           onApplyPreset={handleApplyPreset}
           onAutoBatchLeftovers={handleAutoBatchLeftovers}
-          onOpenAllMeals={() => setIsAllMealsOpen(true)}
         />
 
         {/* Monday to Sunday Schedule View */}
@@ -513,7 +511,6 @@ export default function App() {
           onShuffleDay={handleShuffleDay}
           onToggleBatch={handleToggleBatch}
           onMakeLeftover={handleMakeLeftover}
-          onOpenAllMeals={() => setIsAllMealsOpen(true)}
         />
       </main>
 

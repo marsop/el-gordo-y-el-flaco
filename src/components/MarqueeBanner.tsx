@@ -5,25 +5,21 @@ import { WeeklyPlan, PantryItem } from '../types';
 interface MarqueeBannerProps {
   plan: WeeklyPlan;
   pantryItems: PantryItem[];
-  totalRecipesCount: number;
   activePreset?: 'favorites' | 'batch_leftovers' | 'quick' | 'comfort' | null;
   onShuffleAll: () => void;
   onPrioritizeExpiring: () => void;
   onApplyPreset: (preset: 'favorites' | 'batch_leftovers' | 'balanced' | 'quick' | 'comfort') => void;
   onAutoBatchLeftovers: () => void;
-  onOpenAllMeals: () => void;
 }
 
 export const MarqueeBanner: React.FC<MarqueeBannerProps> = ({
   plan,
   pantryItems,
-  totalRecipesCount,
   activePreset,
   onShuffleAll,
   onPrioritizeExpiring,
   onApplyPreset,
-  onAutoBatchLeftovers,
-  onOpenAllMeals
+  onAutoBatchLeftovers
 }) => {
   const [internalPreset, setInternalPreset] = useState<'favorites' | 'batch_leftovers' | 'quick' | 'comfort' | null>('favorites');
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -180,23 +176,13 @@ export const MarqueeBanner: React.FC<MarqueeBannerProps> = ({
                     <span>Prioritize Expiring Pantry ({criticalItems.length} Urgent)</span>
                   </button>
 
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      onClick={onOpenAllMeals}
-                      className="w-full flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-bold uppercase tracking-wider bg-zinc-900 hover:bg-zinc-800 text-amber-300 border border-amber-400/60 rounded transition-colors font-['Oswald'] cursor-pointer"
-                    >
-                      <Utensils className="w-3.5 h-3.5 text-amber-400" />
-                      <span>See All Meals ({totalRecipesCount})</span>
-                    </button>
-
-                    <button
-                      onClick={onShuffleAll}
-                      className="w-full flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold uppercase tracking-wider bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700 rounded transition-colors font-['Oswald'] cursor-pointer"
-                    >
-                      <Shuffle className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Shuffle Week</span>
-                    </button>
-                  </div>
+                  <button
+                    onClick={onShuffleAll}
+                    className="w-full flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold uppercase tracking-wider bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700 rounded transition-colors font-['Oswald'] cursor-pointer shadow-sm"
+                  >
+                    <Shuffle className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Shuffle Week</span>
+                  </button>
                 </div>
               </div>
             )}
