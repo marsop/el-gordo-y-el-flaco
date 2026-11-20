@@ -1,6 +1,24 @@
 import React, { useState } from 'react';
 import { X, Plus, Trash2, Save, ChefHat, RotateCcw, Layers } from 'lucide-react';
 import { Meal, Ingredient, MealType, LeftoverSuitability } from '../types';
+import { TagBadge } from './TagBadge';
+import { getTagDefinition, normalizeTagList } from '../utils/tagRegistry';
+
+const QUICK_TAG_OPTIONS = [
+  'High Protein',
+  'Great Base',
+  'Balanced',
+  'Classics',
+  'Quick ≤20m',
+  'Batch Hero',
+  'Slow Burn',
+  'Summer',
+  'Winter',
+  'High Fiber',
+  'Vegetarian',
+  'One-Pan',
+  'Comfort Food'
+];
 
 interface MealModalProps {
   isOpen: boolean;
@@ -24,7 +42,8 @@ export const MealModal: React.FC<MealModalProps> = ({
   const [notes, setNotes] = useState(meal.notes);
   const [gordoPortionNotes, setGordoPortionNotes] = useState(meal.gordoPortionNotes || '');
   const [flacoPortionNotes, setFlacoPortionNotes] = useState(meal.flacoPortionNotes || '');
-  const [tagsInput, setTagsInput] = useState(meal.tags.join(', '));
+  const [tags, setTags] = useState<string[]>(() => normalizeTagList(meal.tags));
+  const [customTagInput, setCustomTagInput] = useState('');
   const [ingredients, setIngredients] = useState<Ingredient[]>(meal.ingredients);
 
   // Leftover & Batch cooking state
@@ -63,6 +82,30 @@ export const MealModal: React.FC<MealModalProps> = ({
     setIngredients(ingredients.filter((i) => i.id !== id));
   };
 
+  const handleToggleTag = (tagLabel: string) => {
+    const def = getTagDefinition(tagLabel);
+    if (tags.some((t) => getTagDefinition(t).id === def.id)) {
+      setTags((prev) => prev.filter((t) => getTagDefinition(t).id !== def.id));
+    } else {
+      setTags((prev) => [...prev, def.label]);
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove: string) => {
+    setTags((prev) => prev.filter((t) => t !== tagToRemove));
+  };
+
+  const handleAddCustomTag = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    const clean = customTagInput.trim();
+    if (!clean) return;
+    const def = getTagDefinition(clean);
+    if (!tags.some((t) => getTagDefinition(t).id === def.id)) {
+      setTags((prev) => [...prev, def.label]);
+    }
+    setCustomTagInput('');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const updated: Meal = {
@@ -74,7 +117,7 @@ export const MealModal: React.FC<MealModalProps> = ({
       notes: notes.trim(),
       gordoPortionNotes: gordoPortionNotes.trim(),
       flacoPortionNotes: flacoPortionNotes.trim(),
-      tags: tagsInput.split(',').map((t) => t.trim()).filter(Boolean),
+      tags: normalizeTagList(tags),
       ingredients,
       isLeftover,
       isBatchCook: isLeftover ? false : isBatchCook,
@@ -282,18 +325,79 @@ export const MealModal: React.FC<MealModalProps> = ({
             </div>
           </div>
 
-          {/* Tags */}
-          <div>
-            <label className="block font-bold uppercase tracking-wider text-zinc-800 font-['Oswald'] mb-1">
-              Tags (comma separated)
-            </label>
-            <input
-              type="text"
-              value={tagsInput}
-              onChange={(e) => setTagsInput(e.target.value)}
-              placeholder="e.g. 80s Diner, Quick Prep, High Protein"
-              className="w-full px-3 py-2 bg-white border border-zinc-300 rounded"
-            />
+          {/* Tags Management */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <label className="block font-bold uppercase tracking-wider text-zinc-800 font-['Oswald']">
+                Tags & Flavor Profiles ({tags.length})
+              </label>
+              <span className="text-[11px] text-zinc-500 font-mono">
+                Click chips to toggle or add custom
+              </span>
+            </div>
+
+            {/* Active Tags */}
+            <div className="p-2.5 bg-zinc-50 border border-zinc-200 rounded min-h-[44px] flex flex-wrap items-center gap-1.5">
+              {tags.length === 0 ? (
+                <span className="text-xs text-zinc-400 italic">No tags selected yet. Click options below or type your own.</span>
+              ) : (
+                tags.map((tag) => (
+                  <TagBadge
+                    key={tag}
+                    tag={tag}
+                    size="sm"
+                    removable
+                    onRemove={() => handleRemoveTag(tag)}
+                  />
+                ))
+              )}
+            </div>
+
+            {/* Quick Pick Suggestions */}
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-['Oswald'] block mb-1">
+                Quick Toggle:
+              </span>
+              <div className="flex flex-wrap gap-1">
+                {QUICK_TAG_OPTIONS.map((opt) => {
+                  const isSelected = tags.some((t) => getTagDefinition(t).id === getTagDefinition(opt).id);
+                  return (
+                    <TagBadge
+                      key={opt}
+                      tag={opt}
+                      size="xs"
+                      isActive={isSelected}
+                      onClick={() => handleToggleTag(opt)}
+                      className={isSelected ? 'ring-2 ring-zinc-950 font-black' : 'opacity-70 hover:opacity-100'}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Custom Tag Input */}
+            <div className="flex items-center gap-2 pt-1">
+              <input
+                type="text"
+                value={customTagInput}
+                onChange={(e) => setCustomTagInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAddCustomTag();
+                  }
+                }}
+                placeholder="Type custom tag (e.g. Griddle Special, Extra Spicy)..."
+                className="flex-1 px-3 py-1.5 text-xs bg-white border border-zinc-300 rounded focus:ring-1 focus:ring-red-500 focus:outline-none"
+              />
+              <button
+                type="button"
+                onClick={() => handleAddCustomTag()}
+                className="px-3 py-1.5 bg-zinc-900 hover:bg-red-600 text-white rounded text-xs font-['Oswald'] font-bold uppercase tracking-wider transition-colors cursor-pointer"
+              >
+                Add Tag
+              </button>
+            </div>
           </div>
 
           {/* Ingredients for 2 People */}

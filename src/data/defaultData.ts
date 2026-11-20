@@ -41,7 +41,7 @@ export function createLeftoverFromMeal(
     sourceMealType,
     sourceMealTitle: sourceMeal.title,
     notes: `Zero effort! Reheat from ${sourceDay} ${sourceMealType}. ${sourceMeal.reheatInstructions || 'Microwave 2 minutes covered.'}`,
-    tags: ['Leftovers', 'Zero Cooking', 'Quick 3m Reheat']
+    tags: ['Leftovers', 'Zero Cooking', 'Quick Reheat']
   };
 }
 

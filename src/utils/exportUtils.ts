@@ -1,6 +1,7 @@
 import { DAYS_OF_WEEK, WeeklyPlan, PantryItem } from '../types';
 import { isIngredientExpiring } from './pantryMatcher';
 import { getAggregatedGroceryList } from './groceryUtils';
+import { getTagDefinition } from './tagRegistry';
 
 /**
  * Escapes values for safe CSV format
@@ -162,7 +163,11 @@ export function generateMarkdown(plan: WeeklyPlan, pantryItems?: PantryItem[]): 
     } else {
       lines.push(`- **Time:** ${dp.lunch.prepTime}m prep · ${dp.lunch.cookTime}m cook | **Est:** ~${dp.lunch.calorieEstimate || 500} kcal/person`);
     }
-    lines.push(`- **Tags:** ${dp.lunch.tags.join(' · ')}`);
+    const lunchTagsFormatted = dp.lunch.tags.map((t) => {
+      const def = getTagDefinition(t);
+      return `${def.emoji} ${def.label}`;
+    }).join(' · ');
+    lines.push(`- **Tags:** ${lunchTagsFormatted}`);
     lines.push(`- **Ingredients (${dp.lunch.isBatchCook ? 'Double Batch for 4 Servings' : 'Serves 2'}):**`);
     dp.lunch.ingredients.forEach((ing) => {
       const isExp = pantryItems ? isIngredientExpiring(ing, dp.lunch, pantryItems) : ing.isExpiring;
@@ -189,7 +194,11 @@ export function generateMarkdown(plan: WeeklyPlan, pantryItems?: PantryItem[]): 
     if (dp.dinner.leftoverSuitability) {
       lines.push(`- **Keeping Quality:** ${dp.dinner.leftoverSuitability === 'excellent' ? 'Excellent (keeps 3-4 days)' : dp.dinner.leftoverSuitability === 'good' ? 'Good (keeps 2 days)' : 'Cook fresh only'}`);
     }
-    lines.push(`- **Tags:** ${dp.dinner.tags.join(' · ')}`);
+    const dinnerTagsFormatted = dp.dinner.tags.map((t) => {
+      const def = getTagDefinition(t);
+      return `${def.emoji} ${def.label}`;
+    }).join(' · ');
+    lines.push(`- **Tags:** ${dinnerTagsFormatted}`);
     lines.push(`- **Ingredients (${dp.dinner.isBatchCook ? 'Double Batch for 4 Servings' : 'Serves 2'}):**`);
     dp.dinner.ingredients.forEach((ing) => {
       const isExp = pantryItems ? isIngredientExpiring(ing, dp.dinner, pantryItems) : ing.isExpiring;

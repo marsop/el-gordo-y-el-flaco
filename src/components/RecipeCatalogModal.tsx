@@ -2,6 +2,22 @@ import React, { useState } from 'react';
 import { X, Clock, Flame, Check, AlertCircle, Search } from 'lucide-react';
 import { Meal, DayOfWeek, PantryItem } from '../types';
 import { getExpiringIngredientsForMeal } from '../utils/pantryMatcher';
+import { TagBadge } from './TagBadge';
+import { mealMatchesTag } from '../utils/tagRegistry';
+
+const FILTER_TAGS = [
+  'High Protein',
+  'Great Base',
+  'Balanced',
+  'Classics',
+  'Quick ≤20m',
+  'Batch Hero',
+  'Slow Burn',
+  'Summer',
+  'Winter',
+  'High Fiber',
+  'Vegetarian'
+];
 
 interface RecipeCatalogModalProps {
   isOpen: boolean;
@@ -23,9 +39,8 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
   onSelectRecipe
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterType, setFilterType] = useState<
-    'all' | 'cat1' | 'cat2' | 'cat3' | 'cat4' | 'lunch' | 'dinner' | 'quick'
-  >('all');
+  const [mealTypeFilter, setMealTypeFilter] = useState<'all' | 'lunch' | 'dinner'>('all');
+  const [activeTag, setActiveTag] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
@@ -34,23 +49,11 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
       r.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       r.tags.some((t) => t.toLowerCase().includes(searchTerm.toLowerCase())) ||
       r.ingredients.some((i) => i.name.toLowerCase().includes(searchTerm.toLowerCase()));
-    
-    const matchesType = 
-      filterType === 'all' 
-        ? true 
-        : filterType === 'cat1'
-        ? r.category === 'High Protein & High Fiber'
-        : filterType === 'cat2'
-        ? r.category === 'Great Base'
-        : filterType === 'cat3'
-        ? r.category === 'Moderately Balanced'
-        : filterType === 'cat4'
-        ? r.category === 'Remastered Classics'
-        : filterType === 'quick'
-        ? (r.speed === 'Quick' || r.prepTime + r.cookTime <= 20)
-        : r.mealType === filterType;
 
-    return matchesSearch && matchesType;
+    const matchesMealType = mealTypeFilter === 'all' || r.mealType === mealTypeFilter;
+    const matchesTag = activeTag ? mealMatchesTag(r, activeTag) : true;
+
+    return matchesSearch && matchesMealType && matchesTag;
   });
 
   return (
@@ -87,71 +90,48 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
             />
           </div>
 
-          <div className="flex items-center gap-1 overflow-x-auto pb-1 scrollbar-none bg-zinc-200/80 p-1 rounded">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none bg-zinc-200/80 p-1 rounded">
             <button
-              onClick={() => setFilterType('all')}
+              onClick={() => { setMealTypeFilter('all'); setActiveTag(null); }}
               className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                filterType === 'all' ? 'bg-white text-zinc-900 shadow-xs' : 'text-zinc-600 hover:text-zinc-900'
+                mealTypeFilter === 'all' && activeTag === null
+                  ? 'bg-zinc-900 text-amber-300 shadow-xs ring-2 ring-zinc-950 font-black'
+                  : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
               All ({recipes.length})
             </button>
             <button
-              onClick={() => setFilterType('cat1')}
+              onClick={() => setMealTypeFilter(mealTypeFilter === 'lunch' ? 'all' : 'lunch')}
               className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                filterType === 'cat1' ? 'bg-emerald-600 text-white font-black shadow-xs' : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              🟢 High Protein
-            </button>
-            <button
-              onClick={() => setFilterType('cat2')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                filterType === 'cat2' ? 'bg-amber-500 text-zinc-950 font-black shadow-xs' : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              🟡 Great Base
-            </button>
-            <button
-              onClick={() => setFilterType('cat3')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                filterType === 'cat3' ? 'bg-orange-500 text-white font-black shadow-xs' : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              🟠 Balanced
-            </button>
-            <button
-              onClick={() => setFilterType('cat4')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                filterType === 'cat4' ? 'bg-red-600 text-white font-black shadow-xs' : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              🔴 Classics
-            </button>
-            <button
-              onClick={() => setFilterType('quick')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                filterType === 'quick' ? 'bg-purple-600 text-white shadow-xs' : 'text-zinc-600 hover:text-zinc-900'
-              }`}
-            >
-              ⚡ Quick
-            </button>
-            <button
-              onClick={() => setFilterType('lunch')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                filterType === 'lunch' ? 'bg-white text-zinc-900 shadow-xs' : 'text-zinc-600 hover:text-zinc-900'
+                mealTypeFilter === 'lunch' ? 'bg-amber-500 text-zinc-950 font-black shadow-xs ring-2 ring-zinc-950' : 'text-zinc-700 hover:text-zinc-900'
               }`}
             >
               Lunches
             </button>
             <button
-              onClick={() => setFilterType('dinner')}
+              onClick={() => setMealTypeFilter(mealTypeFilter === 'dinner' ? 'all' : 'dinner')}
               className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                filterType === 'dinner' ? 'bg-white text-zinc-900 shadow-xs' : 'text-zinc-600 hover:text-zinc-900'
+                mealTypeFilter === 'dinner' ? 'bg-red-600 text-white font-black shadow-xs ring-2 ring-zinc-950' : 'text-zinc-700 hover:text-zinc-900'
               }`}
             >
               Dinners
             </button>
+            {FILTER_TAGS.map((tagName) => {
+              const count = recipes.filter((r) => mealMatchesTag(r, tagName)).length;
+              if (count === 0) return null;
+              const isSelected = activeTag === tagName;
+              return (
+                <TagBadge
+                  key={tagName}
+                  tag={tagName}
+                  size="sm"
+                  count={count}
+                  isActive={isSelected}
+                  onClick={() => setActiveTag(isSelected ? null : tagName)}
+                />
+              );
+            })}
           </div>
         </div>
 
@@ -186,44 +166,14 @@ export const RecipeCatalogModal: React.FC<RecipeCatalogModalProps> = ({
                     </div>
                   </div>
 
-                  {/* Category, Speed & Season Badges */}
-                  {recipe.category && (
-                    <div className="flex items-center gap-1.5 flex-wrap mb-1.5">
-                      <span className={`text-[10px] font-bold font-['Oswald'] uppercase px-2 py-0.5 rounded border ${
-                        recipe.category === 'High Protein & High Fiber'
-                          ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                          : recipe.category === 'Great Base'
-                          ? 'bg-amber-50 text-amber-900 border-amber-300'
-                          : recipe.category === 'Moderately Balanced'
-                          ? 'bg-orange-50 text-orange-900 border-orange-300'
-                          : 'bg-red-50 text-red-900 border-red-300'
-                      }`}>
-                        {recipe.category === 'High Protein & High Fiber' && '🟢 '}
-                        {recipe.category === 'Great Base' && '🟡 '}
-                        {recipe.category === 'Moderately Balanced' && '🟠 '}
-                        {recipe.category === 'Remastered Classics' && '🔴 '}
-                        {recipe.category}
-                      </span>
-                      {recipe.speed && (
-                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-200">
-                          [{recipe.speed}]
-                        </span>
-                      )}
-                      {recipe.season && (
-                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-200">
-                          [{recipe.season}]
-                        </span>
-                      )}
-                    </div>
-                  )}
-
                   <h4 className="font-bold text-zinc-900 text-sm group-hover:text-red-600 transition-colors">
                     {recipe.title}
                   </h4>
 
-                  <div className="mt-1 flex flex-wrap gap-1 text-[11px] text-zinc-500">
-                    {recipe.tags.slice(0, 3).map((tag) => (
-                      <span key={tag}>#{tag}</span>
+                  {/* Unified Tags */}
+                  <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    {recipe.tags.map((tag) => (
+                      <TagBadge key={tag} tag={tag} size="xs" />
                     ))}
                   </div>
 

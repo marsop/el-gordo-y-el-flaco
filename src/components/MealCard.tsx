@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Meal, PantryItem } from '../types';
 import { getExpiringIngredientsForMeal, isIngredientExpiring } from '../utils/pantryMatcher';
+import { TagBadge } from './TagBadge';
 
 interface MealCardProps {
   meal: Meal;
@@ -131,35 +132,31 @@ export const MealCard: React.FC<MealCardProps> = ({
             {meal.title}
           </h4>
 
-          {/* Tags and Leftover Suitability Indicator */}
-          <div className="mt-1 flex flex-wrap items-center gap-x-2 text-xs text-zinc-500">
-            {meal.tags.map((tag, idx) => (
-              <React.Fragment key={tag}>
-                <span>{tag}</span>
-                {idx < meal.tags.length - 1 && <span aria-hidden="true">·</span>}
-              </React.Fragment>
+          {/* Unified Tags */}
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
+            {meal.tags.map((tag) => (
+              <TagBadge key={tag} tag={tag} size="xs" />
             ))}
-
-            {/* Leftover Suitability metadata */}
-            {meal.leftoverSuitability && !isLeftover && (
-              <>
-                <span aria-hidden="true">·</span>
-                <span className={
-                  meal.leftoverSuitability === 'excellent' 
-                    ? 'text-teal-700 font-semibold' 
-                    : meal.leftoverSuitability === 'good' 
-                    ? 'text-zinc-600' 
-                    : 'text-amber-700'
-                }>
-                  {meal.leftoverSuitability === 'excellent' 
-                    ? 'Keeps 3-4 days' 
-                    : meal.leftoverSuitability === 'good' 
-                    ? 'Keeps 2 days' 
-                    : 'Best eaten fresh'}
-                </span>
-              </>
-            )}
           </div>
+
+          {/* Leftover Suitability metadata */}
+          {meal.leftoverSuitability && !isLeftover && (
+            <div className="mt-1.5 text-[11px] font-mono">
+              <span className={
+                meal.leftoverSuitability === 'excellent' 
+                  ? 'text-teal-700 font-semibold' 
+                  : meal.leftoverSuitability === 'good' 
+                  ? 'text-zinc-600' 
+                  : 'text-amber-700'
+              }>
+                {meal.leftoverSuitability === 'excellent' 
+                  ? '★ Keeps 3-4 days' 
+                  : meal.leftoverSuitability === 'good' 
+                  ? '✓ Keeps 2 days' 
+                  : '⚠️ Best cooked fresh'}
+              </span>
+            </div>
+          )}
 
           {/* Expiring Ingredients Alert Banner (if any) */}
           {expiringIngredients.length > 0 && !isLeftover && (

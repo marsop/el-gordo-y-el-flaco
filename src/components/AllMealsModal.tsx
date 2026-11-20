@@ -15,6 +15,22 @@ import {
   ChefHat
 } from 'lucide-react';
 import { Meal, WeeklyPlan, DayOfWeek, DAYS_OF_WEEK } from '../types';
+import { TagBadge } from './TagBadge';
+import { mealMatchesTag } from '../utils/tagRegistry';
+
+const FILTER_TAGS = [
+  'High Protein',
+  'Great Base',
+  'Balanced',
+  'Classics',
+  'Quick ≤20m',
+  'Batch Hero',
+  'Slow Burn',
+  'Summer',
+  'Winter',
+  'High Fiber',
+  'Vegetarian'
+];
 
 interface AllMealsModalProps {
   isOpen: boolean;
@@ -34,9 +50,7 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
   onEditMeal
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeCategory, setActiveCategory] = useState<
-    'all' | 'cat1' | 'cat2' | 'cat3' | 'cat4' | 'quick' | 'leftovers' | 'summer' | 'winter'
-  >('all');
+  const [activeTag, setActiveTag] = useState<string | null>(null);
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // Scheduling popover state for a specific card
@@ -56,39 +70,15 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
     }
   });
 
-  const cat1Count = recipes.filter((r) => r.category === 'High Protein & High Fiber').length;
-  const cat2Count = recipes.filter((r) => r.category === 'Great Base').length;
-  const cat3Count = recipes.filter((r) => r.category === 'Moderately Balanced').length;
-  const cat4Count = recipes.filter((r) => r.category === 'Remastered Classics').length;
-  const leftoverFriendlyCount = recipes.filter((r) => r.leftoverSuitability === 'excellent').length;
-  const quickCount = recipes.filter((r) => r.speed === 'Quick' || r.prepTime + r.cookTime <= 20).length;
-
   const filtered = recipes.filter((r) => {
     const matchesSearch =
       r.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       r.tags.some((t) => t.toLowerCase().includes(searchTerm.toLowerCase())) ||
       r.ingredients.some((i) => i.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
-    let matchesCat = true;
-    if (activeCategory === 'cat1') {
-      matchesCat = r.category === 'High Protein & High Fiber';
-    } else if (activeCategory === 'cat2') {
-      matchesCat = r.category === 'Great Base';
-    } else if (activeCategory === 'cat3') {
-      matchesCat = r.category === 'Moderately Balanced';
-    } else if (activeCategory === 'cat4') {
-      matchesCat = r.category === 'Remastered Classics';
-    } else if (activeCategory === 'quick') {
-      matchesCat = r.speed === 'Quick' || r.prepTime + r.cookTime <= 20;
-    } else if (activeCategory === 'leftovers') {
-      matchesCat = r.leftoverSuitability === 'excellent';
-    } else if (activeCategory === 'summer') {
-      matchesCat = r.season === 'Summer';
-    } else if (activeCategory === 'winter') {
-      matchesCat = r.season === 'Winter';
-    }
+    const matchesTag = activeTag ? mealMatchesTag(r, activeTag) : true;
 
-    return matchesSearch && matchesCat;
+    return matchesSearch && matchesTag;
   });
 
   const handleConfirmSchedule = (meal: Meal) => {
@@ -141,98 +131,33 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
             />
           </div>
 
-          {/* Category Filter Buttons */}
-          <div className="flex items-center gap-1 overflow-x-auto pb-1 md:pb-0 scrollbar-none bg-zinc-200/70 p-1 rounded">
+          {/* Unified Tag Filter Buttons */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none bg-zinc-200/70 p-1 rounded">
             <button
-              onClick={() => setActiveCategory('all')}
+              onClick={() => setActiveTag(null)}
               className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'all'
-                  ? 'bg-zinc-900 text-amber-300 shadow-xs'
+                activeTag === null
+                  ? 'bg-zinc-900 text-amber-300 shadow-xs ring-2 ring-zinc-950 font-black'
                   : 'text-zinc-600 hover:text-zinc-900'
               }`}
             >
               All ({recipes.length})
             </button>
-            <button
-              onClick={() => setActiveCategory('cat1')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'cat1'
-                  ? 'bg-emerald-600 text-white font-black shadow-xs'
-                  : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              🟢 High Protein ({cat1Count})
-            </button>
-            <button
-              onClick={() => setActiveCategory('cat2')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'cat2'
-                  ? 'bg-amber-500 text-zinc-950 font-black shadow-xs'
-                  : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              🟡 Great Base ({cat2Count})
-            </button>
-            <button
-              onClick={() => setActiveCategory('cat3')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'cat3'
-                  ? 'bg-orange-500 text-white font-black shadow-xs'
-                  : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              🟠 Balanced ({cat3Count})
-            </button>
-            <button
-              onClick={() => setActiveCategory('cat4')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'cat4'
-                  ? 'bg-red-600 text-white font-black shadow-xs'
-                  : 'text-zinc-700 hover:text-zinc-900'
-              }`}
-            >
-              🔴 Classics ({cat4Count})
-            </button>
-            <button
-              onClick={() => setActiveCategory('quick')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'quick'
-                  ? 'bg-purple-600 text-white shadow-xs'
-                  : 'text-zinc-600 hover:text-zinc-900'
-              }`}
-            >
-              ⚡ Quick ≤20m ({quickCount})
-            </button>
-            <button
-              onClick={() => setActiveCategory('leftovers')}
-              className={`px-2.5 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'leftovers'
-                  ? 'bg-teal-700 text-white shadow-xs'
-                  : 'text-zinc-600 hover:text-zinc-900'
-              }`}
-            >
-              🍲 Batch Heroes ({leftoverFriendlyCount})
-            </button>
-            <button
-              onClick={() => setActiveCategory('summer')}
-              className={`px-2 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'summer'
-                  ? 'bg-sky-600 text-white shadow-xs'
-                  : 'text-zinc-600 hover:text-zinc-900'
-              }`}
-            >
-              ☀️ Summer
-            </button>
-            <button
-              onClick={() => setActiveCategory('winter')}
-              className={`px-2 py-1 text-xs font-bold font-['Oswald'] uppercase rounded transition-colors whitespace-nowrap cursor-pointer ${
-                activeCategory === 'winter'
-                  ? 'bg-slate-700 text-white shadow-xs'
-                  : 'text-zinc-600 hover:text-zinc-900'
-              }`}
-            >
-              ❄️ Winter
-            </button>
+            {FILTER_TAGS.map((tagName) => {
+              const count = recipes.filter((r) => mealMatchesTag(r, tagName)).length;
+              if (count === 0) return null;
+              const isSelected = activeTag === tagName;
+              return (
+                <TagBadge
+                  key={tagName}
+                  tag={tagName}
+                  size="sm"
+                  count={count}
+                  isActive={isSelected}
+                  onClick={() => setActiveTag(isSelected ? null : tagName)}
+                />
+              );
+            })}
           </div>
         </div>
 
@@ -268,37 +193,6 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
                     </div>
                   </div>
 
-                  {/* Category, Speed & Season Badges */}
-                  {meal.category && (
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className={`text-[10px] font-bold font-['Oswald'] uppercase px-2 py-0.5 rounded border ${
-                        meal.category === 'High Protein & High Fiber'
-                          ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                          : meal.category === 'Great Base'
-                          ? 'bg-amber-50 text-amber-900 border-amber-300'
-                          : meal.category === 'Moderately Balanced'
-                          ? 'bg-orange-50 text-orange-900 border-orange-300'
-                          : 'bg-red-50 text-red-900 border-red-300'
-                      }`}>
-                        {meal.category === 'High Protein & High Fiber' && '🟢 '}
-                        {meal.category === 'Great Base' && '🟡 '}
-                        {meal.category === 'Moderately Balanced' && '🟠 '}
-                        {meal.category === 'Remastered Classics' && '🔴 '}
-                        {meal.category}
-                      </span>
-                      {meal.speed && (
-                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-300">
-                          [{meal.speed}]
-                        </span>
-                      )}
-                      {meal.season && (
-                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-300">
-                          [{meal.season}]
-                        </span>
-                      )}
-                    </div>
-                  )}
-
                   <h4 className="font-bold text-zinc-900 text-base leading-snug font-['Plus_Jakarta_Sans']">
                     {meal.title}
                   </h4>
@@ -311,12 +205,10 @@ export const AllMealsModal: React.FC<AllMealsModalProps> = ({
                     </div>
                   )}
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-zinc-500">
+                  {/* Unified Tags */}
+                  <div className="flex flex-wrap items-center gap-1.5">
                     {meal.tags.map((t) => (
-                      <span key={t} className="bg-zinc-100 px-1.5 py-0.5 rounded text-zinc-600">
-                        {t}
-                      </span>
+                      <TagBadge key={t} tag={t} size="xs" />
                     ))}
                   </div>
 

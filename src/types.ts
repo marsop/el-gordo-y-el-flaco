@@ -54,6 +54,17 @@ export type MasterCategory =
 export type SpeedTag = 'Quick' | 'Standard' | 'Slow Burn';
 export type SeasonTag = 'All Year' | 'Summer' | 'Winter';
 
+export interface TagDefinition {
+  id: string; // Normalized slug, e.g. 'high-protein'
+  label: string; // Display label, e.g. 'High Protein'
+  emoji: string; // Associated emoji, e.g. '🟢'
+  bgClass: string; // 'bg-emerald-50'
+  textClass: string; // 'text-emerald-950'
+  borderClass: string; // 'border-emerald-300'
+  badgeClass: string; // Pre-composed styling string
+  category?: 'pillar' | 'dietary' | 'style' | 'leftover' | 'custom';
+}
+
 export interface Meal {
   id: string;
   title: string;
