@@ -1,5 +1,6 @@
 import { DAYS_OF_WEEK, WeeklyPlan, PantryItem } from '../types';
 import { isIngredientExpiring } from './pantryMatcher';
+import { getAggregatedGroceryList } from './groceryUtils';
 
 /**
  * Escapes values for safe CSV format
@@ -205,34 +206,18 @@ export function generateMarkdown(plan: WeeklyPlan, pantryItems?: PantryItem[]): 
 
   // Consolidated Grocery List
   lines.push(`## 🛒 Consolidated Grocery List (for 2 People)\n`);
-  const grouped: Record<string, string[]> = {};
-  
-  DAYS_OF_WEEK.forEach((day) => {
-    const dp = plan.days[day];
-    if (!dp) return;
-    
-    // Only count fresh meals or batch dinners so we don't duplicate leftover ingredients
-    const mealsToCount = [
-      dp.dinner,
-      ...(dp.lunch.isLeftover ? [] : [dp.lunch])
-    ];
+  const aggregatedGroceries = getAggregatedGroceryList(plan, { pantryItems });
 
-    mealsToCount.forEach((meal) => {
-      meal.ingredients.forEach((ing) => {
-        const cat = ing.category || 'Pantry';
-        if (!grouped[cat]) grouped[cat] = [];
-        const label = meal.isBatchCook ? `${ing.name} (${ing.amount} × 2 batch)` : `${ing.name} (${ing.amount})`;
-        if (!grouped[cat].includes(label)) {
-          grouped[cat].push(label);
-        }
-      });
-    });
-  });
-
-  Object.entries(grouped).forEach(([cat, items]) => {
+  Object.entries(aggregatedGroceries).forEach(([cat, items]) => {
+    if (items.length === 0) return;
     lines.push(`### ${cat}`);
     items.forEach((item) => {
-      lines.push(`- [ ] ${item}`);
+      const qtyBadge = item.totalCount > 1 ? `${item.totalCount}× ` : '';
+      const sourcesSummary = item.sources
+        .map((s) => `${s.day.slice(0, 3)} ${s.mealType === 'lunch' ? 'Lunch' : 'Dinner'}${s.isBatchCook ? ' (×2 batch)' : ''}`)
+        .join(', ');
+      const pantryNote = item.pantryStock ? ` *(In pantry: ${item.pantryStock.quantity})*` : '';
+      lines.push(`- [ ] ${qtyBadge}**${item.name}** (${item.displayAmount}) — *${sourcesSummary}*${pantryNote}`);
     });
     lines.push('');
   });

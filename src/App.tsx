@@ -562,6 +562,7 @@ export default function App() {
         isOpen={isGroceryOpen}
         onClose={() => setIsGroceryOpen(false)}
         plan={plan}
+        pantryItems={pantryItems}
       />
 
       {editingTarget && (
